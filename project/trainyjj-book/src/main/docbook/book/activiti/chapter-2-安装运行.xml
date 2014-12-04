@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装运行</title>
+		<literallayout>
+   <![CDATA[	  
+   安装插件  
+   1.直接下载
+   http://activiti.org/designer/archived/
+   
+   2.update方式
+	再安装activiti插件,地址:http://activiti.org/designer/update/
+
+	  ]]>
+			</literallayout>
+</chapter>

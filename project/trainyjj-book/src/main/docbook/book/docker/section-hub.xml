@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>docker hub 镜像存储站点</title>
+	<para>
+		在hub中分享镜像
+		<literallayout>
+   <![CDATA[
+自建的image可以上传到官方仓库与大家分享，也方便以后自己重用。
+但在上传之前，需要先到官方仓库注册一个用户。注意：注册完要先去收一下邮件，通过邮箱验证以后才可以从docker登录。
+然后从本地docker登录官方仓库：
+docker login
+之后就可以上传自己创建的image了：
+docker push yourname/imagename
+ ]]>
+		</literallayout>
+	</para>
+	<para>
+		自建仓库docker-registry
+		<literallayout>
+   <![CDATA[
+https://github.com/docker/docker-registry 
+最简单的做法就是用默认配置，更详细的说明则见官方文档。默认配置的方法如下：
+cd config
+cp config_sample.yml config.yml
+运行了：
+gunicorn --access-logfile - --debug -k gevent -b 0.0.0.0:5000 -w 1 wsgi:application
+自建的docker-registry如何使用呢？
+最先要做的一件事情就是：
+停掉那个加了代理的docker daemon，重启默认的服务：
+ps aux | grep "sudo docker"
+sudo kill [docker-daemon-pid]
+sudo service docker start
+因为自建的registry显然不再需要代理，加了代理反而会连不通。
+然后看看本地image的ID，准备挑一个拿来上传：
+docker images | grep ubuntu | grep latest
+接着设置其repository名：
+docker tag [image_id] [your-registry-host]:5000/ubuntu
+OK，现在可以push了：
+docker push [your-registry-host]:5000/ubuntu
+之后就可以在别的机器上从这个registry上下载了：
+docker pull [your-registry-host]:5000/ubuntu													
+ ]]>
+		</literallayout>
+	</para>
+</section>
+		
+
+
+

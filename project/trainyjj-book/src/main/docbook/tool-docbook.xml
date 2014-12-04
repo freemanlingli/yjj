@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>DOCBOOK
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>&name; </firstname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para>&lingli;
+			</para>
+			<para>&note;
+			</para>
+		</abstract>
+	</info>
+	
+
+	<chapter>
+		<title>参考资料</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	   
+http://www.docbook.org/
+http://www.docbook.org/docs/	   
+
+卖咨询服务的人
+http://chimera.labs.oreilly.com/books/1234000000058/ch02.html
+卖工具
+http://holloway.co.nz/doctored/
+
+http://www.sagehill.net/docbookxsl/index.html	
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+	
+	<chapter>
+		<title>为什么要用docbook</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+
+A.1. 我該用 DocBook 取代其他格式文件嗎？
+ 
+既然 DocBook 可以一次輸入，然後轉成 HTML,PS,RTF 多種格式輸出，那是否意味著以後我只要學 DocBook 一種格式就好，反正其他的格式可以用轉換的。
+我個人的答案是否定的。第一：DocBook 本身不是被設計來取代任何其他可供閱覽的格式文件用的，他存在目的不是要改變你的顯示方法和行為，他存在
+的目的是整理組織你的各種文件，也就是他把一堆雜亂的資料，彙整到你想表達的模式中去。所以 DocBook 不能取代 HTML,PS,RTF 
+，因為那是不同功能的兩種東西，你應該同時學習一種你喜歡的閱覽格式文件再加學一個 DocBook ，用 DocBook 幫你組織和交換你的資料來源。
+
+第二：DocBook 並未包含所有的文件主題，就像本手冊中一再強調的，DocBook 的目的在製作出論理性的，技術性的文件。對於一些文藝性的，
+甚至多媒體格式，DocBook 並不適合。所以在寫理論文章時，
+你可以用 DocBook 加一個其他閱覽格式當良好的組合方案，但如果你要表達詩詞歌賦的意境，多媒體的藝術感動，
+你必需為你使用的閱覽格式文件，尋求其他的配套組合。			
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+
+	<chapter>
+		<title>特殊字符的处理</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	   
+	   
+	   
+			    特殊字符 	转义字符组
+			& 	&mp;
+			< 	&lt;
+			> 	&gt;
+			” 	&quot;
+			特殊字符存在主要是为了规避和XML文件中标签等定义的冲突，但是，如果想引用一段诸如html
+			文件的内容，如果要一个个去用转义字符组去替换特殊字符，则太麻烦了，因此有一种消除特殊字符功能的标签可以做到。如下面的例子： 
+			
+			SGML 系列的格式文件有一個共通的特性就是忽略排版字元，不管連續的空白字元，跳位字元，斷行字元，一律以一個空白字元代替。
+			所以一般特定字元的位置設定在 DocBook 中是無效的。
+如果我們要空白跳位斷行這些字元發揮其原有的功能，在 HTML 裡我們一律以 pre 這個標籤來代表。但 DocBook 卻有 literallayout, 
+programlisting, screen, synopsis 這些標籤來表示。這些標籤的資料性質和顯示效果大同小異，之所以取不同名字，literallayout 
+表一般含格式文字，programlisting 表程式命令語法，screen 表示電腦終端顯示，synopsis 摘要表示。DocBook 轉換成 HTML 則都以 pre 標籤顯示。
+			
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+
+	<chapter>
+		<title>字体乱码</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	   
+	  literallayout 可以避免复制代码里面出现空格变#号的情况，之前用example标签，空格变# 
+	   
+每个字体都包含一个特定的字行集. 如果对于一个给定的字符没有找到相应的字形, FOP会给出警告信息并用"#"替代该字符. 在这
+步操作之前, FOP会先查询一个已注册的字形替换组(当前是硬编码实现), 以提供在某些情况下可选择的字形的替换操作, 但是并不
+保证结果如你所望. 最好的方式还是选择一种包含该字形的字体, 字形替换是您最后的选择	   
+	   
+每个系统的字体都不一样，PDF作为一种强调可移植性的文档，正常情况下PDF文件应自带内嵌字体。FOP作为生成PDF
+的工具，仅自带了14种字体，
+远远不能满足非英文环境的需求。因此，上面生成的PDF文档在正文中凡是出现中文的地方都因为没有内嵌字体
+的支持而以“＃”号代替。原因明白了，解决的办法也出来了，找到中文字体，嵌到其中就是。FOP以前要嵌个字体，
+要自己制作比较繁琐的XML font metrics文件配置。但现
+在，除了这种方式之外，FOP还支持扫描特定路径的字体，以及查找系统安装字体的方式。
+ 目录的黑体字正常。但章节部分，在应出现空格的地方，出现了“＃”号。还有一个特点，即出现错误的地方，都是有自动生成内容的部
+ 分。看来是在转换文档的过程中，在需要生成新内容的地方，使用了不该使用的字符。此外，“1.1.”不规范，应为“1.1 ”。
+
+D:\workspace-svn-local\ea-document-baidu\ea-document\ea-document\docbook-xsl-1.78.1\common\zh.xml
+通过 判断是这个文件   第 %n 章   悬着其中空格，重新用空格替换一片，搞定，因该是开发者的电脑环境的空格的编码跟zh不一样 
+	 	 
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+
+	<chapter>
+		<title>目录的编号</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+             html的子目录加上父的标号，一定要在POM.XML文件更改才生效，奇怪，修改XLS无效(应该是pom.xml底部有公共的参数配置，证明POM。xml的配置会覆盖XSL文件中定义的)
+							<sectionAutolabel>true</sectionAutolabel>
+							<sectionLabelIncludesComponentLabel>true</sectionLabelIncludesComponentLabel>
+		
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+
+
+	<chapter>
+		<title>位置微调</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+<titleMarginLeft>20</titleMarginLeft> <!-- 内容和标题缩进位置 -->
+<tocIndentWidth>20</tocIndentWidth>
+			
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+		
+	
+	<chapter>
+		<title>修改各种内容显示效果</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	   
+	  网页的内容定制 
+	--------------------
+	   在 html。xls中进行替换
+	  <xsl:template match="authorgroup" mode="titlepage.mode">
+        <div class="{name(.)}">
+            <h5>资料整理：www.trainyjj.com老凌</h5>
+            <p/>
+            <xsl:apply-templates mode="titlepage.mode"/>
+        </div>
+    </xsl:template>	
+		   
+	  pdf的内容定制 
+	--------------------
+	http://baike.baidu.com/view/633888.htm?fr=aladdin
+	titlepage。xsl	
+	<xsl:template match="author" mode="titlepage.mode">
+  <xsl:text>资料整理：www.trainyjj.com  老凌</xsl:text>
+  <fo:block>
+    <xsl:call-template name="anchor"/>	
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+		
+	<chapter>
+		<title>位置微调</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+<titleMarginLeft>20</titleMarginLeft> <!-- 内容和标题缩进位置 -->
+<tocIndentWidth>20</tocIndentWidth>
+			
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+		
+	
+	<chapter>
+		<title>各种格式转换</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+
+					<execution>
+						<id>generate-html</id>
+						<phase>site</phase>
+						<goals>
+							<goal>generate-html</goal>
+						</goals>
+						<configuration>
+							<includes>${book.xml}</includes>
+							<targetDirectory>${apache.webroot}</targetDirectory>
+							<htmlCustomization>${basedir}/src/main/resources/xsl/html.xsl</htmlCustomization>
+							<l10nGentextLanguage>zh</l10nGentextLanguage>
+       			<l10nGentextDefaultLanguage>en</l10nGentextDefaultLanguage>
+      			<chunkedOutput>false</chunkedOutput>
+							<useExtensions>1</useExtensions>
+							<highlightSource>1</highlightSource>
+							<postProcess>
+								<copy todir="${apache.webroot}images">
+									<fileset dir="src/main/resources/images" includes="**/*" />
+								</copy>
+								<copy todir="${apache.webroot}media">
+									<fileset dir="src/main/docbook/media" includes="**/*" />
+								</copy>
+								<copy todir="${apache.webroot}">
+									<fileset dir="src/main/docbook/" includes="index.html" />
+								</copy>								
+							</postProcess>
+							
+						</configuration>
+					</execution>
+					<execution>
+						<id>generate-pdf</id>
+						<phase>site</phase>
+						<goals>
+							<goal>generate-pdf</goal>
+						</goals>
+						<configuration>
+							<includes>${book.xml}</includes>
+							<targetDirectory>${apache.webroot}</targetDirectory>
+							<foCustomization>${basedir}/docbook-xsl-1.78.1/fo/docbook.xsl</foCustomization>
+							<ansi>true</ansi>
+							<paperType>A4</paperType>
+							<alignment>left</alignment>
+							<axfExtensions>0</axfExtensions>
+							<atiXsl11Bookmarks>1</atiXsl11Bookmarks>
+							<titleFontFamily>SimHei</titleFontFamily> <!-- \/ fonts -->
+							<titleFontset>SimHei</titleFontset>
+							<bodyFontFamily>SimSun</bodyFontFamily>
+							<bodyFontset>SimSun</bodyFontset>
+							<sansFontFamily>SimSun</sansFontFamily>  <!-- /\ fonts -->
+							<bodyFontMaster>10</bodyFontMaster> <!-- 所有文字字体字体的大小 -->
+							<bodyMarginBottom>0.5in</bodyMarginBottom>
+							<bodyMarginTop>0.5in</bodyMarginTop>
+							<fop1Extensions>1</fop1Extensions> <!-- ***use FOP0.90 -->
+							<keepRelativeImageUris>1</keepRelativeImageUris> <!-- *** images embed -->
+							<l10nGentextDefaultLanguage>en</l10nGentextDefaultLanguage>
+							<l10nGentextLanguage>zh</l10nGentextLanguage>
+							<passivetexExtensions>0</passivetexExtensions>
+							<pageWidth>700</pageWidth>
+							<titleMarginLeft>20</titleMarginLeft> <!--  标题右移距离  -->
+							<tocIndentWidth>18</tocIndentWidth>  <!--  标题现实的缩进 -->
+							<bodyStartIndent>30</bodyStartIndent><!--是文字块整体右移跟titleMarginLeft类似 -->
+							<footerRule>tom</footerRule><!--是文字块整体右移跟titleMarginLeft类似 -->
+							  
+							<footersOnBlankPages>true</footersOnBlankPages> 
+							<fonts>
+								<font>
+									<name>SimSun</name>
+									<style>normal</style>
+									<weight>normal</weight>
+									<embedFile>${basedir}/src/main/resources/fonts/SimSun/SimSun-Regular.ttf</embedFile>
+									<metricsFile>${basedir}/src/main/resources/fonts/SimSun/SimSun-Regular-metrics.xml</metricsFile>
+								</font>
+								<font>
+									<name>SimFang</name>
+									<style>normal</style>
+									<weight>normal</weight>
+									<embedFile>${basedir}/src/main/resources/fonts/simfang.ttf</embedFile>
+									<metricsFile>${basedir}/src/main/resources/fonts/simfang.xml</metricsFile>
+								</font>
+								<font>
+									<name>SimHei</name>
+									<style>normal</style>
+									<weight>normal</weight>
+									<embedFile>${basedir}/src/main/resources/fonts/simhei.ttf</embedFile>
+									<metricsFile>${basedir}/src/main/resources/fonts/simhei.xml</metricsFile>
+								</font>
+								<font>
+									<name>SimKai</name>
+									<style>normal</style>
+									<weight>normal</weight>
+									<embedFile>${basedir}/src/main/resources/fonts/simkai.ttf</embedFile>
+									<metricsFile>${basedir}/src/main/resources/fonts/simkai.xml</metricsFile>
+								</font>
+							</fonts>
+							
+						</configuration>
+					</execution>
+				
+	
+	   
+						<execution>
+						<id>generate-rtf</id>
+						<phase>site</phase>
+						<goals>
+							<goal>generate-rtf</goal>
+						</goals>
+						<configuration>
+							<includes>handbook.xml</includes>
+							<targetDirectory>${basedir}/target/docs/rtf</targetDirectory>
+							<htmlCustomization>${basedir}/src/main/resources/xsl/aaa.xsl</htmlCustomization>	
+						</configuration>
+					</execution>				    
+	
+					<execution>
+						<id>generate-xhtml5</id>
+						<phase>package</phase>
+						<goals>
+							<goal>generate-xhtml5</goal>
+						</goals>
+						<configuration>
+							<includes>handbook.xml</includes>
+							<targetDirectory>${basedir}/target/docs/xhtml5</targetDirectory>
+							<htmlCustomization>docbook-xsl-1.78.1/xhtml5/xsl/docbook.xsl</htmlCustomization>	
+						</configuration>
+					</execution> 
+
+           <execution>
+            <id>generate-webhelp</id> 
+            <phase>package</phase> 
+            <goals> 
+						<goal>generate-webhelp</goal> 
+						</goals> 
+						<configuration> 
+						<includes>it-jing.xml</includes> 
+						<targetDirectory>${basedir}/target/docs/webhelp-html</targetDirectory> 
+						<targetDirectory>${apache.webroot}${project.name}/webhelp-html/</targetDirectory> 
+						<htmlCustomization>${basedir}/src/main/resources/webhelp/aaa.xsl</htmlCustomization> 
+						<l10nGentextDefaultLanguage>zh-CN</l10nGentextDefaultLanguage>
+						 <l10nGentextLanguage>zh-CN</l10nGentextLanguage> 
+						<postProcess> 
+						<copy todir="${basedir}/target/docs/webhelp-html/media">
+						 <fileset 
+						dir="src/main/docbook/media" includes="**/*" /> 
+						</copy> 
+						</postProcess>
+						 </configuration> 
+						</execution> 
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+		
+	
+	
+	<appendix>
+		<title>参考文档</title>
+		<bibliolist>
+			<biblioentry>
+				<title></title>
+				<bibliosource>
+					http://spring21.javaeye.com
+				</bibliosource>
+				<author>
+					<personname></personname>
+				</author>
+			</biblioentry>
+		</bibliolist>
+	</appendix>
+	<!-- <revhistory> <revision><revnumber>1.01</revnumber><date>2010-05-01</date><revremark>整理国学内容的学习捷径</revremark></revision> 
+		<revision><revnumber>1.02</revnumber><date>2012-01-01</date><revremark>整理JAVA程序员学习捷径</revremark></revision> 
+		<revision><revnumber>1.03</revnumber><date>2014-05-08</date><revremark>整理敏捷项目管理内容</revremark></revision> 
+		</revhistory> -->
+
+</book>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>参考资料</title>
+		
+		<para>
+			<literallayout>
+      <![CDATA[
+	restlet.org
+	
+	struts也是闲了restlet，自带的官方例子，有完整的添加删除的实现
+	http://localhost:8080/struts2-rest-showcase/orders/6   显示的不是json数据，而是有界面，这个似乎不符合webservice调用
+	只是实现了URL了rest
+	
+	新出的 springmvc3 或者 restlet、JAX-RS等框架 在 rest 上面要比 strut2 专业。
+	http://blog.sina.com.cn/s/blog_5cf0ecf60100rhdc.html
+	http://www.ibm.com/developerworks/cn/java/j-lo-struts2rest/
+	
+	
+	 使用 rest 时遇到的其他问题
+
+1) tomcat 不支持 原生的 put、delete
+jetty是支持的，tomcat修改一下应该也支持，但是不知为何修改无效:
+<servlet-name>allowPutAndDelete</servlet-name>
+<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+	
+	
+	
+	  ]]>
+			</literallayout>
+		</para>
+		
+		
+	<sect1>
+	    <title>java实现basic认证的例子</title>
+			<literallayout>
+      <![CDATA[	    
+	    <para>
+	      HttpSession session=request.getSession();
+         String user=(String)session.getAttribute("user");
+         String pass;
+         if(user==null){
+             try{
+                response.setCharacterEncoding("GBK");
+                PrintWriter ut=response.getWriter();
+                String authorization=request.getHeader("authorization");
+                if(authorization==null||authorization.equals("")){
+                    response.setStatus(401); 
+                    response.setHeader("WWW-authenticate","Basic realm=\"请输入管理员密码\"");
+                    out.print("对不起你没有权限！！");
+                    return;
+                }
+                String userAndPass=new String(new BASE64Decoder().decodeBuffer(authorization.split(" ")[1]));
+                if(userAndPass.split(":").length<2){
+                    response.setStatus(401); 
+                    response.setHeader("WWW-authenticate","Basic realm=\"请输入管理员密码\"");
+                    out.print("对不起你没有权限！！");
+                    return;
+                }
+ 
+                user=userAndPass.split(":")[0];
+                pass=userAndPass.split(":")[1];
+                if(user.equals("111")&&pass.equals("111")){
+                    session.setAttribute("user",user);
+                    RequestDispatcher dispatcher=request.getRequestDispatcher("index.jsp");
+                    dispatcher.forward(request,response);
+                }else{
+                    response.setStatus(401);
+                    response.setHeader("WWW-authenticate","Basic realm=\"请输入管理员密码\"");
+                    out.print("对不起你没有权限！！");
+                    return;
+                }
+             }catch(Exception ex){
+                ex.printStackTrace();
+             }
+         }else{
+             RequestDispatcher dispatcher=request.getRequestDispatcher("index.jsp");
+             dispatcher.forward(request,response);
+       }
+	  ]]>
+			</literallayout>
+		
+	</sect1>
+	</chapter>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>事件管理流程概要设计</title>
+	<sect1>
+		<title>意义和目地</title>
+		<literallayout>
+		<![CDATA[	  
+		事件管理流程的主要功能是尽快解决出现的事件，保持业务支撑系统的稳定性，其目的包括：
+		  在成本允许的范围内尽快恢复服务
+		- 快速响应服务请求（电话/Web/邮件等）
+		- 用户在线获得帮助
+		- 沟通事件解决的状态
+		- 和客户确认事件的解决
+		 进行事件控制
+		- 按规范记录事件
+		- 就事件的优先级，影响度 进行分类
+		- 分析，诊断，必要时进行升级
+		- 监视并结束事件
+		- 进行定期服务流程回顾
+		  提供IT管理信息
+		- 人力资源利用情况
+		- 故障处理情况
+		- 支持效率
+		 ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>流程关键点说明</title>
+		<literallayout>
+		<![CDATA[	 		
+		事件管理流程始于事件的接收和报告，结束于事件的解决。该流程包含下述主要内容：
+		* 事件接收和记录
+		这个环节是事件管理流程的起点。所有用户或系统报告的IT 事件必须由此步骤开始。此步骤的目
+		的是在事件发生时快速准确地发现，以协助事件的诊断和解决并通知相关人员。在此步骤中将会收集创
+		建事件记录所需的信息。
+		该环节的关键是信息的准确性和完整性。
+		*  分类和在线支持
+		事件可以是一个服务请求、信息请求或故障，对于每个事件，需要确立优先级和分类。若没有现成
+		的解决方案或临时解决措施，该事件将分配给合适的支持人员对此进行调查。
+		该环节的关键是必要的问题库支持和正确的事件分派。
+		* 调查和诊断
+		若支持人员无法解决事件，可运用自身技能、知识库、诊断工具等进行更加深入的分析以找到恢复
+		服务的临时措施，必要时将使用多名支持人员以寻求解决措施。
+		*  解决和恢复
+		支持人员实施事件的解决方案，并将解决完毕的事件转回帮助台，由帮助台通知用户解决的结果，
+		并得到用户的确认。
+	
+		 ]]>
+		</literallayout>		
+	
+	</sect1>
+	
+	
+	<sect1>
+		<title>流程图</title>
+		<figure>
+			<mediaobject>
+				<imageobject role="html">
+					<imagedata fileref="media/event.jpg" align="left"
+						scalefit="0" width="100%" />
+				</imageobject>
+				<imageobject role="fo">
+					<imagedata fileref="media/event.jpg" align="center"
+						scalefit="1" width="100%" />
+				</imageobject>
+			</mediaobject>
+		</figure>		
+	
+	</sect1>
+
+</chapter>

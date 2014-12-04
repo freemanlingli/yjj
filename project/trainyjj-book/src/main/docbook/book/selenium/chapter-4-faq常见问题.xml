@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>faq常见问题</title>
+	
+
+
+
+		<sect1>
+			<title>GRID的概念</title>
+			<para>
+				WebDriver不支持并行，但是Selenium Grid解决了这个问题  
+			</para>
+		</sect1>
+
+		
+
+	</chapter>

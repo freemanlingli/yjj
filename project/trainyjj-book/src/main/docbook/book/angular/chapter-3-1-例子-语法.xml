@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>重要语法的例子</title>
+	<literallayout>
+
+<![CDATA[
+
+angular跟传统的JS框架有所不同，不是封装一些API或者组件让开发人员可以服用JS的代码
+它是 吸收了 java后台开发的 依赖注入  和 mvc隔离思想的一套JS编写方法，他的本质还是JS.
+JS的诞生就是为了提高网页动态交互性（比方filter过滤器不用后台处理，给dom元素增加事件，模板等）。
+ angular提供了一套方法，可以让我们在网页交互
+性的编写上，逻辑清晰，简单。它不是一种简单的语法、组件说明或者API文档可以说明的
+我们学习此技术，要像当年SPRING的概念刚出来时，我们是怎么学习spring的，spring
+提出的 切面和组件化，是我们开发过程中比较常用的场景，它的技术将这些极致化了， angular也是
+一样的道理，我们要从她最强的地方去了解，所以官方的手机展示例子，就是展示最强一些特性。
+-MVC数据分离
+-单页面程序，好测试
+-页面路由
+
+从下面的目录可以看出作者介绍的思路。
+
+
+首先介绍整体的原理
+	    Introduction
+		Conceptual Overview
+然后非常重要的概念
+		Data Binding 数据绑定
+		Controllers 控制器
+		Services  服务
+		Scopes  范围
+		Dependency Injection 依赖注入
+这里开始，我们可以做具体的网页动态技巧了，更加优雅简洁的封装效果
+		Templates   模板就是view页面，将控制器和数据渲染出最终html内容
+		Expressions 表达式，就是语法规则
+		Filters   过滤器
+		Forms     表单
+		Directives  指令
+		Animations  动画
+		Modules   模块
+下面的就是更高级的开发技巧了	，	
+		HTML Compiler
+		Providers
+		Bootstrap
+		Unit Testing
+		E2E Testing
+		Using $location
+		Working With CSS
+对于开发产品的一内容介绍
+		i18n and l10n
+		Internet Explorer Compatibility
+		Running in Production
+		Migrating from Previous Versions
+	  ]]>
+	</literallayout>
+
+
+	<sect1>
+		<title>表达式语法</title>
+		<literallayout>
+<![CDATA[
+1.没有null 或者define  没有控制流
+2.$event事件暴露
+<div ng-controller="EventController">
+  <button ng-click="clickMe($event)">Event</button>
+  <p><code>$event</code>: <pre> {{$event | json}}</pre></p>
+  <p><code>clickEvent</code>: <pre>{{clickEvent | json}}</pre></p>
+</div>
+
+3.One-time binding 可以节省资源，不用监控登记
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+
+
+	<sect1>
+		<title>表达式语法</title>
+		<literallayout>
+<![CDATA[
+1.没有null 或者define  没有控制流
+2.$event事件暴露
+<div ng-controller="EventController">
+  <button ng-click="clickMe($event)">Event</button>
+  <p><code>$event</code>: <pre> {{$event | json}}</pre></p>
+  <p><code>clickEvent</code>: <pre>{{clickEvent | json}}</pre></p>
+</div>
+
+3.One-time binding 可以节省资源，不用监控登记
+
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>filter过滤器</title>
+		<literallayout>
+<![CDATA[
+为什么过滤器单独拿出来讲，应为太有用了
+{{ expression | filter }}
+{{ expression | filter1 | filter2 | ... }}  可以串联
+{{ expression | filter:argument1:argument2:... }} 可以带参数
+
+有状态的过滤器
+
+例子：
+{{ 12 | currency }} 显示 $12.00.
+{{ 1234 | number:2 }} 显示 1,234.00   ，参数2指明了2个小数点
+
+在下面的地方使用 filters 
+1 controllers
+2 services
+3 directives
+
+
+ 
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>动画</title>
+		<literallayout>
+<![CDATA[
+ AngularJS 1.2 提供了动画hooks for common directives such as ngRepeat, ngSwitch, and ngView,
+ 可以自自己定义动画directives via the $animate service
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+
+
+
+
+
+
+
+
+
+
+</chapter>

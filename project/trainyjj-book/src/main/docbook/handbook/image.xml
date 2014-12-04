@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" >
+  <title>图片显示</title>
+	<title>PDF适应和宽度</title>
+	<figure>
+		<title>figure包含1个图片</title>
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="media/team/tuteng.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="media/team/tuteng.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+	</figure>
+
+
+
+	<figure >
+		<title>figure内包含2张mediaobject图片</title>
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="media/team/tuteng.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="media/team/tuteng.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="media/team/tuteng.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="media/team/tuteng.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+	</figure>
+	
+	
+	
+	<para>不带标题的图片显示</para>
+
+			<informalfigure>
+				<mediaobject>
+					<imageobject role="html">
+						<imagedata fileref="media/team/tuteng.jpg"
+							scalefit="0" width="100%" />
+					</imageobject>
+					<imageobject role="fo">
+						<imagedata fileref="media/team/tuteng.jpg"
+							scalefit="1" width="100%" />
+					</imageobject>
+				</mediaobject>
+			</informalfigure>
+
+
+	
+		<para>同意行内显示的内容同意行内显示的内容同意行内显示的内容同意行内显示的内容同意行内显示的内容同意行内显示的内容同意行内显示的内容同意行内显示的内容
+		    <inlinemediaobject>
+		        <imageobject><imagedata fileref="media/team/tuteng.jpg"/></imageobject>
+		        <textobject><phrase>图腾</phrase></textobject>
+		    </inlinemediaobject>同意行内显示的内容同意行内显示的内容同意行内显示的内容同意行内显示的内容同意行内显示的内容同意行内显示的内容
+		 
+		</para>		
+			
+</section>
+
+
+
+
+
+
+

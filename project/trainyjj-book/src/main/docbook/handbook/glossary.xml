@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<glossary xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="en">
+<title>缩略词</title>
+<glossentry id="ASE"><glossterm>ASE</glossterm>
+    <acronym>ASE</acronym>
+    <glossdef>
+      <para>Application Specific Extension</para>
+      <para>（根据应用的）专用扩展</para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="xxx"><glossterm>xxx</glossterm>
+    <acronym>xxx</acronym>
+    <glossdef>
+      <para>xxx</para>
+      <para>xxx</para>
+    </glossdef>
+</glossentry>
+
+</glossary>
+

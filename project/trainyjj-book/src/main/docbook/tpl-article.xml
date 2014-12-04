@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "../book/book.ent">%aaa;  
+]>
+<article version="5.0" xmlns="http://docbook.org/ns/docbook"
+	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML"
+	xmlns:htm="http://www.w3.org/1999/xhtml" xmlns:db="http://docbook.org/ns/docbook">
+
+	<artheader>
+		
+		
+		<title>Article www.trainyjj.com</title>
+		<author>
+			<personname>&name;
+			</personname>
+			<!-- 
+			<affiliation>
+				<orgname>&lingli;
+				</orgname>
+				<address>
+					<email>&email;
+					</email>
+				</address>
+			</affiliation>
+			 -->
+		</author>
+		<pubdate>2013.1.21</pubdate>
+	</artheader>
+	
+
+	<section version="5.0" xml:id="introduction">
+		<title>简介</title>
+
+		<para>11:12开始的电话面试，整个过程大概24分钟，略微紧张，更确切的说应该是激动（ps:毕竟是自己向往已久的公司,真的非常渴望加入）。
+			之前也有过其他公司电话面试的经历，但感觉淘宝的面试更加具有针对性，在深度和广度上都有测重。整体感觉自己这次面试发挥不佳，主要原因是自己在技术的深度上挖掘的不够。
+		</para>
+
+		<para>
+			还有几个问题，因为项目做的太久，有些细节记的不太清除了，这也体现了
+			<literal>review</literal>
+			的重要性。
+		</para>
+	</section>
+
+
+</article>

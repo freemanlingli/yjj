@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>AngularJS
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>&name; </firstname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para>&lingli;
+			</para>
+			<para>AngularJS诞生于Google是一款优秀的前端JS框架，已经被用于Google的多款产品当中。
+			AngularJS有着诸多特性，最为核心的是：MVC、模块化、自动化双向数据绑定、语义化标签、依赖注入.
+			AngularJS通过为开发者呈现一个更高层次的抽象来简化应用的开发。如同其他的抽象技术一样，这也会损
+			失一部分灵活性。换句话说，并不是所有的应用都适合用AngularJS来做。AngularJS主要考虑的是构建CRUD应用。
+			幸运的是，至少90%的WEB应用都是CRUD应用。但是要了解什么适合用AngularJS构建，就得了解什么不适合用AngularJS构建.
+			如游戏，图形界面编辑器，这种DOM操作很频繁也很复杂的应用，和CRUD应用就有很大的不同，它们不适合用AngularJS来构建。
+			像这种情况用一些更轻量、简单的技术如jQuery可能会更好.
+			</para>
+		</abstract>
+	</info>
+	
+	<xi:include href="book/angular/chapter-1-why.xml" />
+	<xi:include href="book/angular/chapter-2-安装运行.xml" />
+	<xi:include href="book/angular/chapter-3-1-module.xml" />
+	<xi:include href="book/angular/chapter-3-1-control.xml" />
+	<xi:include href="book/angular/chapter-3-1-service.xml" />
+	<xi:include href="book/angular/chapter-3-1-DI-依赖.xml" />
+	<xi:include href="book/angular/chapter-3-1-directives-指令.xml" />
+
+
+	<xi:include href="book/angular/chapter-3-1-例子-语法.xml" />
+	
+	<xi:include href="book/angular/chapter-3-2-例子-手机展示.xml" />
+	<xi:include href="book/angular/chapter-4-开发大型项目.xml" />
+	<xi:include href="book/angular/chapter-8-faq常问问题.xml" />
+	<!--  <xi:include href="book/angular/chapter-8-api.xml" />-->
+	<xi:include href="book/angular/chapter-9-参考资料.xml" />
+	
+
+
+</book>

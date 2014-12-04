@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>FAQ常问问题</title>
+
+	<sect1>
+		<title>如何封装spring api</title>
+			<literallayout>
+      <![CDATA[
+      
+  activi 是可以不依赖于spring 运行的，所以加一个 工程类，构建一个 引擎对象出来等于做了一次spring封装
+ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+RuntimeService runtimeService = processEngine.getRuntimeService();
+  
+      
+1.web。xml 配置一个自动启动的
+<listener-class>org.activiti.rest.common.servlet.ActivitiServletContextListener</listener-class>
+
+public class ActivitiServletContextListener implements ServletContextListener {
+    public void contextInitialized(ServletContextEvent event) {
+      ProcessEngine processEngine = null;
+      processEngine = ProcessEngines.getDefaultProcessEngine();
+    }
+}
+
+
+	  ]]>
+			</literallayout>
+		    
+	</sect1>
+	<sect1>
+		<title>如何封装rest api</title>
+		<para>
+			
+
+		</para>
+	</sect1>
+	<sect1>
+		<title>用户密码如何跟ladp和活动目录关联的</title>
+		<para>
+		任务分配是不会检查用户是否是系统可以认识的，所以 Activiti engine
+		才能支持连接as ldap, active directory, etc. 
+
+		</para>
+	</sect1>	
+
+</chapter>

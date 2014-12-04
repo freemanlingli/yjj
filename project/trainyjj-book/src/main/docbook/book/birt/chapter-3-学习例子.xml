@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>学习例子</title>
+	
+		<sect1>
+		<title>如何测试</title>
+	
+	
+		<literallayout>
+   <![CDATA[	  
+ 数据库 和资源文件的准备
+--------------------
+ 自带的注解测试框架会导致和EA中的数据源冲突，在持续集成时会出现问题
+ 
+ 如果想快速单元测试，下面2个可以作为测试用的模板，不使用真实数据库
+ 临时使用activiti.cfg.xml 文件jdbc:h2:mem:activiti  我们在断点调试时，
+ 也是可以看到数据库中的数据的
+ activiti.cfg.xml                           
+ <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+    <property name="jdbcUrl" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
+    <property name="jdbcDriver" value="org.h2.Driver" />
+    <property name="jdbcUsername" value="sa" />
+    <property name="jdbcPassword" value="" />
+  </bean>
+</beans>   
+
+
+public class MyUnitTest {
+	
+	@Rule
+	public ActivitiRule activitiRule = new ActivitiRule();
+	
+	@Test
+	@Deployment(resources = {"org/activiti/test/my-process.bpmn20.xml"})
+	public void test() {
+		ProcessInstance processInstance = activitiRule.getRuntimeService().startProcessInstanceByKey("my-process");
+		assertNotNull(processInstance);
+		Task task = activitiRule.getTaskService().createTaskQuery().singleResult();
+		assertEquals("Activiti is awesome!", task.getName());
+	}
+
+}
+                       
+                            
+                            
+       <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+  	     <property name="deploymentResources" value="classpath*:/activiti/demo/*.bpmn" />
+      	 <property name="databaseType" value="h2" />
+  	     <property name="databaseSchemaUpdate" value="true" /> //会自动创建数据库，如果是空数据库，不建好表的话，是无法生成 processEngine的，测试案例会baocuo
+ 日志的准备
+-------------------- 	
+ As of version 5.13, activiti supports Mapped Diagnostic Contexts feature of sl4j. 
+log4j.appender.consoleAppender.layout.ConversionPattern =ProcessDefinitionId=%X{mdcProcessDefinitionID}executionId=%X{mdcExecutionId} mdcProcessInstanceID=%X{mdcProcessInstanceID} mdcBusinessKey=%X{mdcBusinessKey} %m%n"  
+  	   
+ 
+ 
+ 场景的准备
+------------------------
+  	   ea-core  测试源生态API调用(例子的作用)
+  	   
+  	   
+  	   ea-template  测试管理员
+  	   
+  	   
+
+	  ]]>
+			</literallayout>	
+	
+	</sect1>
+
+
+
+</chapter>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>老凌
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>&name;
+				</firstname>
+				<affiliation>&lingli;
+				</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para>
+				十多年的码农，对国学有浓厚兴趣，喜欢探索不确定领域，比方中医。
+				www.trainyjj.com 的站长。该站点的目地有2个：
+				1.在于对IT项目管理经验的沉淀和分享
+				2.关于IT工作人士的健康保养问题，做了较深刻的探索分享。
+				本文不聊技术，只聊健康。
+			</para>
+			<para>
+				关于项目管理：老凌十多年的工作经验，接触过各种西方管理方法论，什么 PMO，MSTOP，六西格吗，CMMI，
+				敏捷，SWTO。其实在中国文化里，就用4个字就作了最高层次的归纳：道，法，术，器。
+				如果你不明白这4个字的价值，你是不会成功管理好团队的，用再多的西方管理方式也没有
+			</para>
+			<para>
+				关于健康养生：健康是“指身体和心理上的正常"(国际卫生组织对健康的定义)。
+				IT的工作虽然薪水不错，但其工作压力是超越普通行业的，很多职场人士未老先衰。
+				秃头，白发，失眠比比皆是。 老凌对养生的观点是：
+				国学就可以调节心理上的问题， 老凌认为中医就是们心理学。 老凌拜访过的一些老中医，
+				好的中医老当益壮，精神矍铄， 这样的人去看病，本身就是给病人有信心可以帮自己治愈。
+				有信心，又有牛人相助，人的自身调节能力变强，就除病了。所以如果你去看老中医或学国学，
+				对方如果缺乏精气神，就不要再浪费时间了。
+			</para>
+
+		</abstract>
+
+	</info>
+	<chapter>
+		<title>老凌简介</title>
+		<literallayout>
+   <![CDATA[
+第一家公司（产品类型）
+   FENET融通，最早一家做商业智能分析的公司。2002年就用上敏捷的开发方式了，所以产品做到
+ 全国第一。老凌非常感谢在此公司的成长。
+
+第二家公司（大型电信行业项目型公司，任职集团JAVA技术内训师）
+   集团非常重视学习，得益于公司的文化，莫名被推选上了内训师，走上了专业技术培训领域。
+   
+第三家公司（ 世界500强企业,任职技术经理）
+  作为世界电信行业的龙头老大，其国际化的管理视野，也让老凌收益非浅
+
+老凌认为，在IT公司工作，无论你是个说话不管用的小辈，还是个带TEAM的管理人员，
+一定要做好四个字 “道 （方向）法(方法)术（经验）器（工具）”。所以自创一系列以国学为基础的IT课
+程在网络分享。老凌 特别讲究无为而治，在IT项目中，要到无为的境界就体现在项目开发中自动化平台的
+支撑，所以老凌在对降低项目人力和物力成本的流行技术，都非常有兴趣。
+比方自动化测试，持续集成，自动部署，轻量级虚拟技术等。
+
+  ]]>
+		</literallayout>
+	</chapter>
+
+	<chapter>
+		<title>图型化你的内心美好的生活场所</title>
+		<para>
+        人在意淫美好生活环境时，对身心是有意的。将这些美好的图片汇集起来
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu1.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu1.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu1.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu1.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu2.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu2.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu3.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu3.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu4.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu4.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu5.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu5.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>								
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu6.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/zhu6.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>					
+				
+		</para>
+	</chapter>
+	<chapter>
+		<title>图型化你认为美好的饮食</title>
+		<para>
+   吃本身就是种幸福，很多美食虽然你无法得到，但是经常看看，会让你有非常强烈
+  要活下去的欲望。
+  
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi1.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi1.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi1.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi1.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi2.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi2.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi3.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi3.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi4.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi4.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+		
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi5.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi5.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>								
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi6.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/chi6.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>	  
+		</para>
+	</chapter>
+	<chapter>
+		<title>图型化你喜欢和推崇的人</title>
+		<para>
+ 经常看看自己欣赏的人，也会让自己感受到人是美好的。不会让你那么的厌世
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/person-nanhuaijin0.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/person-liangdong0.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject> 
+ 		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/person-liangdong7.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/person-liangdong7.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+ 		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/person-hahui1.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/person-hahui1.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>	
+ 		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/person-hahui2.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/person-hahui2.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>					
+		</para>
+	</chapter>
+	<chapter>
+		<title>老凌家的葡萄庄园</title>
+		<para>
+
+		</para>
+	</chapter>
+	<chapter>
+		<title>关于一些玄乎的人和事</title>
+		<para>
+老中医对水晶的解说
+老中医对八卦的解说 
+萧宏慈
+		</para>
+	</chapter>
+				
+</book>

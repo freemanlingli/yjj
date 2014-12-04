@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+	<chapter version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<title>参考资料</title>
+	<section>
+		<title>cucumber</title>
+		<para>
+			<literallayout>
+   <![CDATA[
+http://www.iteye.com/topic/417899 好文
+https://cucumber.pro/blog 官方博客不少资料
+http://book.51cto.com/art/201311/418739.htm
+  ]]>
+			</literallayout>
+		</para>
+	</section>
+	<section>
+		<title>其它</title>
+		<para>
+			<literallayout>
+   <![CDATA[
+http://www.iteye.com/topic/417899 好文
+https://cucumber.pro/blog 官方博客不少资料
+http://book.51cto.com/art/201311/418739.htm
+  ]]>
+			</literallayout>
+		</para>
+	</section>
+</chapter>					    		

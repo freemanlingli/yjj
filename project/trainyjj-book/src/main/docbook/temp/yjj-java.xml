@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title> JAVA易筋经犀利 之“JAVA-WEB团队开发训练”
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>凌黎 </firstname>
+				<othername>tom.ling</othername>
+				<surname>li</surname>
+				<affiliation>ERICSSON MS 应用程序开发部技术经理</affiliation>
+			</author>
+		</authorgroup>
+		<releaseinfo>1.01.00</releaseinfo>
+		<abstract>
+			<para>
+			为何取名易筋经? 是为了给JAVA初学者提供一条快速提升的通道。
+				笔者在IT行业工作10余年，服务过各种公司：小型团队，大型软件国企，外企。
+				经历过全国一流产品项目研发和各种大型业务系统开发。作为一名JAVA领域的过来人，笔者书写本书的目的不是在于对JAVA语言本身的讲解。
+				而是在交流JAVA程序员在职场中的各阶段的发展经验，如果你即将成为一名JAVA程序员，或者你对自己是程序员的前途摇摆不定的时候
+				您可以从中体会到一些有意义的参考经验；作者JAVA开发人员的角色即将终止与在一家世界500强企业的技术经理职位。随着工作职位的提升，
+				越来越感程序员所在的IT跟传统行业没有多少区别，只是IT行业更强调团队合作，更强调学习速度。本书可以作为JAVA入门的必读内容。
+				本书最后一章才是真正介绍JAVA技术相关的学习，前面章节在传递一种正确的态度认识，所以男怕入错行，如果你方向都没正确的认识，何必
+				浪费时间在技术学习上。
+          			</para>
+		</abstract>
+		<revhistory>
+			<revision>
+				<revnumber>1.0</revnumber>
+				<date>2014-05-01</date>
+				<revremark>马来西亚-仙本娜，写完了序和大纲</revremark>
+			</revision>
+
+		</revhistory>
+
+	</info>
+
+
+	
+	<chapter>
+		<title>为什么是JAVA</title>
+		<xi:include href="&why_section;" /> 
+        </chapter>
+
+	<chapter>
+		<title>怎么学习JAVA</title>
+
+		<sect1 version="5.0" xmlns="http://docbook.org/ns/docbook">
+		<title>JAVA的全局技术地图</title>
+		<sect2>
+			<title>从工作乐趣角度来看</title>
+		</sect2>	
+		
+		</sect1>
+
+	</chapter>
+
+
+
+	<appendix>
+		<title>参考文档</title>
+		<bibliolist>
+			<biblioentry>
+				<title></title>
+				<bibliosource>
+					http://spring21.javaeye.com
+				</bibliosource>
+				<author>
+					<personname></personname>
+				</author>
+			</biblioentry>
+		</bibliolist>
+	</appendix>
+</book>
+	

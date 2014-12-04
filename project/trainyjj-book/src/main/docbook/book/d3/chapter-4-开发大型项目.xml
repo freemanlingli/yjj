@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>如何开发大型项目</title>
+	<sect1>
+		<title>目录组织</title>
+
+		<literallayout>
+<![CDATA[开发大型javascript应用和做几个demo页面玩一玩最大的区别在于，要对一开始
+的文件组织和模块划分要有更清晰的认识。这项工作前期花了我较多的时间去处理。故而第一篇文章就写
+模块划分和目录组织，这方面本人经验不多，不足之处敬请指出。
+
+
+
+
+
+
+framwork当然用的是angularjs做MVVM框架。同时用了一些UI小插件，如angular-ui-bootstrap, 
+angular-ui和我自己写的表格插件angrid（https://github.com/zhangdiwaa/anGrid）。
+因为表格插件对于本项目来说比较重要，这里采用自己写的表格插件主要是为了便于定制。
+
+前端数据可视化工具包D3，D3的强大无需说明
+
+
+一开始作者参考了
+•https://github.com/angular/angular-seed
+•https://github.com/zhangdiwaa/angular-coffee-AMD-seed
+•https://github.com/elsom25/angular-requirejs-html5boilerplate-seed
+•https://github.com/mz121star/NJBlog （一个使用 Mongodb+Nodejs+express+angularjs写的博客程序）
+•https://github.com/zhangdiwaa/ng-grid（一个基于angularjs写的grid插件）
+
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>模块注入</title>
+		<literallayout>
+<![CDATA[
+
+	  ]]>
+		</literallayout>
+	</sect1>
+</chapter>

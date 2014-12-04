@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>faq常见问题</title>
+	
+
+
+
+		<sect1>
+			<title>Action的路径问题</title>
+		
+  			<literallayout>
+   <![CDATA[
+   如果	<package name="app" extends="struts-default"> 不指定namespace，是默认 namespace="/"
+   执行后会在当前调用路径计算结果页面，所以 结果页面是根路径算 。
+   进入之请求后，默认路径是也还是根路径。
+		      <action name="*_*_*"   class="{2}Action"  method="{3}" >
+             <!--  <interceptor-ref name="authenticate-interceptor"/>  -->
+            <result name="success">app/{1}/{2}/{3}.ftl</result>
+        </action>
+trainyjj_user_list.do
+  
+结果页面的有下面的影响：   
+<#include "../../../common/freemarker/include_header.ftl">
+<script type="text/javascript" src="<@context_module/>user.js"></script>
+1.include指令的路径
+我们在系统中，默认所有的action 都是跟路径调用的，这样才方便include语法统一调用
+这带来一个问题。
+一些JS文件分布在不同路径里
+2.JS的路径
+  通过封装函数取得当前路径，这样也进行了统一
+  <#macro context_module><#if request?exists>${request.getRequestURI()[0..request.getRequestURI()?last_index_of("/")]}<#else></#if></#macro>
+
+  ]]>
+			</literallayout>      
+   
+		</sect1>
+
+		
+
+		<sect1>
+			<title>如何作到零配置</title>
+  			<literallayout>
+   <![CDATA[
+   首先要找到需要定制化配置的地方
+   1.srping的bean
+   
+   	<context:annotation-config />
+    <context:component-scan base-package="com.app.trainyjj"/><context:annotation-config/>
+   
+   2.struts的action
+    下面的转换，要记得方法全部返回success，否则，会提示找不到 actionbean的提示
+   	 <!-- 
+		<action name="user" class="com.app.trainyjj.user.UserAction"
+			method="execute">
+			<result name="list">app/trainyjj/user/list.ftl</result>
+			<result name="ajax_user">app/trainyjj/user/ajax_user.ftl</result>
+		</action>
+		 -->
+		<action name="*_*_*"   class="{2}Action"  method="{3}" >
+            <result name="success">app/{1}/{2}/{3}.ftl</result>
+        </action>	
+   3.数据model
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.app.demo</value>
+			</list>
+		</property>   
+   
+   
+  ]]>
+			</literallayout> 		
+			</sect1>
+
+
+
+		<sect1>
+			<title>如何配置结构返回是json格式</title>
+  			<literallayout>
+   <![CDATA[
+1.首先要计入 struts2-json-plugin×.jar
+2.struts.xml	
+	<package name="json_result"  namespace="/json"  extends="json-default">  
+	        <action name="*_*" class="{1}Action" method="{2}">
+				<result type="json">  
+					<param name="root">rhs</param>  
+	            </result>
+			</action>
+	</package>	
+3.http://localhost:5555/demo/json/user_list.do  ,ie会提示下载一个文件   
+  ]]>
+			</literallayout> 		
+			</sect1>
+
+		<sect1>
+			<title>可以配置多个数据源吗</title>
+			<para>
+			
+			</para>
+		</sect1>
+
+
+		<sect1>
+			<title>如何管理事务</title>
+  			<literallayout>
+   <![CDATA[
+		web.xml 中定义的过滤器
+	<filter>
+		<filter-name>openSessionInView</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+   		
+    	<init-param>  
+        	<param-name>sessionFactoryBeanName</param-name>  
+        	<param-value>sessionFactory</param-value>
+        	  
+    	</init-param>  	    	
+    	
+    	 <init-param> 
+ 			 <param-name>singleSession</param-name> 
+ 			 <param-value>true</param-value>		 
+ 		</init-param> 
+	</filter>
+   
+  ]]>
+			</literallayout> 		
+			</sect1>
+
+
+
+	</chapter>

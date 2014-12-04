@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装运行</title>
+		<literallayout>
+   <![CDATA[	  
+   安装插件  
+  http://getbootstrap.com/getting-started/
+  
+ http://www.bootcss.com/p/font-awesome/
+
+
+
+
+
+
+网格                                                                             列宽
+.col-xs-                            Extra small devices Phones (<768px) 
+.col-sm-     750px       ~62px      Small devices Tablets (≥768px) 
+.col-md-     970px       ~81px      Medium devices Desktops (≥992px) 
+.col-lg-     1170px      ~97px      Large devices Desktops (≥1200px) 
+
+	  ]]>
+			</literallayout>
+</chapter>

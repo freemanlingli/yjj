@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>重要概念-module</title>
+	<sect1>
+		<title>module</title>
+		<literallayout>
+<![CDATA[
+ a module 是个容器，组织各部分 parts – controllers, services, filters, directives, 
+ 
+ 好处
+ •容易理解.
+ •重用.
+ •可以用任何顺序户加载.
+ •单元测试只要加载相关模块，测试比较快
+ •端对端测试，用模块，重载配置
+
+ • Module 的API
+ •使用模块 <div ng-app="myApp">..
+ •定义中的空数组 angular.module('myApp', []).知名module所依赖的模块.
+ 
+
+实例： 我们学习angular时有时会觉得语法很奇怪，因为有多种写法
+
+angular.module('myModule', []).
+value('a', 123).
+factory('a', function() { return 123; }).
+directive('directiveName', ...).
+filter('filterName', ...);
+
+等价于
+angular.module('myModule', []).
+config(function($provide, $compileProvider, $filterProvider) {
+  $provide.value('a', 123);
+  $provide.factory('a', function() { return 123; });
+  $compileProvider.directive('directiveName', ...);
+  $filterProvider.register('filterName', ...);
+});
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>module的单元测试</title>
+		<literallayout>
+<![CDATA[
+angular.module('greetMod', []).
+factory('alert', function($window) {
+  return function(text) {
+    $window.alert(text);
+  }
+}).
+value('salutation', 'Hello').
+factory('greet', function(alert, salutation) {
+  return function(name) {
+    alert(salutation + ' ' + name + '!');
+  }
+});
+
+测试中如何替换模块中的配置
+
+describe('myApp', function() {
+// load application module (`greetMod`) then load a special
+// test module which overrides `$window` with a mock version,
+// so that calling `window.alert()` will not block the test
+// runner with a real alert box.
+beforeEach(module('greetMod', function($provide) {
+  $provide.value('$window', {
+    alert: jasmine.createSpy('alert')
+  });
+}));
+
+// inject() will create the injector and inject the `greet` and
+// `$window` into the tests.
+it('should alert on $window', inject(function(greet, $window) {
+  greet('World');
+  expect($window.alert).toHaveBeenCalledWith('Hello World!');
+}));
+
+// this is another way of overriding configuration in the
+// tests using inline `module` and `inject` methods.
+it('should alert using the alert service', function() {
+  var alertSpy = jasmine.createSpy('alert');
+  module(function($provide) {
+    $provide.value('alert', alertSpy);
+  });
+  inject(function(greet) {
+    greet('World');
+    expect(alertSpy).toHaveBeenCalledWith('Hello World!');
+  });
+});
+});
+
+	  ]]>
+		</literallayout>
+	</sect1>
+     <sect1>
+		<title>module的建议写法</title>
+		<literallayout>
+<![CDATA[
+
+我们需要把一个应用程序编程多个 modules：
+-每个module有一个特性
+-有可从用的组件特别是 (especially directives and filters)
+-用用层次的module依赖上面的module宝航一些初始化代码
+
+ //定义了一个sevice
+angular.module('xmpl.service', [])
+  .value('greeter', {
+    salutation: 'Hello',
+    localize: function(localization) {
+      this.salutation = localization.salutation;
+    },
+    greet: function(name) {
+      return this.salutation + ' ' + name + '!';
+    }
+  })
+
+  .value('user', {
+    load: function(name) {
+      this.name = name;
+    }
+  });
+ //清晰定义本模块使用了那些service，directive，filter
+angular.module('xmpl.directive', []);     
+angular.module('xmpl.filter', []);
+angular.module('xmpl', ['xmpl.service', 'xmpl.directive', 'xmpl.filter']) 
+  //在run方法中配置初始化数据
+  .run(function(greeter, user) {
+    // This is effectively part of the main method initialization code
+    greeter.localize({
+      salutation: 'Bonjour'
+    });
+    user.load('World');
+  })
+
+  .controller('XmplController', function($scope, greeter, user){
+    $scope.greeting = greeter.greet(user.name);
+  });     
+  
+  -----------------
+  
+  
+1. Configuration 配置blocks -
+在配置和登记阶段运行 ，只有provider-injector可以注入
+
+2.Run blocks -
+在注入器差创建后，只有instance-injector可以注入 将这些代码不适合junit测试，所以单独移出
+
+
+angular.module('myModule', []).
+config(function(injectables) { // provider-injector
+  // This is an example of config block.
+  // You can have as many of these as you want.
+  // You can only inject Providers (not instances)
+  // into config blocks.
+}).
+run(function(injectables) { // instance-injector
+  // This is an example of a run block.
+  // You can have as many of these as you want.
+  // You can only inject instances (not Providers)
+  // into run blocks
+});
+  
+	  ]]>
+		</literallayout>     
+     </sect1>
+
+</chapter>

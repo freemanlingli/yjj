@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sect1  xmlns="http://docbook.org/ns/docbook" version="5.0" > 
+	<title>sect1标题:有标题的段落，没有分行</title>
+	<formalpara xml:id="p_1">
+		<title>段落的标题,特别的段落</title>
+		<para>段落的内容</para>
+	</formalpara>
+	<para>普通段落：开通所了解到的内容，来解释解释，这些名字的含义。</para>
+	<sect2 xml:id="s_2">
+		<title>标题</title>
+		<para>内容</para>
+		<sect3 xml:id="3">
+			<title>标题</title>
+			<para>内容</para>
+			<sect4 xml:id="4">
+				<title>标题</title>
+				<para>内容</para>
+					<sect5 xml:id="5">
+						<title>标题</title>
+						<para>内容</para>
+					</sect5>				
+			</sect4>			
+		</sect3>
+
+	</sect2>
+	
+</sect1>
+
+

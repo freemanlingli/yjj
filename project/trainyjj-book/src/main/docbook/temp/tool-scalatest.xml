@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>测试驱动
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>凌黎 </firstname>
+				<othername>tom.ling</othername>
+				<surname>li</surname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		<releaseinfo>1.04.00</releaseinfo>
+		<abstract>
+			<para>
+			    
+http://bone.twbbs.org.tw/blog/1532.html 视频教学			    
+ScalaCheck 
+http://code.google.com/p/scalacheck/  
+ScalaCheck is a powerful tool for automatic unit testing of Scala and Java programs. specs
+ 
+ http://code.google.com/p/specs/ 
+ http://behaviour-driven.org
+行为驱动测试
+
+http://www.scalatest.org/
+通过简单，清晰的测试来提升开发生产率 
+
+http://www.juvenxu.com/page/2/
+
+用 ScalaTest 我直接体会到了两个很大的好处。首先是 Scala 的语法更简洁强大，例如有三引号这样的东西，我就不需要像 Java 那样转义双引号，测试中大段文本很常见，转义又烦又恶心，当然语法让我省去了很多不必要的分号和括号。第二个好处就是 ShouldMatchers，我个人太喜欢这种写法了
+，my.name should be(“juven”) my.age should less (30) 白痴都能看懂阿（更多强大的例子见官方文档）。
+
+鉴于 Scala 的语言特性，我相信进一步实践的过程中还会有新的发现，总得来说，如果能控制，我今后将不再直接使用 JUnit 编写自动化测试了，要么是 ScalaTest，要么是其他差不多好的东西。
+
+最后提一句，ScalaTest 的官方文档是业界良心：http://scalatest.org/，不过似乎要翻墙访问
+
+
+码农基本都会看看新的语言，ruby, scala, clojure 什么的都会去了解了解，赞叹之后，回到工作中，还得苦逼地用着Java，默默回到现实世界。但现实不必总是如此，
+在有些地方，用用新语言，体验下新的编程范式，提高生产力，其实是非常可行的，比如自动化测试。
+然后第二天我在家里把10几个 Java 写的 cucumber StepDefs 用 Scala 重写了一遍，再过一天到公司把剩下的一些都改成了 Scala。这么快速地完成主要是因为
+
+被 Ola 感染了，有激情 
+之前看过 Scala ，基本语法概念明白 
+测试用例还不多 
+在这个过程中了，为了做 assert ，就了解了一下 ScalaTest，然后觉得 JUnit 传统的什么 Assert.areEqual 弱爆了，Hamcrest 的 assertThat 其实好读多了，但是和 ScalaTest 的 ShouldMatchers DSL 还有有差距。
+于是干脆对单元测试开刀，用 ScalaTest 替代 JUnit … 这么干的理由：
+成本低，Scala 操作 Java 几乎是无缝的，另外单元测试中无复杂逻辑和大段代码，基本不会涉及 Scala 的复杂语言特性 
+回报应该不错，单元测试会更易读，代码量更少，另外也会提高好学程序员的积极性 
+提供多种形式的测试风格 框架： 			    
+			Scala可伸缩的语言[1] 是一种多范式的编程语言，一种类似java的编程[2] ，设计初衷是要集成面向对象编程和函数式编程的各种特性。
+Scala是在JVM上运行                                   
+2009年4月，Twitter宣布他们已经把大部分后端程序从Ruby迁移到Scala，其余部分也打算要迁移。此外， Wattzon已经公开宣称，其整个平台都已经是基于Scala基础设施编写的。
+无论是Ruby、Scala还是Groovy都有对应的Web框架，且对应的框架都是用各自对应的语言编写的。这些框架分别是Rails、Lift和Grails。尽管Lift和Grails中的许多东西都从Rails借鉴来的，但是Grails对其他已有Java技术框架进行了很好的继承，这无疑会保护用户或厂商在这方面的已有投资。
+行为测试，谁，应该有一个什么样的结果：
+class ExampleSpec extends FlatSpec with Matchers {
+  "A Stack" should "pop values in last-in-first-out order" in {
+    val stack = new Stack[Int]
+    stack.push(1)
+    stack.push(2)
+    stack.pop() should be (2)
+    stack.pop() should be (1)
+  }
+
+  it should "throw NoSuchElementException if an empty stack is popped" in {
+    val emptyStack = new Stack[Int]
+    a [NoSuchElementException] should be thrownBy {
+      emptyStack.pop()
+    } 
+  }
+}
+
+
+			</para>
+			<para>&note;</para>
+		</abstract>
+
+	</info>
+	<chapter>
+		<title>快速入门</title>
+         <para>
+          http://code.google.com/p/specs/wiki/UserGuide       
+             
+         </para>
+        </chapter>
+
+	
+	<chapter>
+		<title>ScalaTest</title>
+        <para>
+			Artima今日发布了ScalaTest 1.0，一个开源测试框架。ScalaTest旨在令测试更加高效。其开发者Bill Venners(Artima主编，同时也是资深的程序员)
+			这样描述到：
+ 　“ScalaTest 1.0是比JUnit和TestNG更加高阶的测试编写工具，这个Scala应用在JVM上运行，可以测试Scala以及Java代码。除了与JUnit和TestNG的深层集成，
+ 同时还支持Ant任务，与maven集成，并包括了流行的Java mocking框架JMock、EasyMock以及Mockito的语法增强。通过JUnit集成，ScalaTest可以轻松地在Eclipse、NetBeans以及IntelliJ IDEA等IDE，以及Infinitest等生产工具中使用。
+ 
+　　ScalaTest官方网站：http://www.scalatest.org/
+			    
+		</para>    
+		
+	</chapter>
+		
+</book>

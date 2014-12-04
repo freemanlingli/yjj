@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>常见场景的写法</title>
+
+	<sect1>
+		<title>对表格的测试</title>
+		<literallayout>
+   <![CDATA[
+@Test
+public void testTable() {
+WebElement simpleTable = driver.findElement(By.id("items"));
+//Get all rows
+List<WebElement> rows =simpleTable.findElements(By.tagName("tr"));
+assertEquals(3, rows.size());   //判断行数
+Locating Elements
+for (WebElement row : rows) {
+	List<WebElement> cols =row.findElements(By.tagName("td"));
+	for (WebElement col : cols) {
+	System.out.print(col.getText() + "\t");
+}
+
+定位一个表格第2行，第一个CELL
+通过css：
+WebElement cell = driver.findElement(By.cssSelector("table#items tbody tr:nth-child(2) td"));
+通过path
+WebElement cell = driver.findElement(By.xpath("//table[@id='items']/tbody/tr[2]/td"));
+
+
+<tr>
+<td>姓名</td>
+<td><a href="mailto:nash@test.com">Nash@test.com</a></td>
+<td>权限</d>
+<tr>
+<td>Nash</td>
+<td><a href="mailto:nash@test.com">Nash@test.com</a></td>
+<td>
+	<div>
+	<label for="user128_admin">Admin</label>
+	<input type="checkbox" id="user128_admin"
+	checked="true"/>
+	<label for="user128_cm">Content Manager</label>
+	<input type="checkbox" id="user128_cm"/>
+	<label for="user128_browser">Browser</label>
+	<input type="checkbox" id="user128_browser"/>
+	</div>
+</td>
+</tr>
+
+根据 某行的某个cell的值
+步骤
+1.先定位某个CELL
+td:contains('Nash')          //td[contains(text(),'Nash')]
+2.定位相对位置
+By.cssSelector("td:contains('Nash')+td+td>div>label
+
+
+WebElement adminCheckBox = driver.findElement
+(By.cssSelector("td:contains('Nash')+td+td>div>label:contains('Admin')+input"));
+adminCheckBox.click();
+
+
+ XPath in the following way:
+WebElement adminCheckBox = driver.findElement
+(By.xpath("//td[contains(text(),'Nash')]/followingsibling::
+td/descendant::div/label
+[contains(text(),'Admin')]/following-sibling::input"));
+adminCheckBox.click();
+
+
+表格的处理函数
+
+  /** 从一个table的单元格中得到文本值. 参数tableCellAddress的格式为 
+19.     row.column, 行列从0开始. 
+20.     @param by  用于得到table对象 
+21.     @param tableCellAddress 一个单元格地址, 如. "1.4" 
+22.     @return 从一个table的单元格中得到文本值 
+23.     */  
+24.     public String getCellText(By by,String tableCellAddress) {  
+25.         //得到table元素对象  
+26.         WebElement table = driver.findElement(by);  
+27.         //对所要查找的单元格位置字符串进行分解，得到其对应行、列。  
+28.         int index = tableCellAddress.trim().indexOf('.');  
+29.         int row =  Integer.parseInt(tableCellAddress.substring(0, index));  
+30.         int cell = Integer.parseInt(tableCellAddress.substring(index+1));  
+31.         //得到table表中所有行对象，并得到所要查询的行对象。  
+32.          List<WebElement> rows = table.findElements(By.tagName("tr"));  
+33.          WebElement theRow = rows.get(row);  
+34.          //调用getCell方法得到对应的列对象，然后得到要查询的文本。  
+35.          String text = getCell(theRow, cell).getText();  
+36.          return text;  
+37.     }  
+38.     private WebElement getCell(WebElement Row,int cell){  
+39.          List<WebElement> cells;  
+40.          WebElement target = null;  
+41.          //列里面有"<th>"、"<td>"两种标签，所以分开处理。  
+42.          if(Row.findElements(By.tagName("th")).size()>0){  
+43.             cells = Row.findElements(By.tagName("th"));  
+44.             target = cells.get(cell);  
+45.          }  
+46.          if(Row.findElements(By.tagName("td")).size()>0){  
+47.             cells = Row.findElements(By.tagName("td"));  
+48.             target = cells.get(cell);  
+49.          }  
+50.         return target;  
+51.            
+52.     }  
+
+
+
+  ]]>
+		</literallayout>
+	</sect1>	
+	
+	
+	<sect1>
+		<title>焦点的切换</title>
+		<literallayout>
+   <![CDATA[
+
+driver.findElement(By.cssSelector("input:focus"));
+也可以用
+using :hover  
+active pseudo-classes.
+
+  ]]>
+		</literallayout>
+	</sect1>
+		
+	<sect1>
+		<title>正则表达式的处理</title>
+		<literallayout>
+   <![CDATA[
+p = Pattern.compile(regex);
+m = p.matcher(driver.getTitle());
+if (m.find()) return this;
+  else {
+     m = p.matcher(driver.getCurrentUrl());
+     if (m.find()) return this;
+  }	
+
+  ]]>
+		</literallayout>
+	</sect1>
+	
+	
+	
+	<sect1>
+		<title>判断网页内容是否包含某些字符串</title>
+		<literallayout>
+   <![CDATA[
+System.out.println("网页是否包含下面字符串："+
+driver.getPageSource().contains("selectOptionByText()|selectOptionByValue()"));
+
+  ]]>
+		</literallayout>
+	</sect1>
+		
+	
+	<sect1>
+		<title>求元素属性</title>
+		<literallayout>
+   <![CDATA[
+driver.findElement(by).getAttribute(attr);	
+
+  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>选择下拉单的选择</title>
+
+		<literallayout>
+   <![CDATA[
+	//WebElement select  =waitForElement(By.xpath("//select[@id='select']"));
+		WebElement select  =driver.findElement(By.cssSelector("select#select"));
+		Select selectOblect =new Select(select);
+		
+		//三种选择值的方式
+		//selectOblect.selectByIndex(1);//序列好从0开始
+		selectOblect.selectByVisibleText("Second"); //为什么无效
+		//selectOblect.selectByValue("2");
+		
+		
+		for (Iterator iterator = selectOblect.getAllSelectedOptions().iterator(); iterator.hasNext();) {
+			WebElement opion = (WebElement) iterator.next();
+			System.out.println("选中了项目:"+opion.getText());
+		}	
+		
+  ]]>
+		</literallayout>
+
+	</sect1>
+
+	
+	<sect1>
+		<title>My97DatePicker控件输入日期问题</title>
+
+		<literallayout>
+   <![CDATA[
+直接把值输入日期控件的输入框当中来，
+driver.findElement(By.id("bookDay")).clear();  
+driver.findElement(By.id("bookDay")).sendKeys("2013-06-17");  
+或者
+selenium.selectFrame("relative=up");  
+//点击日期文本框  
+selenium.click("days");  
+//必须增加Thread.sleep()，不增加会报错，提示找不到下一条命令中的元素  ,尝试使用waitForPageToLoad代替，会超时出错；  
+Thread.sleep(5000);  
+//当前为4月，向前移两个月  
+selenium.click("//div[@id='dpTitle']/div[2]");  
+selenium.click("//div[@id='dpTitle']/div[2]");  
+//点击2009-02-02  
+selenium.click("//td[@onclick='day_Click(2009,2,2);']");  
+  ]]>
+		</literallayout>
+
+	</sect1>
+
+
+
+
+	<sect1>
+		<title>打开一个页面</title>
+		<literallayout>
+   <![CDATA[
+
+访问一个页面，最基础的方法是调用“get”方法：
+driver.get("http://www.google.com");
+同样我们可以使用：
+driver.navigate().to("http://www.google.com");
+Navigation：History and Location
+ 之前我们就可以通过get方法来打开一个网页，像我们所看到的，WebDriver同样还有许多小接口，Navigation就是其中一个小接口：
+driver.navigate().to("http://www.example.com");
+navigate().to和get()其实作用是一样的，但是navigate还可以进行浏览器的前进后退操作：
+driver.navigate().forward();
+driver.navigate().back();
+
+WebDriver会自动等待到该页面完全加载才执行接下来的测试和脚本的执行。但是如果你的页面存在很多的AJAX加载，
+此时WebDriver是无法知道是否完成加载。检查此类页面是否加载完成，
+那么我们就需要Explicit和Implicit Wait
+
+  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>Windows和Frames之间的切换</title>
+		<literallayout>
+   <![CDATA[
+ 一些web应用程序有许多Frames或多个Windows。 WebDriver支持使用“switchTo”的
+  方法实现的窗口之间切换。
+driver.switchTo().window("windowName");
+driver.switchTo().frame("frameName"); 
+同样可以使用他访问subframe，找frameName的第一个subframe中叫做child的frame：
+driver.switchTo().frame("frameName.0.child");
+ 所有对driver的调用都会指向特定的窗口，
+<a href="somewhere.html" target="windowName">Clickhere to open a new window</a>
+
+  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>遍历来找到所有打开的窗口</title>
+		<literallayout>
+   <![CDATA[
+ “window handle”去调用“switchTo().window()”，通过这个，我们就遍历来找到所有打开的窗口：
+for (Stringhandle : driver.getWindowHandles()){
+   driver.switchTo().window(handle);
+ }
+  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>弹出框</title>
+		<literallayout>
+   <![CDATA[
+从selenium2.0开始，已经支持对弹出框的获取
+Alert alert= driver.switchTo().alert();
+ 这个方法会返回当前被打开打警告框，你可以进行统一，取消，读取提示内容，后则进入到提示，这个同样使用alerts，confirms，prompts。
+  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>用户名密码输入场景</title>
+		<literallayout>
+   <![CDATA[
+
+// 输入用户名密码
+/任务输入框需要清理，一般浏览器会有保存记录，如果不clear，会在之前密码上加入输入的值
+driver.findElement(By.name("name")).clear();
+driver.findElement(By.name("name"))	.sendKeys("tom");
+driver.findElement(By.name("name")).click();
+
+driver.findElement(By.name("password")).clear();  
+driver.findElement(By.name("password")).sendKeys("123");
+driver.findElement(By.id("botton_login")).click();
+
+  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>下拉选择框的操作</title>
+		<literallayout>
+   <![CDATA[
+Select select = new Select(driver.findElement(By.cssSelector("select.fc5.bdwa")));
+// 选择的三种不同实现
+// select.selectByValue("aaa");
+// select.selectByIndex(1);
+select.selectByVisibleText("aaa");
+  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>执行Javascript到做document对象</title>
+		<literallayout>
+   <![CDATA[
+		// 获取页面title
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	String title = (String) js.executeScript("return document.title");
+	System.out.println(title);
+	
+  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>ajax的延时处理</title>
+		<literallayout>
+   <![CDATA[
+driver.findElement(By.cssSelector("button.ui-btn.ui-btn-sub0")).click();
+// driver.findElement(By.cssSelector("button.ui-btn.ui-btn-sub0")).submit();
+Thread.sleep(5000);
+	
+  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>对IFRAME的操作</title>
+		<literallayout>
+   <![CDATA[
+// 输入评论
+// 因为评论框放在一个iframe中，所以要切换到iframe中，结束后将焦点切换回去
+driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
+driver.switchTo().activeElement().sendKeys("评论内容！");
+driver.switchTo().defaultContent();  //，结束后将焦点切换回去
+	
+  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>鼠标光标操作</title>
+		<literallayout>
+   <![CDATA[
+   
+   鼠标hover到相册上新建link上
+		new Actions(driver)
+				.moveToElement(
+						driver.findElement(By.partialLinkText("new album")))
+				.build().perform();
+	
+  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>拖动图片</title>
+		<literallayout>
+   <![CDATA[
+		(new Actions(driver)).dragAndDrop(
+				driver.findElement(By.id("7515773989")),
+				driver.findElement(By.id("7515803792"))).perform();
+
+  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>等待延时的写法</title>
+		<literallayout>
+   <![CDATA[
+   		driver.findElement(By.linkText("确定排序")).click();
+		Thread.sleep(10000);
+		
+		//等待元素出现
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+ 
+		
+  ]]>
+		</literallayout>
+	</sect1>
+
+
+
+	<sect1>
+		<title>选择框的选择的写法</title>
+		<sect2>
+			<title>单个选择</title>
+			<literallayout>
+   <![CDATA[		
+		遍历select标签
+WebElementselect =driver.findElement(By.tagName("select"));
+List<WebElement> allOptions= select.findElements(By.tagName("option"));
+for (WebElementoption : allOptions){
+System.out.println(String.format("Value is: %s",option.getAttribute("value")));
+option.click();
+}
+ ]]>
+			</literallayout>
+		</sect2>
+		<sect2>
+			<title>单个选择</title>
+			<literallayout>
+   <![CDATA[	
+Selectselect =newSelect(driver.findElement(By.tagName("select")));
+select.deselectAll();
+select.selectByVisibleText("Edam");
+ ]]>
+			</literallayout>
+		</sect2>
+	</sect1>
+	<sect1>
+		<title>文件上传</title>
+		<literallayout>		
+   <![CDATA[		
+WebElementFileUpload=driver.findElement(By.id("upload"));
+String filePath="C:\test\\uploadfile\\media_ads\\test.jpg";
+FileUpload.sendKeys(filePath);
+提交：
+Submit在form中
+driver.findElement(By.id("submit")).click();
+submit不在form中
+WebElement.submit();
+}
+ ]]>
+		</literallayout>
+	</sect1>
+</chapter>
+

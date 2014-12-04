@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>禅修入定
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>凌黎 </firstname>
+				<othername>tom.</othername>
+				<surname>ling</surname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		<abstract>
+			<para>
+         		     本书内容多总结于南怀瑾的先生的《禅宗与道家》《密宗与东方神秘学》《静坐修道与长生不老》505
+         		 道家《易经》与 中医医理327   
+         		     读书笔试
+         		     分析了《因是子静坐法》
+         		     
+         		 关于静坐，南先生是按静坐于生理变化的反应进行阐述
+			</para>
+			<para>&note;</para>
+		</abstract>
+
+	</info>
+
+	
+	<chapter>
+		<title>信不信中医</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	        乐器   - 修乐器 的人 -无法弹奏好的音乐 -为什么音乐演奏家讲究天赋（这其中的奥秘就在于心了，无法理论化，无法文档化）
+	       人体     - 医生 - 除非自己本身身体很强-（为什么好的医生都是慈母善目）
+	  如果上面这个类比还不够清晰，那么解刨学者只解破死尸无法了解：为什么JJ会勃起，女性肉头会坚挺的生理现象。
+	  为什么不研究活体而已研究死尸。所以如果我是医生，我更乐意研究心理保健，在中国大家不承认心理有病，所以无市场，但是
+	  为什么那么多国家大家，养生保健的老师有市场呢，因为他们就起了国外心理医生的作用。
+	  
+	  梁冬去节目讲睡眠，发现其双眼眼袋肿大，没睡好的样子
+	  
+	 
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>	
+	<chapter>
+		<title>静坐修道</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+	
+	<chapter>
+		<title>睡眠</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+		
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+
+	<chapter>
+		<title>人体气脉的奥秘</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+		
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+	<chapter>
+		<title>声音对人体的神奇作用</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+		
+			  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+				
+
+</book>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装运行</title>
+		<literallayout>
+   <![CDATA[	  
+
+http://download.eclipse.org/birt/ 下载
+
+--BIRT Designer Release  报表设计器  
+  1.插件式的 http://download.eclipse.org/birt/update-site/4.3
+  2.单独的eclipse设计器 （RCP version of the BIRT Designer.）
+--BIRT Runtime Release   报表运行环境，发布服务器
+     我们下载下来，解压，在web服务器运行
+     
+     下载最新的4.4版本的runtime，在jetty9.1中运行，有下面日志冲突错误，经过排除后 jcl-over-slf4j-1.7.2，
+     
+     Caused by: org.apache.commons.discovery.DiscoveryException:
+     Class org.apache.commons.logging.impl.SLF4JLogFactory does not
+     implement org.apache.commons.logging.LogFactory
+     
+     
+     我在jetty9.1软件中运行，发现一样，整个birt网页打开就没反应了
+     
+     于是更新最新JETTY9.2，运行发现没有问题。我就奇怪都是eclipse出品的birt和jetty怎么会有冲突?
+     
+	  ]]>
+			</literallayout>
+</chapter>   

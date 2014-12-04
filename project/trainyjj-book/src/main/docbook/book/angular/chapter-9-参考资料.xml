@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>参考资料</title>
+		
+		<para>
+			<literallayout>
+      <![CDATA[
+      http://get.jobdeer.com/1247.get 很多好例子
+      http://jsbin.com/help/features  一个写JS的练习的地方
+      http://www.riafan.com/angularjs-learning/
+      http://blog.angularjs.org/2014/02/an-angularjs-style-guide-and-best.html 如何组织大的项目
+      http://campus.codeschool.com/courses/shaping-up-with-angular-js/level/1/section/1/video/1 
+      http://angularjs.cn/#!/A00e
+	  http://developer.51cto.com/art/201008/219922_all.htm  翻页的例子，
+      http://www.angularjs.org/ 官网 需翻墙
+	  https://github.com/angular
+	  http://www.angularjs.cn/
+      AngularJS的开发者倾向于使用Jasmine行为驱动开发（BBD）框架中的语法。
+      Karma测试框架。
+	  angularjs技术开发的站点
+	  https://builtwith.angularjs.org/
+	  http://sbb.cellfinder.org/  人体医学
+	  http://etunebook.ch/         音乐教学 五线谱
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>

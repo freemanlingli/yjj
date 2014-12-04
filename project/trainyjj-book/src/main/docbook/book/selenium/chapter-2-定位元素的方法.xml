@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>定位元素的方法</title>
+
+	<setc1>
+		<title>规则表达式</title>
+		<para>
+			<literallayout>
+   <![CDATA[
+   
+属性的选择的规则表达式，开头，结尾 和中间的规则表达   
+bycsss
+===========================
+input[id^='ctrl']         开头： ctrl_12, 返回所有ctrl打头的
+input[id$='_userName']    结尾： a_1_userName,
+Input[id*='userName'] :  中间包含的  ：login_userName_textfield
+
+ by path
+===========================
+ input[starts-with(@id,'ctrl')]    开头 ：ctrl_12
+ input[ends-with(@id,'_userName')] 结尾 ：  a_1_userName,
+ Input[contains(@id,'userName')]   中间：包含的 panel_login_userName_textfield
+  ]]>
+			</literallayout>
+		</para>
+	</setc1>
+	
+	<setc1>
+		<title>基础知识</title>
+		<para>
+			<literallayout>
+   <![CDATA[
+			    
+“FindElement”(返回一个WebElement)和“Find Elements”(后者返回所有WebElement的列表)的方法。
+--集中获取元素的方式对比
+ •by ID 如果代码有比较好的规范，用ID是可读性最好的
+ •an XPath statement 比较慢，要有XPATH process，如果页面没有id和name属性，你就只能用这个了
+ •by a links text 比较方便，如果经常变文字，
+WebDriver可以通过WebDriver实例来定位元素，
+  ]]>
+			</literallayout>
+
+		</para>
+	</setc1>
+
+	<sect1>
+		<title>by.id</title>
+		<para>
+			<div id="coolestWidgetEvah">...</div>
+			WebElement element =driver.findElement(By.id("coolestWidgetEvah"));
+		</para>
+	</sect1>
+	<sect1>
+		<title> By Class Name</title>
+		<literallayout>
+   <![CDATA[
+  	这里的class指的是DOM中的元素，在实际使用过程中，我们也会发现很多DOM元素含有相同的class名。
+				通过class name定位元素例子：
+				<div class="cheese">
+					<span>Cheddar</span>
+				</div>
+				<div class="cheese">
+					<span>Gouda</span>
+				</div>
+				List
+				<WebElement> cheeses =driver.findElements(By.className("cheese"));
+		
+  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>By Tag Name </title>
+		<para>
+			<literallayout>
+   <![CDATA[
+        
+ 	  DOM的Tag元素用Tag name 定位元素的例子：
+	 <iframe src="..."></iframe>
+	 WebElement frame = driver.findElement(By.tagName("iframe"));
+  ]]>
+			</literallayout>
+
+		</para>
+	</sect1>
+	<sect1>
+		<title>By Name</title>
+		<para>
+			<input name="cheese" type="text" />
+			WebElement cheese = driver.findElement(By.name("cheese"));
+		</para>
+	</sect1>
+	<sect1>
+		<title>By Link Text</title>
+		<para>
+
+			<a href="http://www.google.com/search?q=cheese">cheese</a>
+			WebElement cheese = driver.findElement(By.linkText("cheese"));
+
+		</para>
+	</sect1>
+	<sect1>
+		<title>By CSS</title>
+		<para>
+			<literallayout>
+   <![CDATA[
+ 从名字上看，这是根据CSS来定位元素。
+
+
+通过字符串
+试过都无效，
+driver.findElement(By.cssSelector("td[textContent='tom']"))
+driver.findElement(By.cssSelector("td[innerText='tom']"))
+driver.findElement(By.cssSelector("table td:contains('tom')")).getText())
+ （在XPATH，包含字符串，很好用，可以使用）
+ 根据ID
+driver.findElement(By.cssSelector("input#username"));
+根据属性
+driver.findElement(By.cssSelector("input[name=username]"));
+driver.findElement(By.cssSelector("img[alt='Previous']"));
+driver.findElements(By.cssSelector("img:not([alt])")); //not()也是一个布尔的判断函数表示没有这个属性
+driver.findElement(By.cssSelector("input[type='submit'][value='Login']"));
+
+高级使用
+             form
+       input       input
+       
+driver.findElement(By.cssSelector("form#loginForm > input"));
+driver.findElement(By.cssSelector("form#loginForm :nth-child(2)"));
+
+driver.findElement(By.cssSelector("div#top5 > p + p"));   +代表下一个
+first-child      form#loginForm:first-child     form下的第一input
+last-child     form#loginForm:last-child      form下的最后一个input
+nth-child(2)   form#loginForm:nth-child(2)    第2个子元素
+
+例子：
+1.
+<div id="food">
+<span class="dairy">milk</span>
+<span class="dairy aged">cheese</span>
+</div>
+WebElement cheese = driver.findElement(By.cssSelector("#food span.dairy aged"));
+2.
+driver.findElement(By.cssSelector("#J-photoListSort >span.title"))
+				.click();
+				
+3
+<input type="radio" name="radio" id="radio1" />
+By.cssSelector("input[type='radio']#radio1")
+		
+  ]]>
+			</literallayout>
+		</para>
+	</sect1>
+	<sect1>
+		<title>By XPATH</title>
+		<literallayout>
+   <![CDATA[
+driver.findElement(By.xpath("html/body/div/div/form/input");
+根须序号
+driver.findElement(By.xpath("//input[2]"));
+根据属性
+driver.findElement(By.xpath("//input[@id='username']"));
+与或
+driver.findElement(By.xpath("//input[@type='submit'and @value='Login']"));
+driver.findElement(By.xpath("//input[@type='submit'or @value='Login']"));
+有atl属性的图片
+driver.findElements(By.xpath ("img[@alt]")); 
+
+
+                                 table
+         tr1                          tr2                                     tr3
+td1      td2    td3       td1        td2    td3                 td1          td2           td3
+产品名                  价格                 个数                     product1  $100        input1            product2   $150       input1
+
+语法参考 http://www.w3schools.com/xpath/xpath_axes.asp.
+
+相对元素的定位
+ancestor   ： //td[text()='Product1']/ancestor::table  得到父-这个就是得到table对象
+descendant ：//table/descendant::td/input    得到子的-
+following   //td[text()='Product1']/following::tr  当前节点关闭后的-得到下一行
+following-sibling   //td[text()='Product1']/following-sibling::td  得到下一个同性的，第2.2  
+preceding          ////td[text()='$100']/preceding::tr  得到头一行
+precedingsibling   //td[text()='$100']/precedingsibling::td   得到第三行第一列
+
+
+
+
+在高级的水平下，WebDriver尽可能使用浏览器的原生的XPath能力。在那些没有原生的XPath支持的浏览器，我们提供自己的实现方式。
+但是三个Driver有一定的区别。
+例子：
+ <input type="text"name="example"/>
+ <INPUT type="text"name="other"/>
+List<WebElement>inputs = driver.findElements(By.xpath("//input"));
+查找返回按钮
+driver.findElement(By.xpath("//a[@class='back' and(text()='<< 返回')]")).click();
+
+查找结果：
+HTML元素有时并不需明确声明，因为他们将默认为已知值的属性。例如，input标签，就不需要设置type为text，默认属性就是text，经验原则：WebDriver在使用中的XPath时，
+不应该期望能够对这些隐含属性相匹配。
+
+  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>使用javascript</title>
+		<literallayout>
+   <![CDATA[
+您可以执行任意JavaScript找到一个元素，只要你返回一个DOM元素，它会自动转换到一个WebElement对象。
+例子：
+jQuery的页面加载一个简单的例子：
+WebElement element= (WebElement)((JavascriptExecutor)driver).executeScript("return$('.cheese')[0]");
+寻求所有的页面上的input元素：
+List<WebElement> labels= driver.findElements(By.tagName("label"));
+List<WebElement> inputs= (List<WebElement>)((JavascriptExecutor)driver).executeScript(
+  "varlabels = arguments[0], inputs = []; for (var i=0; i < labels.length;i++){"+
+"inputs.push(document.getElementById(labels[i].getAttribute('for')));} return inputs;", labels);  
+	   
+  ]]>
+		</literallayout>
+	</sect1>
+
+</chapter>

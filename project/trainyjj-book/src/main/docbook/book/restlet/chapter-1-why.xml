@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>为什么用restlet</title>
+	<section>
+		<title>为我们减少的工作量</title>
+   <para>
+   
+   
+   
+   自动压缩、可以断点继续的场景、验证流程、不需要深入操作HTTP底层、支持高性能，支持apache的虚拟主机
+   
+   Numerous representation types are supported for XML, JSON, and
+many more media types
+   
+   为使客户端程序能与你的资源相互协作，资源应该正确地实现默认的应用协议（HTTP），也就是使用标准的GET、PUT、POST和DELETE方法。
+   
+   
+   
+   
+   Java API forRESTful WebServices旨在定义一个统一的规范，
+   使得 Java 程序员可以使用一套固定的接口来开发 REST 应用，避免了依赖于第三方框架。
+   是一个Java编程语言的应用程序接口，支持按照表象化状态转变 (REST)架构风格创建Web服务Web服务。 
+   JAX-RS 的具体实现由第三方提供，例如 Sun 的参考实现 Jersey、Apache 的 CXF 以及 JBoss 的 RESTEasy
+   
+   
+   </para>	  
+	</section>	
+
+</chapter>

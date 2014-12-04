@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装-运行docker</title>
+	<para>因为DOCKER是运行在LINUX环境中，所以我们在windows下用VBOX运行虚拟操作系统
+	    CentOS-7.0-1406-x86_64-Everything-kde
+	         内存设置为1024M。
+	</para>
+  <literallayout>
+   <![CDATA[
+启动运行好操作系统后，我们需要下面2个步骤来进行DOCKER的安装（注意，）
+1.centos需要先安装epel
+wget http://ftp.sjtu.edu.cn/fedora/epel/beta/7/x86_64/epel-release-7-1.noarch.rpm 
+rpm -ivh epel-release*安装好EPEL 源后，用yum 命令来检查是否添加到源列表 
+yum repolist 检查已经在repo 后列出，并且显示提供了上万个软件包，所以EPEL已经安装到你的CentO了。
+EPEL源的配置安装到了 /etc/yum.repos.d/epel.repo 文件。 
+yum install htop 现在来试一下从EPEL 获取软件包 
+
+2.再安装docker
+yum -y install docker
+yum -y update docker
+启动 service docker start docker 
+配置自动启动 chkconfig docker on 
+ ]]>
+  </literallayout>
+	
+
+</section>

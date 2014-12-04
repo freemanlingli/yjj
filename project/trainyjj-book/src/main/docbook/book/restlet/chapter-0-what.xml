@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>基本概念</title>
+	<section>
+		<title>REST框架</title>
+   <para>
+       Restlet是一个Java下的轻量级REST框架
+       
+       表述性状态转移（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。它是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。
+       Amazon.com提供接近REST风格的Web服务进行图书查找；雅虎提供的Web服务也是REST风格的。
+       
+   </para>	  
+	</section>
+	
+	<section>
+		<title>三种主流的Web服务实现方案</title>
+   <para>
+  1.REST模式的Web服务  (明显的更加简洁)
+  2.SOAP
+  3.XML-RPC     
+  Amazon.com提供接近REST风格的Web服务进行图书查找；雅虎提供的Web服务也是REST风格的。
+   事实上，REST 对 Web 的影响非常大，由于其使用相当方便，已经普遍地取代了基于 SOAP 和 WSDL 的接口设计。
+  	
+	<section>
+		<title>资源</title>
+   <para>
+每个url都代表一个resource，而整个系统就是由这些resource组成的。因此，
+如果url是设计良好的，那么系统的结构就也应该是设计良好的。
+
+
+。敏捷开发所提倡的Test Driven Development，其好处之一（我觉得是最大的好处）就是可以通过testcase直观地设计系统的接口
+这些url甚至不能连接到任何page或action，但是它们直观地告诉我们：系统对用户的访问接口就应该是这样。根据这些url，我们可以很方便地设计系统的结构。
+重申一遍：REST允许我们通过url设计系统，就像Test Driven Development
+允许我们使用testcase设计class接口一样
+
+   </para>	  
+	</section>
+	
+	<section>
+		<title>操作请求的定义</title>
+   <para>
+  RESTful的url能覆盖所有的用户请求吗？比如，login如何RESTful？search如何RESTful？
+REST软件架构遵循了CRUD原则，该原则告诉我们对于资源（包括网络资源）只需要四种行为：创建（Create）、获取（Read）、更新（Update）和销毁（DELETE）就可以完成对其操作和处理了。其实世界万物都是遵循这一规律：生、变、见、灭。所以计算机世界也不例外。这个原则是源自于我们对于数据库表的数据操作：insert（生）、select（见）、update（变）和delete（灭），所以有时候CRUD也写作为RUDI，其中的I就是insert。这四个操作是一种原子操作，即一种无法再分的操作，通过它们可以构造复杂的操作过程，正如数学上四则运算是数字的最基本的运算一样。 
+
+一开始可能想到的是/category/ruby/articles，这种想法很直观。但是我觉得里面的category是不需要的，我们可以直接把“/ruby”理解为“category是ruby”，也就是说“ruby”出现的位置说明了它指的就是category。OK，/ruby/articles，单单从这个url上看，我们能获得多少关于category的信息？
+   </para>	  
+	</section>	
+
+		<section>
+		<title>REST与SOAP的定义</title>
+   <para>
+SOAP的网络服务和基于REST/HTTP网络服务作个比喻，前者是一种传统的寄信方式，
+而后者是现代网络的电子邮件方式。要是是寄信和电子邮件都有病毒存在的话，传统的寄信
+被送到对方就很危险，而电子邮件是开发的，
+电子邮件供应商比如Google为我们检查了电子邮件是否有病毒。
+这里并不是说明SOAP网络服务消息包含义病毒，而是说明HTTP是无法处理SOAP信息包究竟好不好，需要额外的软件工具解决这一问题，包括防火墙也用不上和管不了。 
+REST/HTTP网络服务的信息包可以被防火墙理解和控制。你可以按照操作和链接进行过滤信息包，如你可以规定从外部来的只能读取（GET操作）自己服务器的资源。这
+样对于系统管理员而言使得软件管理更为简单。REST的安全性还可以利用传输安全协议SSL/TLS、基本和摘要式认证（Basic und Digest Authentication）。除了这些REST自身的安全性功能外，还可以利用像基于信息的Web Services Security（JSR 155）作为REST不错的补充。
+   </para>	  
+	</section>	
+</chapter>

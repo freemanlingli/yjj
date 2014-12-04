@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>FAQ常问问题</title>
+
+	<sect1>
+		<title>如何集成</title>
+			<literallayout>
+      <![CDATA[
+      
+  四种使用方式
+•单独作为服务器使用，设计好报表在服务中发布
+• 作为web应用的一部分，直接修改界面
+• 通过 BIRT tag library 调用
+• eclipse的 RCP applications的插件使用
+前2种最常用
+
+	  ]]>
+			</literallayout>
+		    
+	</sect1>
+	<sect1>
+		<title>如何封装rest api</title>
+		<para>
+			
+
+		</para>
+	</sect1>
+
+
+</chapter>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>D3</title>
+	<sect1>
+		<title>新的</title>
+		<literallayout>
+<![CDATA[	  
+http://d3js.org/
+https://github.com/mbostock/d3/wiki
+
+http://www.verisi.com/resources/d3-tutorial-basic-charts.htm
+D3 是最流行的可视化库之一，它被很多其他的表格插件所使用。它允许绑定任意数据到DOM，然后将数据驱动转换应用到Document中
+。你可以使用它用一个数组创建基本的HMTL表格，或是利用它的流体过度和交互，用相似的数据创建惊人的SVG条形图
+
+ ]]>
+		</literallayout>
+	</sect1>
+
+</chapter>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>概念Dependency Injection 依赖式DI</title>
+
+	<sect1>
+		<title>原理</title>
+		<literallayout>
+<![CDATA[
+原理
+function SomeClass(greeter) {
+this.greeter = greeter;
+}
+SomeClass.prototype.doSomething = function(name) {
+this.greeter.greet(name);
+}
+（这个不是像spring的 bean定义接口具体实现类）
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>定义一个service</title>
+		<literallayout>
+<![CDATA[
+myModule.factory('greeter', function($window) {
+return {
+  greet: function(text) {
+    $window.alert(text);
+  }
+};
+});
+	  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>使用总结</title>
+		<literallayout>
+<![CDATA[
+那些地方使用依赖特性
+1.组件 services, directives, filters and animations 定义时用factory method or 
+constructor function定义成可以注入.
+例如：
+ angular.module('myModule', [])
+.factory('serviceId', ['depService', function(depService) {
+  ...
+}])
+.directive('directiveName', ['depService', function(depService) {
+  ...
+}])
+.filter('filterName', ['depService', function(depService) {
+  ...
+}]);
+
+2.run 方法中  可以定义  一个 function, 概fun可以注意 "service", "value" and "constant"等组件
+但表不能注入 "providers" into run blocks
+config 可以注入 "providers" into run blocks
+
+例如： 
+angular.module('myModule', [])
+.config(['depProvider', function(depProvider){
+  ...
+}])
+.run(['depService', function(depService) {
+  ...
+}]);
+
+
+phonecatApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/phones', {
+        templateUrl: 'partials/phone-list.html',
+        controller: 'PhoneListCtrl'
+      }).
+      when('/phones/:phoneId', {
+        templateUrl: 'partials/phone-detail.html',
+        controller: 'PhoneDetailCtrl'
+      }).
+      otherwise({
+        redirectTo: '/phones'
+      });
+  }]);
+
+
+4.控制器的定义常用依赖
+例子1：
+
+	someModule.controller('MyController', ['$scope', 'dep1', 'dep2', function($scope, dep1, dep2) {
+	$scope.aMethod = function() {
+	}
+	}]);
+例子2：
+
+<script type="text/javascript" language="javascript">
+var myModule = angular.module('myModule', []);
+myModule.factory('greeter', function($window) { //service依赖 window的serviced
+return {
+  greet: function(text) {
+    $window.alert(text);
+  }
+};
+});
+
+function MyController($scope, greeter) {    //控制器依赖 刚才定义的service
+$scope.sayHello = function() { 
+  greeter.greet('Hello World');
+};
+}
+</script>
+	
+	
+  </head>
+<body  ng-app="myModule">
+<div ng-controller="MyController">
+<button ng-click="sayHello()">Hello</button>
+</div>
+  </body>
+</html>
+
+	  ]]>
+		</literallayout>
+	</sect1>
+</chapter>

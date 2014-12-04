@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<sect1  xmlns="http://docbook.org/ns/docbook" version="5.0" > 
+	<title>习席</title>
+		<sect2>
+			<title>日常工作手册</title>
+			<para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>产品版本目录发布维护</para>
+					</listitem>
+					<listitem>
+						<para>持续集成环境日常规划监控</para>
+					</listitem>
+					<listitem>
+						<para>质量报告分析</para>
+					</listitem>
+				
+				</orderedlist>
+			</para>	
+	  </sect2>
+
+		<sect2>
+			<title>技能要求</title>
+			<para>
+					
+					<orderedlist numeration="arabic">
+						<listitem>
+							<para>熟练企业应用程序框架</para>
+						</listitem>
+						<listitem>
+							<para>属虚持续集成的安装部署和群集分布</para>
+						</listitem>
+						<listitem>
+							<para>熟悉SONAR质量分析工具</para>
+						</listitem>
+					</orderedlist>
+			</para>	
+	  </sect2>	 
+	   
+</sect1>
+
+
+
+

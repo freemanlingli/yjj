@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>SSH远程登录配置</title>
+	<literallayout>
+   <![CDATA[
+运行 docker run -i -t centos /bin/bash
+
+yum -y install  openssh-server  安装登录的
+yum -y install openssh-clients  不人登录找不到命令
+/usr/sbin/sshd
+mkdir /var/run/sshd
+echo "root:root" | chpasswd
+
+passwd #输入用户密码，我这里设置为123456，便于SSH客户端登陆使用
+exit #退出
+#docker ps -l
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+51774a81beb3 centos:ssh /bin/bash 3 minutes ago Exit 0 thirsty_pasteur
+
+
+docker run -d -p 22 -p 80:8080 centos:ssh /usr/sbin/sshd -D
+
+
+#docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+871769a4f5ea learn/tutorial:latest /usr/sbin/sshd -D About a minute 
+ago Up About a minute 0.0.0.0:49154->22/tcp, 0.0.0.0:80->8080/tcp focused_poincare
+注意这里的分配随机的SSH连接端口号为49154：
+ssh root@127.0.0.1 -p 49154
+输入可以口令，是不是可以进入了？你一旦控制了SSH，剩下的事情就很简单了，安装JDK，安装tomcat等，
+
+
+
+
+在系统镜像中装
+apt-get update
+apt-get install openssh-server
+which sshd
+/usr/sbin/sshd
+mkdir /var/run/sshd
+passwd #输入用户密码，我这里设置为123456，便于SSH客户端登陆使用
+exit #退出
+#docker ps -l
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+51774a81beb3 learn/tutorial:latest /bin/bash 3 minutes ago Exit 0 thirsty_pasteur
+docker commit 51774a81beb3 learn/tutorial
+以后台进程方式长期运行此镜像实例：
+docker run -d -p 22 -p 80:8080 learn/tutorial /usr/sbin/sshd -D
+查看一下，是否成功运行。
+
+#docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+871769a4f5ea learn/tutorial:latest /usr/sbin/sshd 
+-D About a minute ago Up About a minute 0.0.0.0:49154->22/tcp, 0.0.0.0:80->8080/tcp focused_poincare
+
+注意这里的分配随机的SSH连接端口号为49154：
+ssh root@127.0.0.1 -p 49154
+输入可以口令，是不是可以进入了？你一旦控制了SSH，剩下的事情就很简单了，安装JDK，安装tomcat等，
+apt-get install oracle-java7-installer
+java -version
+# 下载tomcat 7.0.47
+wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-7/v7.0.47/bin/apache-tomcat-7.0.47.tar.gz
+# 解压，运行
+tar xvf apache-tomcat-7.0.47.tar.gz
+cd apache-tomcat-7.0.47
+bin/startup.sh
+ ]]>
+	</literallayout>
+</section>
+

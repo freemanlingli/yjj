@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>通过脚本构建镜像</title>
+	<para>
+		方法1：下载一个官方image，然后在里面run一些你需要的东西，然后commit成一个image
+	</para>
+	<para>
+		方法2：使用Dockerfile
+		<literallayout>
+   <![CDATA[		
+		
+Dockerfile最基本的内容主要有两个：
+一个是FROM指令，一个是RUN指令。
+
+FROM ubuntu
+RUN echo "deb http://cn.archive.ubuntu.com/ubuntu precise main" >
+ /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get install -y vim
+使用docker build建立image时会依次运行Dockerfile里的每一句run，而每运行一句就会生成一个
+单独的container。
+											
+											
+Dockerfile是个简单的文本文件，介绍了如何从基础镜像构建镜像。我在Github上提供了几个Dockerfile。
+下面的文件用来运行、安装SSH服务器：
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+RUN echo "root:root" | chpasswd
+EXPOSE 22 
+上面的内容一目了然。FROM命令定义了基础镜像，基础镜像可以是官方的，也可以是我们刚刚创建的zefhemel/ubuntu。
+RUN命令用来配置镜像。在这里，我们更新了APT包仓库，安装了openssh-server，创建了一个目录，然后给我们
+的root账户设置了一个再简单不过的密码。EXPOSE命令会向外暴露22端口（SSH端口）。接下来看看如何构建并实
+例化这个Dockerfile。
+ 
+第一步是构建一个镜像。在包含Dockerfile的目录下运行：
+$ docker build -t zefhemel/ssh . 
+这会创建一个zefhemel/ssh仓库，包含我们新的SSH镜像。如果创建成功，就能进行实例化了：
+$ docker run -d zefhemel/ssh /usr/sbin/sshd -D 
+和前面的命令不一样。-d表示会在后台运行容器，而不是运行bash，所以我们用前台模式（用-D参数指定）运行了sshd
+守护进程。
+让我们检查运行中的容器，看看命令做了些什么：
+$ docker ps
+ID       IMAGE            COMMAND         CREATED      STATUS       PORTS
+23ee5acf5c91   zefhemel/ssh:latest     /usr/sbin/sshd -D      3 seconds ago  
+     Up 2 seconds        49154->22
+ 
+可以看到我们的容器启动着。PORTS头下的内容比较有意思。由于我们EXPOSE了22端口，这个端口现在映射到了主机系
+统的一个端口（这里是49154）。让我们看看它能否运行。
+$ ssh root@localhost -p 49154
+The authenticity of host '[localhost]:49154 ([127.0.0.1]:49154)' can't
+ be established.ECDSA key fingerprint is f3:cc:c1:0b:e9:e4:49:f2:98:9a
+ :af:3b:30:59:77:35.Are you sure you want to continue connecting 
+ (yes/no)? yes Warning: Permanently added '[localhost]:49154' (ECDSA)
+ to the list of known hosts.  root@localhost's password: <I typed in 'root' here>
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.8.0-27-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@23ee5acf5c91:~# 
+再次成功了！现在有了一个运行的SSH服务器，我们能登录它。在有人猜出密码并攻击容器之前，让我们先从SSH退出，
+杀掉容器。
+$ docker kill 23ee5acf5c91 
+如你所见，容器的22端口映射到了49154端口，但这是完全随机的。要把它映射到特定端口，运行命令时传入-p参数：
+docker run -p 2222:22 -d zefhemel/ssh /usr/sbin/sshd -D 
+现在，如果2222端口可用，我们的端口就会映射到2222上。我们在Dockerfile的结尾再添加一行内容，以便我
+们的镜像对用户更加友好：
+CMD /usr/sbin/sshd -D 
+CMD表示构建镜像时并不会运行命令，实例化时才运行。所以不传递其它参数时就会执行/usr/sbin/sshd -D。
+然后我们可以直接运行：
+docker run -p 2222:22 -d zefhemel/ssh 
+得到的结果和前面一样。要发布新创建的镜像，只要运行docker push就可以了：
+docker push zefhemel/ssh 
+登录之后，镜像就可用了，用先前的docker run命令就能执行命令。
+ 
+让我们回到Wordpress的例子。怎样在容器里用Docker运行Wordpress呢？要构建一个Wordpress镜像，
+我们要创建一个Dockerfile：
+1.安装Apache、PHP5和MySQL
+2.下载Wordpress，解压到文件系统的某个地方
+3.创建一个MySQL数据库
+4.更新WordPress的配置文件，指向MySQL数据库
+5.把WordPress设置为Apache的DocumentRoot
+6.启动MySQL和Apache（比如用supervisord）
+ 
+幸运的是，很多人已经成功了，比如John Fink的GitHub库就包括创建这样一个Wordpress镜像需要的所有内容。
+ ]]>
+		</literallayout>
+	</para>
+</section>

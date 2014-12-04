@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>ViualBox</title>
+		<authorgroup>
+			<author>
+				<firstname>&name; </firstname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para>虚拟机的安装使用</para>
+			<xi:include href="book/para-online.xml" />
+		</abstract>
+	</info>
+
+	<chapter>
+		<title>操作</title>
+		<para>
+	1.windows下的虚拟机virual box 软件运行centos系统
+	可以切换出鼠标
+	ctrl+alt+del    
+	或者  ->+ ctrl  注意要用靠近 ->的ctrl建组合
+	gnome的DOCKER有特殊问题，
+	还是用kde，字体需要 设置下，不然光标位置不对 , 在setting current profile 下，可以设置字体大小 和 颜色
+	另外，虽然鼠标进入虚拟机，
+	关于屏幕3种模式
+	1.全屏
+	通过菜单，如果全屏想 返回 ，
+	2.缩放模式
+	3.原尺寸
+
+		</para>
+	  
+	</chapter>
+
+	<chapter>
+		<title>网络设置</title>
+		<para>
+VirtualBox的提供了四种网络接入模式，它们分别是： 
+1、NAT 网络地址转换模式(NAT,Network Address Translation) 
+只能单向访问，虚拟机可以通过网络访问到主机，主机无法通过网络访问到虚拟机。 
+2、Bridged Adapter 桥接模式 
+网桥模式是我最喜欢的用的一种模式，同时，模拟度也是相当完美。你可以这样理解，它是通过主机网卡，架设了一条桥，直接连入到网络中了。因此，
+它使得虚拟机能被分配到一个网络中独立的IP，所有网络功能完全和在网络中的真实机器一样。 
+3、Internal 内部网络模式 
+虚拟机与主机关系： 不能相互访问，彼此不属于同一个网络，无法相互访问
+4、Host-only Adapter 主机模式 
+
+		</para>
+	  
+	</chapter>
+	
+	<chapter>
+		<title>录像</title>
+		<para>
+		    windows录像操作说明
+http://jingyan.baidu.com/article/72ee561aa60528e16138dfd5.html
+           linux下的录像，是从主界面中进行控制的，当进行了勾选，就会从勾选时刻进行录制，
+           非常方便,
+         录制出来的docker-install.webm 格式文件，在编辑器中AVSVideoEditor显示的时间不对，需要手动清理掉不对的时间段  
+         
+		</para>
+	  
+	</chapter>	
+	
+	
+		<chapter>
+		<title>AVSVideoEditor</title>
+		<para>
+		  直接录像时会保存数据在C:\Users\eadeghy\AppData\Roaming\AVS4YOU\AVSVideoEditor\Temp 中
+		  可以选择保存为AVI文件。
+		  在导出时，最好选1024×786， 没有声音的去掉声音 ，5M可以少1M
+		  录制时的分辨率，在导出时，分辨率要设置一样，不然会变形
+		  另外码率 是决定清晰度 ，发现设置为400 和5000，文件大小变化不大
+		  
+		</para>
+	  
+	</chapter>
+	
+</book>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>概念-control</title>
+	<sect1>
+		<title>控制器的定义方式和关联方式</title>
+		<literallayout>
+<![CDATA[
+控制器应该简洁，可以尽量将一个阔肌放入SERVICE来瘦身
+
+方式1：不会在全局范围内
+var myApp = angular.module('myApp',[]);
+myApp.controller('DoubleController', ['$scope', function($scope) {
+  $scope.double = function(value) { return value * 2; };
+}]);
+
+方式2：全局范围内定义多个
+var phonecatApp = angular.module('phonecatApp', [
+  'ngRoute',
+  'phonecatControllers'
+]);
+控制器在一个JS中定义多个
+var phonecatControllers = angular.module('phonecatControllers', []);
+phonecatControllers.controller('PhoneListCtrl', ['$scope', '$http',
+  function($scope, $http) {
+    $http.get('phones/phones.json').success(function(data) {
+      $scope.phones = data;
+    });
+
+    $scope.orderProp = 'age';
+  }]);
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+    $scope.phoneId = $routeParams.phoneId;
+  }]);
+
+
+关联方式
+1.ngController directive or 指令
+<body ng-controller="PhoneListCtrl">
+
+2.$route service.路由指令中配置
+phonecatApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/phones', {
+        templateUrl: 'partials/phone-list.html',
+        controller: 'PhoneListCtrl'
+      }).
+      when('/phones/:phoneId', {
+        templateUrl: 'partials/phone-detail.html',
+        controller: 'PhoneDetailCtrl'
+      }).
+      otherwise({
+        redirectTo: '/phones'
+      });
+  }]);
+
+
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+
+
+</chapter>

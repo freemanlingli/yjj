@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装运行</title>
+	<section>
+		<title>API目录分析</title>
+		<literallayout>
+   <![CDATA[	  
+Ajax操作 
+        时间处理Global Ajax Event Handlers 
+        辅助函数	Helper Functions 
+        底层接口	Low-Level Interface 
+       常用调用方法  Shorthand Methods 
+
+Attributes CSS  对属性和CSS的操作
+Callbacks Object 
+Core 
+
+Data 
+Deferred Object 
+Deprecated 
+	Deprecated 1.3 
+	Deprecated 1.7 
+	Deprecated 1.8 
+	Deprecated 1.10 
+
+Dimensions 
+特效 Effects Basics : Custom\Fading\Sliding 
+
+
+事件处理Events 
+    Browser Events 
+	Document Loading 
+	Event Handler Attachment 
+	Event Object 
+	Form Events 
+	Keyboard Events 
+	Mouse Events 
+
+Forms 
+Internals 
+Manipulation Class Attribute 
+Copying 
+DOM Insertion, Around 
+DOM Insertion, Inside 
+DOM Insertion, Outside 
+DOM Removal 
+DOM Replacement 
+General Attributes 
+Style Properties 
+
+Miscellaneous Collection Manipulation 
+Data Storage 
+DOM Element Methods 
+Setup Methods 
+
+Offset 
+Properties Properties of jQuery Object Instances 
+Properties of the Global jQuery Object 
+
+Removed 
+Selectors Attribute 
+Basic 
+Basic Filter 
+Child Filter 
+Content Filter 
+Form 
+Hierarchy 
+jQuery Extensions 
+Visibility Filter 
+
+Traversing Filtering 
+Miscellaneous Traversing 
+Tree Traversal 
+
+Utilities
+ 
+ 
+	  ]]>
+		</literallayout>
+	</section>
+</chapter>

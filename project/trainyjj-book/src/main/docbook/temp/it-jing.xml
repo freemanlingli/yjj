@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>IT心经; 
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>凌黎 </firstname>
+				<othername>tom.ling</othername>
+				<surname>li</surname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		<releaseinfo>1.04.00</releaseinfo>
+		<abstract>
+			<para>
+				    对IT职场各种常见问题的经验总结。各种案例来源于网上IT界各种牛人的亲身体会。汇编成书，方便程序猿们查阅。                                 
+			</para>
+			<para>&note;</para>
+		</abstract>
+
+	</info>
+	<chapter>
+		<title>国学的乐趣</title>
+		
+		<sect1 >
+			<title>为什么是国学</title>
+            <para>
+                                             基于中国小学教育的失败，一说起国学，多数人第一印象就是繁杂的古文和陈词滥调，也许是因为80后一代,在小时候被逼要死记硬背大量古文经典，留下让人刻板印象就是枯燥无味。
+                                             在学术上其实就是中国东方哲学。中国文化历史，在秦汉以前，由儒、墨、道三家，笼罩了全部的文化思想。到唐、宋以后，换了一家，成为儒、释、道三家，这三家又笼罩着中国文化思想，
+                                             一直到中华民国立国初期。迨发生了“五四运动”，当时想“打倒孔家店”，在中国文化的主流上，起了一阵涟漪，一度有所变化，又影响了几十年。当前的状况是在国外对国学的热度远超过中国本土。
+                                             这真是一个尴尬的文化现象。国学其实没那么神秘和高深，我认为最实在的诠释就是 南怀瑾先生对国学的经典比喻：
+                <itemizedlist>
+					<listitem>
+						<para>儒家:儒家像粮食店，绝不能打。否则，打倒了儒家，我们就没有饭吃——没有精神粮食；</para>
+					</listitem>
+					<listitem>
+						<para>佛家(释):佛家是百货店，像大都市的百货公司，各式各样的日用品俱备，随时可以去逛逛，有钱就选购一些回，没有钱则观光一番，无人阻拦，但里面所有，都是人生必需的东西，也是不可缺少的；</para>
+					</listitem>
+					<listitem>
+						<para>道家:道家则是药店，如果不生病，一生也可以不必去理会它，要是一生病，就非自动找上门去不可</para>
+					</listitem>
+				</itemizedlist>	
+			             如果要问学习国学有什么乐趣？我会这么回答：很多人心情不好时或者迷茫，会去看励志电影，挺心情音乐来获得心灵安慰的乐趣。学习国学的乐趣跟这种娱乐消遣过程也差不多。
+			             国学给你带来心灵上的平静和底蕴远远超出其它学科知识。
+			              推荐大家阅读  南怀瑾《禅宗与道家》一书，该书是以专题研究的方式,系统阐述禅宗与道家的宗旨、源流、修持和影响的著作. 个人比较喜欢道家思想。南怀瑾说，“上善若水”是老子人生哲学的总纲。有书记载，老子曾伫立在小
+			溪边，十分感慨地说：“上善若水，水利万物而不争，处众人之所恶，故几于道。”老子认为，最善的人好像水一样。水善于滋润万物而不与万物相争，停留在众人都不喜欢的地方。也就是说，最高尚的品德就像水一样。一句“上善如水”，就
+			可以概括整个人类最完美的道德、智慧和人格。
+            
+             </para>
+		</sect1>
+		<sect1 >
+			<title>几位推崇国学名人</title>
+            <para>
+                                
+        <itemizedlist>
+					<listitem>
+						<para>梁冬</para>
+					</listitem>
+					<listitem>
+						<para>哈辉</para>
+						<para>古典音乐演唱家，生于陕西汉中。中国国学推广大使，目前研创新雅乐（追求的“静雅、古雅、典雅、清雅”之乐。它具有中国古典音乐的“幽远、空灵、静怡”之美）。中国国学推广大使，全国青联委员，中国雅文化艺术工作室艺术总监，现任单位：中央民族大学 
+							2008年4月被中国孔子基金会聘为——“孔子基金会形象大使”。2008年7月12日，获得中华慈善总会授予的“国学形象大使”奖杯和证书，授为中国首位“国学形象大使”
+						</para>
+					</listitem>
+						<listitem>
+						<para>南山空同</para>
+						<para>"终南山主人的作者","天涯蓬莱鬼话"
+							
+							如果你对信仰困惑不解，我推荐你看《你所不知道的神仙世界》；
+http://bbs.tianya.cn/post-16-956795-1.shtml
+如果你对自己的心无所适从，我推荐你读《元灵心经》；
+如果你对社会生活本质认知不清，便是时候拿起这本《终南山主人》。
+《你所不知道的神仙世界》是不同的，待三观尽毁放空自己后再来读这本《终南山主人》，竟深感此篇神话隐含总总社会现象。旁观者清，当局者迷。这本书高明处在于以神仙（文真）叙述国家之事，出世之人观入世之行，不由倍感画面清晰，各种关系一目了然。
+爱读书的人都会遇到改变自己人生轨迹的关键读物，而《终南山主人》绝对是不容错过的那本。无论是仙神斗智，还是情爱浪漫，无不是社会之缩影，七情六欲为基而生成的千千万万。灵性使然，人、仙、神载体不同，却都逃不脱事的因果。除非无极之物处于无极之地。一本书，打开一个新的世界。尤其贵在离了光怪陆离的束缚，回归本真。如同冯小刚执导的春晚现场，取代高科技的那一只只火红的灯笼。
+http://blog.sina.com.cn/s/blog_4a1300740101rmux.html
+			<tip>
+			    <para>金字塔不是外星人造的，造的方法很简单，填土去土法
+比如，地上有一块1米高的巨石，我想把另一块巨石放上去，根本不用吊起设备的，只需要用土填出个坡势极平的坡面来，
+然后用绳子和撬物，将其推拉前行到另一块巨石上即可，这时高度又增加，再用土铺出一个坡势来，依次进行就可以，最后将所有
+土运走，便成了巨石堆成的金字塔，防止盗墓。人们总是设想用起重设备，这个假设本身就是错误的前提，
+
+一个错误的前提，是无法得到正确的结果的。巨石阵也是用这种方法建造的。
+只是工程量略大，算不得奇迹，更算不上是神迹，人们将其神秘化了的
+</para>
+				<para>一片树叶挡住了眼睛，连面前高大的泰山都看不见。比喻被局部现象所迷惑，看不到全局或整体</para>
+			</tip>
+						</para>
+					</listitem>				
+					
+					
+				</itemizedlist>	
+			           
+            
+             </para>
+		</sect1>		
+		<sect1>
+		<title>适合IT的经典语录</title>
+ 		    <para>国学博大精深，我们吸取其精华就可以，如果兴趣不大，无需花大量时间去阅读各种经典。在这里收集了一些一下适合IT行业的各家经典禅语，方便大家体会国学在工作中的应用</para>
+		    <sect2>
+			    <title>组建团队方面的</title>
+			<para>
+	              
+	                <itemizedlist>
+						<listitem>
+							<para>道法术器 </para>
+					        <para> 【古人认为男人要做出一番事业，首先得做好这四个字。道（方向）法（方法）术（技术）器（工具）  。我们在IT界工作，也完全符合这4个字的优先顺序
+							    如果你工作多年，工作重心还处于术（技术）和器（工具）的阶段，证明你做的还不够好。】  </para>
+							    
+						</listitem>
+						<listitem>
+							<para>以正治国，以奇用兵，以无事取天下。以恒常的法度治理国家，以出奇的策略用兵打仗，以无为之道得天下
+							    </para>
+							<para>【管理团队应该用比较文档的规则，但如果研发产品，在跟竞争对手竞争方面就得用奇招，善于创新和变化】</para>							    
+						</listitem>
+						<listitem>
+							<para>不尚贤，使民不争</para>
+							<para>【不崇尚贤能之辈，方能使世人停止争斗】</para>							
+						</listitem>
+				
+					</itemizedlist>	
+	            </para>		
+			</sect2>
+			<sect2>
+			    <title>领导力方面的</title>
+			<para>
+	                <itemizedlist>
+	                   <listitem>
+							<para> 是以圣人处上而民不重，处前而民不害。是以天下乐推而不厌。 </para>
+							<para> 【若有人想在万民之上，先得自谦为下；要为万民之先，先得自卑为后】</para>
+						</listitem>	                    
+						<listitem>
+							<para>太上，下不知有之。其次，亲而誉之。其次，畏之。其次，侮之。  </para>
+						    <para> 【至高至善的掌权者，人们仿佛感觉不到其存在。次一等的，赢得人们的亲近赞誉。再次的，使人们畏惧害怕。更次的，遭人们侮慢轻蔑。】</para>
+						</listitem>
+						<listitem>
+							<para>信不足焉，有不信焉</para>
+							<para>【信实不足，才有不信】</para>	
+						</listitem>
+						<listitem>
+							<para>悠兮其贵言，功成事遂，百姓皆谓我自然</para>
+							<para>【悠悠然大道之行，无须发号施令，大功告成之后，百姓都视之为自然而然的事，说：我们 本来就是这样的啊】</para>	
+						</listitem>
+						<listitem>
+							<para>民之从事，常于几成而败之。慎终如始，则无败事。</para>
+							<para>【世人行事，往往是几近成功的时候又失败了。到最后一刻还像刚开始时一样谨慎，就不会 有失败的事了】</para>	
+						</listitem>	
+						<listitem>
+							<para>大直若屈，大巧若拙，大辩若讷</para>
+							<para>【最正直的好像弯曲，最聪明的好像愚拙，最善辩的好象口讷】</para>	
+							
+						</listitem>	
+						<listitem>
+							<para>善者吾善之，不善者吾亦善之，德善。信者吾信之，不信者吾亦信之，德信</para>
+							<para>【良善的人，以良善待他；不良善的人，也以良善待他，从而结出良善的果子。 信实的人，以信实待他；不信实的人，也以信实待他，从而结出信实的果子】</para>	    
+							
+						</listitem>
+						<listitem>
+							<para>以其终不自为大，故能成其大</para>
+							<para>【由于他从始至终不自以为大，这就成就了他的伟大】</para>	
+						</listitem>																							
+
+
+					</itemizedlist>	
+	            </para>		
+			</sect2>
+			<sect2>
+			    <title>职场情商方面</title>
+			<para>
+	              
+	                <itemizedlist>
+						<listitem>
+							<para>是以兵强则灭，木强则折 </para>
+							<para>【是以兵强则灭，木强则折】</para>	
+						</listitem>
+						<listitem>
+							<para>强大处下，柔弱处上</para>
+							<para>【强大的处于下势，柔弱的处于上势】</para>	
+						</listitem>
+						<listitem>
+							<para>弱之胜强，柔之胜刚，天下莫不知，莫能行</para>
+							<para>【天下万物中，没有什么比水更柔弱了。然而对付坚强的东西，没有什么能胜过水 了。这是因为水柔弱得没有什么能改变它。这个柔弱胜刚强的道理，天下的人没有不知道的，却没有能实行的】</para>	
+						</listitem>
+						<listitem>
+							<para>民之从事，常于几成而败之。慎终如始，则无败事。</para>
+							<para>【世人行事，往往是几近成功的时候又失败了。到最后一刻还像刚开始时一样谨慎，就不会 有失败的事了】</para>	
+						</listitem>	
+						<listitem>
+							<para>夫唯不争，故天下莫能与之争，知人者智，自知者明。胜人者有力，自胜者强,知足者富</para>
+							<para>【唯有不争不竞，方能无过无失.能识透别人，算有智慧；能识透自己，才有真聪明。能战胜别人，算有力量；能战胜自己，才是真强。 知足的人富有】</para>	
+						</listitem>									
+						<listitem>
+							<para>不知道不知道，知道不知道，不知道知道，知道知道
+							</para>
+						</listitem>				
+						<listitem>
+							<para>民之从事，常于几成而败之。慎终如始，则无败事。
+							【世人行事，往往是几近成功的时候又失败了。到最后一刻还像刚开始时一样谨慎，就不会 有失败的事了】</para>
+						</listitem>						
+					</itemizedlist>	
+	            </para>		
+			</sect2>							
+		</sect1>		
+        </chapter>
+
+	
+	<chapter>
+		<title>关于“程序员”工作</title>
+        <para>
+			在IT公司，人数最多的职位就是“程序员”了。 当前JAVA程序员在软件行业里需求是最大，人数也是最多了。就以JAVA程序员这一职位，做一个工作分析			    
+		</para>    
+		
+		<sect1>
+			<title>难点-永不停止技术学习和晋升瓶颈</title>		
+		    <para>       
+			               晋升瓶颈 :下图是一个初级程序员如何在技术的道路上爬上职位最顶峰。很多多数人在程序员的岗位上工作好几年，还是中级或者高级程序员的层次徘徊
+			    <figure>
+					<title>[图片引用]JAVA程序员-你的位置在哪里</title>
+					<mediaobject>
+						<imageobject role="html">
+							<imagedata fileref="media/book/java-path.jpg" align="center"
+								scalefit="0" width="100%" />
+						</imageobject>
+						<imageobject role="fo">
+							<imagedata fileref="media/book/java-path.jpg" align="center"
+								scalefit="1" width="100%" />
+						</imageobject>
+					</mediaobject>
+				</figure>  
+			</para>
+		
+			<para>永不停止的技术学习</para>			
+		    <para>       
+			           程序员的工作看上去在办公室非常体面，过于投入，得小心各种职业病状。
+				<figure>
+					<title>[图片引用]程序员的职业病</title>
+					<mediaobject>
+						<imageobject role="html">
+							<imagedata fileref="media/book/it-body.jpg" align="center"
+								scalefit="0" width="100%" />
+						</imageobject>
+						<imageobject role="fo">
+							<imagedata fileref="media/book/it-body.jpg" align="center"
+								scalefit="1" width="100%" />
+						</imageobject>
+					</mediaobject>
+				</figure>    			
+         </para>
+		</sect1>          
+		<sect1>
+			<title>解决捷径</title>			
+		    <para>
+			<tip>
+			    <para>一叶障目，不见泰山；两豆塞耳，不闻雷霆</para>
+				<para>一片树叶挡住了眼睛，连面前高大的泰山都看不见。比喻被局部现象所迷惑，看不到全局或整体</para>
+			</tip>							
+            </para>		
+            
+		    <para>
+		        如何花少时间得到最大的技术学习效果呢？
+		        拥有较好的问题解决能力和新技术的敏锐感，是一个优秀程序员基本素质，
+		        在工作中 一定要注意自我总结和技术归类，在自己的心理有一个清晰的技术地图。拿JAVA技术来说 ，各种技术框架和各种概念繁多，如果一一细读，花费的时间是巨大的。
+		       所以我们一定要注意归类聚焦。见下图：
+			<figure>
+				<title>JAVA的技术地图</title>
+				<mediaobject>
+					<imageobject role="html">
+						<imagedata fileref="media/book/tech-java.jpg" align="center"
+							scalefit="0" width="100%" />
+					</imageobject>
+					<imageobject role="fo">
+						<imagedata fileref="media/book/tech-java.jpg" align="center"
+							scalefit="1" width="100%" />
+					</imageobject>
+				</mediaobject>
+			</figure>    		   
+		     我们在工作中，通常没有多少机会决定使用什么技术，但我们在项目中使用一项技术时，一定要花时间 了解跟性质接近的技术概念，分别有什么有优缺点，
+		 能自己手写几个例子对比一下。经过一段时间的积累，在技术的学习上就变得很简单了，基本触类旁通。就拿前台开发来说，如果你对JQUERY的使用熟悉了，
+		 其它前台框架，基本没有学习难度，    
+		    </para> 
+		    <para>	
+		        如何晋升？
+		  在IT公司，如果能力突出，晋升还是相对公平的。技术学习能力上，大家水平不会有非常大的差距。口头和书面能力是基本功，这里不做讨论。      
+		  很多多数人在程序员的岗位上工作好几年，还是中级或者高级程序员的层次徘徊，这些人要反省自己哪里出问题了。
+		  通常属于属于 ：1.具有很好的编码能力，对业务分析和项目管理没有兴趣。2。什么都知道一些，但什么都不精通么     
+		  对于第1种情况建议就专心研究某一领域的技术，成为这一领域的专家。
+		  第2中情况的人比较多，这类型的人适应性比较强，可以承担各种类型的工作，如果在工作中注意结合一些“最佳实践”也是非常有价值复合型人才【国外把很多工作细分，然后总结出某些方法论】，
+		 比如在 企业业务分析方面的最佳实践有“TOGAF” ，在项目管理方面有“持续集成”，在运维管理方面有“ITIL”. 通过这些方法论的学习，是可以将一个普通工作人员的专业性提高几个层次的。   
+		    </para> 
+		</sect1>          		        	    
+	</chapter>
+	<chapter>
+		<title>关于“测试”工作</title>
+	</chapter>
+	<chapter>
+		<title>关于“产品经理”工作</title>
+	</chapter>
+	<chapter>
+		<title>关于“培训师咨询师”工作</title>
+	</chapter>		
+	<chapter>
+		<title>关于“运维管理”工作</title>
+		<para>
+				<tip >
+				    <para>变则通，通则久</para>
+				    <para>复杂的问题简单化，抓住主要矛盾</para>
+				</tip>		    
+		</para>
+		<para>
+		    《易经》的核心讲求“三易”，即“简易”、“不易”、“变易”。易经讲求的“简易”，即平易，就是把复杂的问题简单化，抓住主要矛盾。 
+                                   当代管理学推崇的“简单管理”就是管理发展的方向。管理的制度化、规范化、标准化、信息化、普及化，是“简易”的路径，也是ITIL服务管理理论遵从的核心原理之一。ITIL的服务台及故障管理，讲求效率，讲求快速响应，快速解决，出现故障先尽快恢复业务。ITIL的问题管理，强调透过现象看本质，抓住问题的根源和主要矛盾，消除根源，使同类事件不再重复发生，并把解决方法放到已知错误数据库中，以后出现类似问题，可快速解决
+		</para>		
+
+		<para>
+				<tip >
+				    <para>阴阳调和，此消彼长，生生不息，循环往复</para>
+				    
+				</tip>		    
+		</para>
+		<para>
+
+		    神似的生命循环 ，多数是圆形的理论体系，可以解决复杂的问题比如血循环理论，TOGAFT都是循环的《易传》乾第一，先有天；坤为二，后有地；屯为三，人物共生；蒙为四……直至既济六十三，未济六十四，周而复始，阴阳调和，此消彼长，生生不息，循环往复。 ITIL v3引入了IT服务全生命周期的概念：服务战略，服务设计，服务转换，服务运营，持续改进，反映了IT服务生命全周期的客观规律。服务的改进需要着眼全局，不能头痛医头，脚痛医脚。 
+		相同的和谐、平衡和可持续发展理念 
+月盈则亏，日午则偏，物极必反，阴阳调和，对立统一体现易经朴素唯物辩证法思想，它指导我们在与自然界和人类社会的关系上保持阴阳的动态平衡与和谐。 
+ITIL非常讲求平衡，追求成本和IT能力、需求和IT支持之间的动态平衡。在所有流程尤其是能力管理、财务管理、服务级别管理里充满了平衡的观点。比如：强调成本和容量要平衡，不要容量闲置或容量不足都不好。需求和供给之间要平衡，供大于需或需大于供都不好。 
+		
+			<figure>
+				<title>[图片引用]用圆形的思维看待理论指导</title>
+				<mediaobject>
+					<imageobject role="html">
+						<imagedata fileref="media/book/itil-vs-yj.jpg" align="center"
+							scalefit="0" width="100%" />
+					</imageobject>
+					<imageobject role="fo">
+						<imagedata fileref="media/book/itil-vs-yj.jpg" align="center"
+							scalefit="1" width="100%" />
+					</imageobject>
+				</mediaobject>
+				<tip xml:id="tip.how_set_win_env"><title>禅语</title>
+				    <para>关于如何添加相应路径到windows的环境变量中，不熟悉的可以参考：</para>
+				    <para>请查看</para>
+				</tip>				
+			</figure>             	
+ 	</para>		
+				
+		
+	</chapter>	
+	<chapter>
+		<title>关于“敏捷项目管理”</title>
+	</chapter>
+
+	
+
+	<appendix>
+		<title>参考文档</title>
+		<bibliolist>
+			<biblioentry>
+				<title></title>
+				<bibliosource>
+					http://spring21.javaeye.com
+				</bibliosource>
+				<author>
+					<personname></personname>
+				</author>
+			</biblioentry>
+		</bibliolist>
+	</appendix>
+	<!--
+	<revhistory>
+		<revision><revnumber>1.01</revnumber><date>2010-05-01</date><revremark>整理国学内容的学习捷径</revremark></revision>
+		<revision><revnumber>1.02</revnumber><date>2012-01-01</date><revremark>整理JAVA程序员学习捷径</revremark></revision>
+		<revision><revnumber>1.03</revnumber><date>2014-05-08</date><revremark>整理敏捷项目管理内容</revremark></revision>
+	</revhistory>
+	-->
+		
+</book>

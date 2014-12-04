@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>faq常见问题</title>
+	
+		
+			<sect1>
+				<title>新建任务-自由任务风格</title>
+				<para>其实就是随意的运行指定目录的脚本或者批处理</para>
+			</sect1>
+			<sect1>
+				<title>新建任务-maven项目配置</title>
+				<para>目前java最流行的构建脚本工具，jenkins为这种项目提供专门的配置界面</para>
+			</sect1>
+			<sect1>
+				<title>新建任务-matrix project</title>
+				<literallayout>
+   <![CDATA[
+如果你的应用需要运行在不同的环境下，这个特性非常有用。比方一些产品类型的应用，需要支持各种数据库和Jdk版本的兼容
+场景1：我们的ssh框架程序，如果需要保证在
+"JDK", with possible value "1.4", "1.5", "1.6"
+和数据库 "oracle", "mysql" 都正常运行
+•with JDK 1.4, with the property database=oracle (i.e. the JVM is
+launched with -Ddatabase=oracle)
+•with JDK 1.5, with the property database=oracle
+•with JDK 1.6, with the property database=oracle
+•with JDK 1.4, with the property database=mysql
+•with JDK 1.5, with the property database=mysql
+•with JDK 1.6, with the property database=mysql
+
+场景2
+假设我们要开发一个web应用功能， 需要硬性在多种环境中， We need to
+操作系统 :Solaris, Linux, and Windows.
+巍峨班服务器：Glassfish, Tomcat, and Jetty.
+JDK: JDK5 and JDK6.
+2种不同的 xml实现
+如果我们都测试和配置， 3*3*2*2= 36中不同的组合. 如果按正常的配置，需要配置36个JOB
+场景3
+Then, once everything is finished, you will be able to see the results
+for each iteration.
+	  ]]>
+				</literallayout>
+			</sect1>
+		
+
+
+		<sect1>
+			<title>分布式"master/slave" mode</title>
+			<para>
+				为什么要配置主从，有2种情况
+				1. 当我们运行的JOB过多，会导致服务器内存，cpu不够用，这时，我们需要配置slave
+				2.
+				我们需要测试不同环境下运行
+				主就是个门户，统一显示所有结果
+				配置方法和运行效果请见视频
+				第1步.配置好主从机器上的联系
+				https://wiki.jenkins-ci.org/display/JENKINS/Step+by+step+guide+to+set+up+master+and+slave+machines
+				第2步.下载节点插件，让JOB可以选择节点进行build
+				继续配置上面建好的job
+				1、首先在jenkins的系统管理-》插件管理下载下载一个 Node and Label parameter plugin
+				2、点击刚刚建好的一个job，点击配置
+				配置一下参数化构建过程
+			</para>
+		</sect1>
+
+		<sect1>
+			<title>fingerprinting来管理依赖关系</title>
+			<para>
+				使用file fingerprinting来管理依赖关系。当在Jenkins上你的job依赖其他的job时，可以使用file
+				fingerprinting来帮助定位依赖的版本信息。如果项目使用MAVEN，基本就没什么意义了
+			</para>
+		</sect1>
+
+		<sect1>
+			<title>多视图</title>
+			<para>
+			</para>
+		</sect1>
+
+	</chapter>

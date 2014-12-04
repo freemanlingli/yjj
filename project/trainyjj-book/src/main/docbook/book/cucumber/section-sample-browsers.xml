@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>分享镜像</title>
+	<para>
+
+		<example>
+			<title> 怎么做多浏览器自动测试</title>
+			<screen>
+											<![CDATA[
+
+ Feature: Testing for login page
+ 
+ Scenario: Login without password
+ 
+  Given I want to use the browser Firefox
+   When I type testuser1 in the username input field
+   And I click the login button
+   Then I see the login error message "Please provide a password."
+   And I am on the login page
+ 
+ Scenario: Login without username
+ 
+  Given I want to use the browser Firefox
+   When I type testuser1 in the password input field
+   And I click the login button
+   Then I see the login error message "Please provide a username."
+   And I am on the login page
+ 
+ Scenario: Login with bad username
+ 
+  Given I want to use the browser Firefox
+   When I type testuser in the username input field
+   When I type testuser in the password input field
+   And I click the login button
+   Then I see the login error message "That username does not match anything in our records."
+   And I am on the login page
+ 
+ Scenario: Login with bad password
+ 
+  Given I want to use the browser Firefox
+   When I type testuser1 in the username input field
+   When I type testuser2 in the password input field
+   And I click the login button
+   Then I see the login error message "The password provided does not match the username entered."
+   And I am on the login page
+ 
+ Scenario Outline: Successful login
+ 
+  Given I want to use the browser [browser]
+   When I type testuser1 in the username input field
+   When I type testuser1 in the password input field
+   And I click the login button
+   Then I am on the launcher page
+ 
+  Examples:
+     |     browser  |
+     |     Firefox  |
+     |     Chrome       |
+     |     InternetExplorer   |
+   
+  
+  
+  package cucumber.examples;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+
+import java.util.HashMap;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.android.AndroidDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
+//import org.openqa.selenium.iphone.IPhoneDriver;
+import org.openqa.selenium.safari.SafariDriver;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class Hello {
+	// these are the different browsers we are willing to run against
+	public enum Browsers {
+		Firefox, Chrome, InternetExplorer, Android, Ipad, Iphone, Opera, Safari
+	};
+
+	// this hashmap will keep our users that are active in the system
+	private HashMap<String, String> users = new HashMap<String, String>();
+	// this is our selenium webdriver controlling our browsers
+	private WebDriver driver;
+
+	@Before
+	// any steps we want to perform before we start our tests
+	public void setup() {
+		// initializing our system by adding our users
+		users.put("testuser1", "testuser1");
+		users.put("testuser2", "testuser2");
+		users.put("testuser3", "testuser3");
+	}
+
+	@After
+	// any steps we want to perform after our tests
+	public void cleanUp() {
+		// close our browser, and finalize our driver instance
+		driver.quit();
+	}
+
+	// our statement for choosing a browser to test in
+	@Given("^I want to use the browser (.*)$")
+	public void chooseBrowser(Browsers browser) throws Exception {
+		// instantiate a new browser based on the choice of browsers
+		switch (browser) {
+		case Firefox: {
+			driver = new FirefoxDriver();
+			break;
+		}
+		case Chrome: {
+			driver = new ChromeDriver();
+			break;
+		}
+		case InternetExplorer: {
+			driver = new InternetExplorerDriver();
+			break;
+		}
+		// case Android: { driver = new AndroidDriver(); break; }
+		// case Iphone: { driver = new IPhoneDriver(); break; }
+		case Safari: {
+			driver = new SafariDriver();
+			break;
+		}
+		default: {
+			throw new Exception();
+		}
+		}
+		// open our test site's URL
+		driver.get("http://cosmiccomix.appspot.com/index.html");
+	}
+
+	// which user have we already logged in as
+	@Given("^I have logged in as (.*)$")
+	public void loginAs(String user) throws Exception {
+		// webdrivers select element by id functionality
+		By byElement = By.id("username");
+		// locate our element
+		WebElement webElement = driver.findElement(byElement);
+		// setup an action
+		Actions selAction = new Actions(driver);
+		// send keys to the element selected
+		selAction.sendKeys(webElement, user).perform();
+		// webdrivers select element By.id functionality
+		byElement = By.id("password");
+		// locate our element
+		webElement = driver.findElement(byElement);
+		// setup an action
+		selAction = new Actions(driver);
+		// send keys to the element selected
+		// selAction.sendKeys( webElement, byElement ).perform();
+		// webdrivers select element by id functionality
+		byElement = By.id("login");
+		// locate our element
+		webElement = driver.findElement(byElement);
+		// setup an action
+		// Actions selAction = new Actions(driver);
+		// click the element selected
+		selAction.click(webElement).perform();
+	}
+
+	// ////////////////////////////////
+	// Login Definitions
+	// ////////////////////////////////
+
+	// type in our username
+	@When("^I type (.*) in the username input field$")
+	public void enterUsername(String user) throws Exception {
+		// webdrivers select element by id functionality
+		By byElement = By.id("username");
+		// locate our element
+		WebElement webElement = driver.findElement(byElement);
+		// setup an action
+		Actions selAction = new Actions(driver);
+		// send keys to the element selected
+		selAction.sendKeys(webElement, user).perform();
+	}
+
+	// type in our password
+	@When("^I type (.*) in the password input field$")
+	public void enterPassword(String password) throws Exception {
+		// webdrivers select element by id functionality
+		By byElement = By.id("password");
+		// locate our element
+		WebElement webElement = driver.findElement(byElement);
+		// setup an action
+		Actions selAction = new Actions(driver);
+		// send keys to the element selected
+		selAction.sendKeys(webElement, password).perform();
+	}
+
+	// click the login button
+	@When("^I click the login button$")
+	public void clickLogin() throws Exception {
+		// webdrivers select element by id functionality
+		By byElement = By.id("login");
+		// locate our element
+		WebElement webElement = driver.findElement(byElement);
+		// setup an action
+		Actions selAction = new Actions(driver);
+		// click the element selected
+		selAction.click(webElement).perform();
+	}
+
+	// check our error messages
+	@Then("^I see the login error message \"(.*)\"$")
+	public void checkLoginErrorMessage(String errorMessage) throws Exception {
+		// webdrivers select element by id functionality
+		By byElement = By.id("overError");
+		WebElement errorElement = null;
+		// wait for up to 5 seconds for our error message
+		long end = System.currentTimeMillis() + 5000;
+		while (System.currentTimeMillis() < end) {
+			errorElement = driver.findElement(byElement);
+			// If results have been returned, the results are displayed in a
+			// drop down.
+			if (!errorElement.getText().equals("")) {
+				break;
+			}
+		}
+		// ensure we got our expected error message
+		assertEquals(errorMessage, errorElement.getText());
+		// if we have a bad username
+		if (errorMessage.contains("username")) {
+			byElement = By.id("userError");
+			errorElement = driver.findElement(byElement);
+			// ensure username is marked as the problem
+			assertEquals("*", errorElement.getText());
+		}
+		// if we got a bad password
+		if (errorMessage.contains("password")) {
+			byElement = By.id("passError");
+			errorElement = driver.findElement(byElement);
+			// ensure password is marked as the problem
+			assertEquals("*", errorElement.getText());
+		}
+	}
+
+	// check the page we are on
+	@Then("^I am on the (.*) page$")
+	public void checkPage(String page) throws Exception {
+		String title = null; // the page title
+		String url = null; // the page url
+		if (page.equalsIgnoreCase("login")) { // settings for the login page
+			title = "Login To Cosmic Comics";
+			url = "index.html";
+		}
+		if (page.equalsIgnoreCase("launcher")) {// settings for the launcher
+												// page
+			title = "Choose A Comic To View";
+			url = "launcher.html";
+		}
+		// ensure we have the expected title
+		assertEquals(title, driver.getTitle());
+		// ensure we are on the correct page
+		assertTrue(driver.getCurrentUrl().endsWith(url));
+	}
+}
+   
+													]]>
+			</screen>
+		</example>
+
+
+	</para>
+
+
+
+	<para>
+
+		<example>
+			<title>自建仓库docker-registry</title>
+			<screen>
+											<![CDATA[
+https://github.com/docker/docker-registry 
+最简单的做法就是用默认配置，更详细的说明则见官方文档。默认配置的方法如下：
+cd config
+cp config_sample.yml config.yml
+运行了：
+gunicorn --access-logfile - --debug -k gevent -b 0.0.0.0:5000 -w 1 wsgi:application
+自建的docker-registry如何使用呢？
+最先要做的一件事情就是：
+停掉那个加了代理的docker daemon，重启默认的服务：
+ps aux | grep "sudo docker"
+sudo kill [docker-daemon-pid]
+sudo service docker start
+因为自建的registry显然不再需要代理，加了代理反而会连不通。
+然后看看本地image的ID，准备挑一个拿来上传：
+docker images | grep ubuntu | grep latest
+接着设置其repository名：
+docker tag [image_id] [your-registry-host]:5000/ubuntu
+OK，现在可以push了：
+docker push [your-registry-host]:5000/ubuntu
+之后就可以在别的机器上从这个registry上下载了：
+docker pull [your-registry-host]:5000/ubuntu													]]>
+			</screen>
+		</example>
+	</para>
+</section>
+		
+
+
+

@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>如何开发大型项目</title>
+	<sect1>
+		<title>目录组织</title>
+
+		<literallayout>
+<![CDATA[开发大型javascript应用和做几个demo页面玩一玩最大的区别在于，要对一开始
+的文件组织和模块划分要有更清晰的认识。这项工作前期花了我较多的时间去处理。故而第一篇文章就写
+模块划分和目录组织，这方面本人经验不多，不足之处敬请指出。
+
+
+
+
+
+
+framwork当然用的是angularjs做MVVM框架。同时用了一些UI小插件，如angular-ui-bootstrap, 
+angular-ui和我自己写的表格插件angrid（https://github.com/zhangdiwaa/anGrid）。
+因为表格插件对于本项目来说比较重要，这里采用自己写的表格插件主要是为了便于定制。
+
+1.控制器的加载
+从myApp开始，myApp所有的依赖都必须先行加载。虽然angularjs可以使用路由按需加载模板，但是控制器却要先行加载（如下面的代码所示）。
+$route.when('/view1', {template: 'partials/partial1.html', controller: MyCtrl1});
+的项目里有可分4个角色模块（用户、服务台、办事人员、系统管理员），对于一个入口点压力已经很大了，每个模块还有20多个页面，难道所有的控制器、以来模块都要全部加载吗？这显然不科学。必须按需加载
+
+于是我想到了require.js这个AMD工具。，而是因为require.js文档丰富，在github上有很多例程，适合教其他两个开发人员使用。除此以外require.js的AMD模式跟dojo的AMD按需加载方
+式如出一辙，因此使用过dojo开发的我对require.js更有好感。于是我最终还是使用了require.js做AMD方式的按需加载。
+github上还有人基于RequireJS写了在angular路由时动态加载templete,controller,和directives的插件。在模块较少较清晰的情况下，这样已经够用了。
+ https://github.com/matys84pl/angularjs-requirejs-lazy-controllers
+ 
+ 2.我们的程序真的只需要一个app做入口点吗？
+ 在angularjs的教程中，总是使用一个入口模块（通常是叫myApp）来组织整个程序。不论是angular-seed,phonecat这样的示
+ 例程序还是像NJBlog这样的比较大的应用都是一个入口点。但是，我们的项目跟这些都不同，是一个比他们都大的多、复杂的多的项目。由于本项
+ 目中的角色之间功能是严格分离的，所以产生了四大角色模块用户、服务台、办事人员、系统管理员，它们之间是不会串门的。所以这4个模块完全可
+ 以用4个app做入口点来组织程序。最后再加上一
+ 个登陆模块，做判定和跳转即可。使用requirejs最怕的问题就是依赖关系太多从而产生混乱，而这样划分5个入口的方式决定了每个app的依赖都不是太多，整个程序的功能逻辑一目了然。
+ 
+ 一开始的时候，我的文件目录完全是照书抄书仿照angular-seed进行组织的。考虑到文件较多较复杂，于是就设置了几个direcvtives、filters、service作为文件夹，存放对应的js文件。于是文件目录看起来就像下面这个样子：
+ 
+•controllers/
+	◦LoginController.js
+	◦RegistrationController.js
+	◦ProductDetailController.js
+	◦SearchResultsController.js
+ 
+•directives.js
+•filters.js
+•models/
+	◦CartModel.js
+	◦ProductModel.js
+	◦SearchResultsModel.js
+	◦UserModel.js
+ 
+•services/
+	◦CartService.js
+	◦UserService.js
+	◦ProductService.js
+ 
+但是这样真的好用吗？
+看起来文件排列的是很整齐，但是叫我的搭档来看，他依然不清楚这些对象的依赖关系。尤其当要重用某些模块的时候，他必须从各个文件夹中搜集相关文件，而且常常会遗漏某些文件夹中的对象。
+
+
+
+事实上，在快速开发中确实很少会在新项目中重用很多代码（重复代码倒有很多），但很可能需要重用登陆系统这样的整个模块。
+ 
+所以，不如按照功能模块去组织文件夹。最终，我的目录是这么排列的：
+ 
+ 
+◦css/
+◦img/
+◦js/
+ 
+■appAdmin/ (独立模块，以app名字开头，各app模块内容近似) 
+	■controller/ (相关的子模板的controller.js存放在这里)
+	■directives/ (相关的directive.js存放在这里)
+	■admin_app.js (app模型定义和路由配置文件)
+	■admin_main.js (requirejs的入口和配置文件)
+	■admin_services.js (app的相关服务配置文件)
+ 
+■appCustomer/
+■appHelpdesk/
+■appRepairer/
+■appLogin/
+■common/ (通用模块库)
+	■angular_filter/ (一些通用的过滤器)
+	■common_plugin.js (一些非基于angular的但比较重要组件，例如console plugin)
+	 
+■utils/ (其他组件)
+ 
+◦lib/ (包含所有第三方类库)
+◦templete/ (子模板文件夹，其内容按模块类型分类)
+	■common/
+	■tplAdmin/
+	■tplCustomer/
+	■tplHelpdesk/
+	■tplRepairer/
+ 
+◦404.html
+◦admin.html (admin模块的入口html)
+◦customer.html (customer模块的入口html)
+◦helpdesk.html (helpdesk模块的入口html)
+◦login.html (login模块的入口html)
+◦index.html (程序的总入口点，用以根据配置跳转到各个模块入口)
+◦repairer.html (repairer模块的入口html)
+
+
+
+一开始作者参考了
+•https://github.com/angular/angular-seed
+•https://github.com/zhangdiwaa/angular-coffee-AMD-seed
+•https://github.com/elsom25/angular-requirejs-html5boilerplate-seed
+•https://github.com/mz121star/NJBlog （一个使用 Mongodb+Nodejs+express+angularjs写的博客程序）
+•https://github.com/zhangdiwaa/ng-grid（一个基于angularjs写的grid插件）
+
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>表格自动刷新，监控</title>
+		<literallayout>
+<![CDATA[
+http://blog.fens.me/angularjs-ngtable-update/
+
+
+ngTable是一个基于AngularJS的directive设计一个表格项目，支持基本的表格操作，分页，排序，异步加载等功能。
+ 
+项目地址：https://github.com/esvit/ng-table
+我们顺利地用3种方式完成了，ngTable的动态更新！其它的控件也都是类似的操作，如果开发监控系统，websocket绝对是最优的选择，比起Ajax的性能，好上N多倍。
+表格是HTML中常见的表现形式，当我们用AngularJS做前端开发时，我可以选
+择用ngTable的开源组件。ngTable已经为了我们封装了常用的表格操作，节省我们大量的开发时间。
+ 
+本文将介绍如何动态更新表格，分为3种方式：1. 前端更新, 2. Ajax更新, 3. websocket更新。
+
+	  ]]>
+		</literallayout>
+	</sect1>
+	
+	
+	<sect1>
+		<title>理解何时使用什么技术概念</title>
+		<literallayout>
+<![CDATA[
+1那么我们什么时候应该使用service呢？
+答案是：无论何时，当我们需要在不同的域中共享数据的时候。另外，多亏了Angular的依赖注入系统，实现这一点是很容易并且很清晰的。
+好。那么我们什么时候应该使用service呢？答案是：无论何时，当我们需要在不同的域中共享数据的时候。另外，
+多亏了Angular的依赖注入系统，实现这一点是很容易并且很清晰的。
+使用了book服务
+var ctrl = [ '$scope', 'Book', function( scope, Book ) {
+   scope.$on( 'books.update', function( event ) {
+     scope.books = Book.books;
+   }); 
+   scope.books = Book.books;
+ }];
+ module.controller( "books.list", ctrl );
+	  ]]>
+	  
+定义了一个服务	  
+module.service( 'Book', [ '$rootScope', function( $rootScope ) {
+      var service = {
+      books: [
+        { title: "Magician", author: "Raymond E. Feist" },
+        { title: "The Hobbit", author: "J.R.R Tolkien" }
+      ],
+
+      addBook: function ( book ) {
+        service.books.push( book );
+        $rootScope.$broadcast( 'books.update' );
+      }
+   }
+   return service;
+}]);
+		</literallayout>
+	</sect1>	
+</chapter>

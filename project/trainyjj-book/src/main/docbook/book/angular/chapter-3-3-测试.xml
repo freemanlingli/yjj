@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>测试</title>
+	
+	<sect1>
+		<title>基本概念</title>
+			<literallayout>
+      <![CDATA[	
+	
+单元测试
+通常是小部分代码测测试，比如：我的排序是否正确， 逻辑是否正确
+
+为什么难测试？ 因为开发人员通常混合多种操作
+ It makes an XHR request, it sorts the response data and then it manipulates the DOM.
+
+	  ]]>
+			</literallayout>
+		    
+	</sect1>
+		
+	<sect1>
+		<title>如何测试</title>
+			<literallayout>
+      <![CDATA[
+http://www.html-js.com/article/1986
+
+Angular应用的额外福利
+AngularJS框架从一开始就是非常倾向于测试的。不用说，这些应用汇应该花费很多时间在e2e之上。 
+Protractor是一个又AngularJS团队编写的库，它是一个队WebDriverJS的包装，同时Jasmine在这里被指定用来测试，真是太爽了。 
+我们来看看Protractor都有什么额外的福利： 
+1.不需要基于id，css选择器，xpath等查询元素，你可以基于绑定，模型，迭代器等等进行测试。太贴心了！ 
+2.其中的Jasmine可以接受promises。因此，我们可以用下面的代码进行上面的测试来检查标题： 
+driver.getTitle().then(function(title){ expect(title).toBe('Baidu'); });
+可以重构为： 
+expect(driver.getTitle()).then('Baidu');
+ 除此之外，AngularJS中海油很多非常酷的特性来进行end-to-end测试。 
+ 
+ 
+ 
+ D:\tmp>npm install selenium-webdriver
+selenium-webdriver@2.43.5 node_modules\selenium-webdriver
+├── tmp@0.0.24
+├── adm-zip@0.4.4
+└── xml2js@0.4.4 (sax@0.6.0, xmlbuilder@2.4.4)
+ 
+
+	  ]]>
+			</literallayout>
+		    
+	</sect1>
+	
+
+	<sect1>
+		<title>	理解AngularJS的作用域Scope </title>
+		<para>
+				http://www.angularjs.cn/#!/A09C
+
+		</para>
+	</sect1>	
+	
+	<sect1>
+		<title>如何封装rest api</title>
+		<para>
+			
+
+		</para>
+	</sect1>
+</chapter>

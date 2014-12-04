@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>DOCKER</title>
+		<authorgroup>
+			<author>
+				<firstname>&name;
+				</firstname>
+				<affiliation>&lingli;
+				</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para>
+				Docker是一个足以改变人们创建软件方式的东西，它能让任何程序开发人员更轻松地、即刻地体会到海量计算性能的优势
+				Docker诞生之前，程序员在服务器端部署应用程序的步骤如下：安装→配置→运行。与传统部署模式不同，运用Docker，
+				程序员在服务器端部署应用程序的步骤如下：复制→运行。开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到主流的
+				Linux机器上。因为使用了容器，所以可以很方便的把生产环境和开发环境分开，互不影响.
+			</para>
+			<para>
+				Docker是一个云计算平台，它利用Linux的LXC、AUFU、Go语言、cgroup实现了资源的独立
+				，可以很轻松的实现文件、资源、网络等隔离，其最终的目标是实现类似PaaS平台的应用隔离
+				百度在大规模实践Docker,Google
+				的Compute Engine 也支持 docker 在其之上运行，Redhat也积极地在RHEL中集成对Docker的支持
+			</para>
+
+		</abstract>
+	</info>
+
+	<xi:include href="book/docker/chapter-background.xml" />
+	<xi:include href="book/docker/chapter-why.xml" />
+	<chapter>
+		<title>简单操作</title>
+		<xi:include href="book/docker/section-install-windows-centos.xml" />
+		<xi:include href="book/docker/section-basic-use.xml" />
+
+	</chapter>
+
+	<chapter>
+		<title>高级话题</title>
+		<xi:include href="book/docker/section-create-image.xml" />
+		<xi:include href="book/docker/section-hub.xml" />
+		<xi:include href="book/docker/section-ssh.xml" />
+		
+	</chapter>
+
+	<chapter>
+		<title>结论</title>
+
+		<para>
+			Docker提供了一种简单的方式将复杂应用打包到容器中，而且能轻松版本化、可靠分发。进而让轻量级的Linux容器和真正的虚拟机一样灵活、强大，但成本更低、方式更为便捷。
+		</para>
+		<para>
+			Docker旨在提供一种应用程序的自动化部署解决方案，在 Linux
+			系统上迅速创建一个容器（轻量级虚拟机）并部署和运行应用程序，并通过配置文件可以轻松实现应用程序的自动化安装、部署和升级，非常方便。因为使用了容器，所以可以很方便的把生产环境和开发环境分开，互不影响，这是
+			docker 最普遍的一个玩法。更多的玩法还有大规模 web 应用、数据库部署、持续部署、集群、测试环境、面向服务的云计算、虚拟桌面
+			VDI 等等
+		</para>
+		<para>docker无疑是运维工作的一项革命性创新，然而在有中国特色的互联网环境里，要折腾这玩意儿还真是不方便。
+			且不说docker.io的官网在墙外，包括它的apt源和image
+			index都在墙外，导致用户增加了很多不必要折腾成本，真是中国程序员的一大悲哀啊
+			你可以认为docker是一个类似虚拟机（VM）的东西，你可以把你要发布的应用打包成一个docker
+			image，然后部署到实际的机器上。这种机器可以是实际的服务器，也可以是VPS或其它PaaS之类的。然后，在一个机器环境里，你还可以同时跑几个docker
+			container。image和container的关系可以理解为“类”和“实例”的关系。而且在一个机器环境里跑的container还可以是基于不同的image。你可以随时把一个container打包成一个image作再次的部署。
+		</para>
+		<para>docker.io提供的官方仓库（index.docker.io，相当于github），也可以自建（叫docker-registry）。
+		</para>
+
+	</chapter>
+
+	<chapter>
+		<title>参考</title>
+      
+		<literallayout>
+   <![CDATA[
+http://www.docker.com  官网
+https://github.com/dotcloud/docker/  源码下载   
+https://www.dockboard.org/ten-docker-tips-and-tricks/	
+dockerlite: 轻量级 Linux 虚拟化 http://www.linuxidc.com/Linux/2013-07/87093.htm
+Docker的搭建Gitlab CI 全过程详解 http://www.linuxidc.com/Linux/2013-12/93537.htm
+Docker 和一个正常的虚拟机有何区别? http://www.linuxidc.com/Linux/2013-12/93740.htm
+Docker 将改变所有事情 http://www.linuxidc.com/Linux/2013-12/93998.htm
+  ]]>
+		</literallayout>
+	</chapter>
+		<xi:include href="book/chapter-more.xml" />
+</book>

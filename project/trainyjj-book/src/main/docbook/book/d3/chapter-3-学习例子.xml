@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>学习例子</title>
+	<sect1>
+		<title>说明</title>
+
+		<literallayout>
+<![CDATA[例子都是可以直接在TOMCAT运行的，只是官方用了nodejs。
+			不过11版本的rest没有能在TOMCAT运行起来
+			0 - Bootstrapping
+			1 - Static Template
+			2 - Angular Templates
+			3 - Filtering Repeaters
+			4 - Two-way Data Binding
+			5 - XHRs & Dependency Injection
+			6 - Templating Links & Images
+			7 - Routing & Multiple Views
+			8 - More Templating
+			9 - Filters
+			10 - Event Handlers
+			11 - REST and Custom Services
+			12 - Applying Animations
+			The End
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>简单的数据绑定和循环指令-2.ftl</title>
+		<literallayout>
+<![CDATA[
+我们在视图里面制定使用那个控制器，
+ <body ng-controller="PhoneListCtrl">
+  <ul>
+    <li ng-repeat="phone in phones"> 句是一个AngularJS迭代器
+      {{phone.name}}
+    <p>{{phone.snippet}}</p>
+    </li>
+  </ul>
+
+
+PhoneListCtrl控制器
+function PhoneListCtrl($scope) {
+  $scope.phones = [
+    {"name": "Nexus S",
+     "snippet": "Fast just got faster with Nexus S."},
+    {"name": "Motorola XOOM™ with Wi-Fi",
+     "snippet": "The Next, Next Generation tablet."},
+    {"name": "MOTOROLA XOOM™",
+     "snippet": "The Next, Next Generation tablet."}
+  ];
+}  
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>演示过滤-3.ftl</title>
+
+		<literallayout>
+<![CDATA[
+使用filter过滤器：filter函数使用query的值来创建一个只包含匹配query记录的新数组
+  
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title> 演示排序-4.ftl</title>
+
+		<literallayout>
+<![CDATA[
+
+  
+	  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>演示排序route和构建多视图-5.ftl-6.ftl-7.ftl</title>
+		<literallayout>
+<![CDATA[
+angular-route 需要自己添加
+你将学习如何创建一个布局模板并且通过路由功能来构建一个具有多个视图的应用。
+为了增加详细信息视图，我们可以拓展index.html来同时包含两个视图的模板代码，但是这样会很快给我们带来巨大的麻烦
+相反，我们要把index.html模板转变成“布局模板”。这是我们应用所有视图的通用模板。其他的“局部布局模板”随后根据当
+前的“路由”被充填入，从而形成一个完整视图展示给用户。 
+AngularJS中应用的路由通过$routeProvider来声明，它是$route服务的提供者。这项服务使得控制器、视图模板与
+当前浏览器的URL可以轻易集成。应用这个特性我们就可以实现深链接，它允许我们使用浏览器的历史(回退或者前进导航)和书签。
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>详细内容显示-8.ftl</title>
+		<literallayout>
+<![CDATA[
+注意IE有缓存，可能看不到详细，就是在7的基础上修改了 详细显示的数据，采取根据ID再次发起一次
+请求得到某个具体数据的json,
+
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>定制化插件9.ftl</title>
+		<literallayout>
+<![CDATA[
+替换文字为图标,编写了一个过滤器，
+现在转到一个手机详细信息页面。在上一步，手机详细页面显示“true”或者“false”来
+说明某个手机是否具有特定的特性。
+现在我们使用一个定制的过滤器来把那些文本串图形化：√作为“true”；以及×作为“false”。
+来让我们看看过滤器代码长什么样子。
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>点小图，大图显示改图-10.ftl</title>
+		<literallayout>
+<![CDATA[
+git checkout -f step-10
+                    现在转到一个手机详细信息页面。在上一步，手机详细页面显示“true”或者“false”来说明某个手机是否具有特定的特性。
+               现在我们使用一个定制的过滤器来把那些文本串图形化：√作为“true”；以及×作为“false”。来让我们看看过滤器代码长什么样子。
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>RESTful客户端11.ftl</title>
+		<literallayout>
+<![CDATA[
+         对我们应用所做的最后一个改进就是定义一个代表RESTful客户端的定制服务。有了这个客户端我们可以用一种更简单的方式
+         来发送XHR请求，而不用去关心更底层的$http服务（API、HTTP方法和URL）。
+
+在11中，是这样取所有手机信息的如果没有参数就是query了
+var phonecatServices = angular.module('phonecatServices', ['ngResource']);
+phonecatServices.factory('Phone', ['$resource',
+  function($resource){ 
+    return $resource('phones/:phoneId.json', {}, {
+      query: {method:'GET', params:{phoneId:'phones'}, isArray:true}      
+    });
+  }]);
+  AngularJS的$resource相比于$http更加适合于与RESTful数据源交互。而且现在我们更容易理解控制器这些代码在干什么了。
+phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
+  function($scope, Phone) {
+    $scope.phones = Phone.query();
+    $scope.orderProp = 'age';
+  }]);
+在10.ftl中，是通过发请求，等回调结果
+phonecatControllers.controller('PhoneListCtrl', ['$scope', '$http',
+  function($scope, $http) {
+    $http.get('phones/phones.json').success(function(data) {
+      $scope.phones = data;
+    });
+
+    $scope.orderProp = 'age';
+  }]);  
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>模块注入</title>
+		<literallayout>
+<![CDATA[
+<!doctype html>
+<html ng-app="timeExampleModule">
+  <head>
+<script src="../../common/angularjs-1-0-1/angular.js"></script>
+ 
+<script type="text/javascript" language="javascript">
+	angular.module('timeExampleModule', []).
+    factory('time', function($timeout) {       //配置 the injector
+ 	    var time = {};
+	    (function tick() {
+	      time.now = new Date().toString();
+	      $timeout(tick, 1000);
+	    })();
+	    return time;
+  	});
+	function ClockCtrl($scope, time) {
+	  $scope.time = time;
+	}
+  </script>
+  </head>
+  <body>
+    <div ng-controller="ClockCtrl">
+      Current time is: {{ time.now }}
+    </div>
+  </body>
+</html>
+ 
+    <div ng-controller="ClockCtrl">
+      Current time is: {{ time.now }}
+    </div>
+  </body>
+</html>
+  
+	  ]]>
+		</literallayout>
+	</sect1>
+</chapter>

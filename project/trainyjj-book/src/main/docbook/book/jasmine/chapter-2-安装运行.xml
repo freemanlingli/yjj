@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装运行</title>
+	<sect1>
+		<title>nodejs下的例子运行</title>
+		<literallayout>
+   <![CDATA[	    
+ 安装
+  下载 git clone https://github.com/pivotal/jasmine.git
+   解压dist下的版本，到工程目录
+ http://localhost:5555/demo/common/jasmine-2.0.3/SpecRunner.html   
+ 例子 
+D:\train\code\aaa\train\project\ea\ea-template\src\main\webapp\common\jasmine-2.0.3\src\ 有play和song的2个js对象
+D:\train\code\aaa\train\project\ea\ea-template\src\main\webapp\common\jasmine-2.0.3\spec\ 测试案例
+http://localhost:5555/demo/common/jasmine-2.0.3/SpecRunner.html
+
+语法
+describe("A suite", function() {
+  it("contains spec with an expectation", function() {
+    expect(true).toBe(true);
+  });
+});
+
+例子：控制器作为数据源，用这种方式测试非常方便
+describe('PhoneCat controllers', function() {
+  describe('PhoneListCtrl', function(){
+    it('should create "phones" model with 3 phones', function() {
+      var scope = {},
+      ctrl = new PhoneListCtrl(scope);
+      expect(scope.phones.length).toBe(3);
+    });
+  });
+});
+	  ]]>
+		</literallayout>
+	</sect1>
+</chapter>

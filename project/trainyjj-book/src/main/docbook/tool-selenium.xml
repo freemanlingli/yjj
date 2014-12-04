@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>Selenium参考手册
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>&name;
+				</firstname>
+				<affiliation>&lingli;
+				</affiliation>
+			</author>
+		</authorgroup>
+		<date>09/16/2014</date>
+		<abstract>
+			<para>
+				因为selenium 2.0来了，selenium
+				RC的舞台该退场，seleniumIDE录制脚本，将脚本导出成java所类型的语言进行测试还是比较繁琐的。
+				前台自动化测试，需要在开发上注意一定的规范，比方ID的定义。自动化测试框架[1]
+				x，即是应用于自动化测试所用的框架。按照框架的定义，自动化测试框架要么是提供可重用的基础自动化测试模块，如：selenium[2]
+				、watir等，它们主要提供最基础的自动化测试功能，比如打开一个程序，模拟鼠标和键盘来点击或操作被测试对象，
+测试的对象应该是几种
+ -静态内容
+   ?每页有争取的title否，
+   ?测试页面是否包含一个图片?
+   ?测试是否有一个注脚 
+ -连接测试： 如果 连接地址经常变动，还是需要，手动测试一遍，比方说一个资源共享网站，里面的内容经常调整整理，我们最好都测一片，确保每个连接都能打开
+ -动态元素:比方选择项就是循环产生的
+ -Ajax Tests
+ -功能测试 
+判断方式有2种 ：Assert 会直接退出  Verify 只是记录				
+				
+
+			</para>
+			<para>&note;
+			</para>
+		</abstract>
+	</info>
+	<xi:include href="book/selenium/chapter-1-常见场景的写法.xml" />
+	<xi:include href="book/selenium/chapter-2-定位元素的方法.xml" />
+	<xi:include href="book/selenium/chapter-3-driver介绍.xml" />
+	<xi:include href="book/selenium/chapter-9-参考资料.xml" />
+	<xi:include href="book/chapter-more.xml" />
+</book>

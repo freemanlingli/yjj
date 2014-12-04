@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>Cucumber行为驱动开发
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>凌黎 </firstname>
+				<othername>tom.ling</othername>
+				<surname>li</surname>
+				<affiliation>&lingli;
+				</affiliation>
+			</author>
+		</authorgroup>
+		<releaseinfo>1.04.00</releaseinfo>
+		<abstract>
+			<para>&note;</para>
+		</abstract>
+	</info>
+	<chapter>
+		<title>什么是cucumber</title>
+		<para>
+			<literallayout>
+   <![CDATA[
+Cucumber ：
+
+http://cukes.info/
+https://github.com/cucumber/cucumber/wiki/Cucumber-Backgrounder
+若打开Cucumber的项目主页，就会发现它的标题是
+Cucumber - Making BDD fun 
+是一个能够理解用普通语言 描述的测试用例的支持行为驱动开发
+（BDD Behaviour Driven Design）的
+领域特定语言（domain-specific languages，简称DSL）DSL不仅提高了代码的易读
+性，让开发者可以和领域专家更好的交流自动化测试工具。用Ruby编写，支持Java和·Net等多种
+开发语言。
+ 
+Cucumber绝不只是个测试工具那么简单，他最重要的目标是要让软件相关人员能用大家能理解的语
+言进行沟通使用 Cucumber会迫使我们把测试写清楚，用自然语言地方式描述测试，就必然要求你把
+测试想得比较清楚，对比我们在其他代码库中随处可见的各种莫名其妙的 TestCase，Cucumber
+ 测试的可维护性高很多，通过测试就能快速了解一个系统的各类功能。技术上来说，它并不比纯的 
+ JUnit TestCase 高明多少
+
+其他语言也有类似的BDD框架，比如StoryQ是.net的BDD框架	
+	具体安装设置细节略过，Cucumber新手上路可以看视频： 
+http://railscasts.com/episodes/155-beginning-with-cucumber 
+或者文字版： 
+http://asciicasts.com/episodes/155-beginning-with-cucumber
+  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+
+	<chapter>
+		<title>为什么要用</title>
+		<para>
+			TDD强调的是功能模块的测试，很多人都愿意使用单元测试，想尝试TDD，但都会有个问题，不知从哪里开始下手，而我们面向更多的是对一个场景的实现，因此BDD应运而生，更符合开发者的思维习惯。
+			做开发，不能没有文档。我们做开发时，一般都是先接到一个需求描述（简单文档），我们作为开发者，要做的工作就是实现这个功能（场景）的代码编写，例如用户注册、用户登录、忘记密码的流程。
+			而Cucumber就是为我们提供了这么一个工具，让我们能在用简单语言描述我们要做的事情同时，也顺带完成了测试代码的编写，剩下的就类似是做填空题一样，逐步编写实现代码，让所有测试都通过。
+			当所有实现代码都出来了，一个完整的项目也就出来了（文档+代码+测试）。这也符合Rails
+			DRY原则，不要做重复工作。
+		</para>
+		<para>
+			理想情况：如果团队足够专业，可以有一个负责程序设计的leader专门负责把需求用Cucumber的features来描述，根据各人的能力和工作量，再分发给其下的负责编码的开发人员进行实现的编码。
+			推荐使用场景：
+			核心业务数据为主的：比方电信的网管系统，结算系统.普通的的单元测试，还是无需多做一层转换
+			技术总结：
+			测试案例的理想情况：业务语言 + 业务数据,所以Cucumber其实就是一个文本解释器，转换后直接运行java.
+			Cucumber用来执行解释 .feature文件里的Gehrkin代码。
+			好处是，可以让
+			业务分析人员，领域分析专家预先就写好测试案例和场景，程序员就去实现这种场景。
+			cucumber-jvm\examples\
+			有各种例子，注意有专门配合WEB开发的例子
+		</para>
+	</chapter>
+
+	<chapter>
+		<title>怎么做</title>
+		<section>
+			<title>新开发思维的思考步骤的</title>
+			<para>
+			<literallayout>
+   <![CDATA[			    
+1.增加新功能或者改buger之前，不要急忙先编码，线写好业务场景的描述，
+Why when where who what why
+评估新特性
+2.开发变运行测试
+在写新场景，
+-先构想你希望的输出，
+-规划步骤 （Givens, Whens and Thens）
+-在步骤的基础上定义出操作
+编写 *.feature，
+但这么做的好处是，测试案例比较好阅读，业务人员也能读懂测试代码，但可以更好体
+现产品功能测试。
+3.编码实现
+还学写一个JAVA来定义
+通俗语言的用到的语法,开发人员要熟悉工具的规则
+4.运行测试案例测试业务场景
+(简单来说就是：写用例->跑测试->看结果->写实现->换个用例，再来一次)
+实际进行项目开发时，都是针对一个应用场景、案例、用户故事的思路来进行代码编写的，
+只有当流程跑通了（features
+的测试通过），下一步才是保证这个流程在
+一些异常情况下也能得到预期的结果（用单元测试来保证，如更多的边界测试），简单
+来说是就 setup
+features->coding->unit test
+同事认为，应该在写完cucumber的测试代码后，再写单元测试代码，最后再写实现
+代码，简单来说是 setup features
+->unit test->coding
+以上是我一个月来尝试BDD的经验分享，作为抛砖，其中或许有片面或错误的见解，望
+有同学们不吝指教、一起探讨。
+  ]]>
+			</literallayout>
+			</para>
+		</section>
+		
+		<section>
+			<title>通俗语言去怎么描述一个故事</title>
+			<para>
+				<literallayout>
+   <![CDATA[
+每个 feature file 是用 gherkin的语言模式编写，具体语法背景可以参考下面关于该
+语言的章节介绍
+
+案例：cucumber中的写法：
+Feature: 登录模块-不同的角色登录后，看到的操作版面是有区别的。
+说明：EA有2中基本的角色定义，管理员角色 和 普通人员角色，他们登录后 看到 的界面是不一样的    
+  
+  Scenario:  "管理员"登录录场景测试 
+    Given open ea site
+    When login by user name admin 
+    Then result pagetile should be admin管理页面
+    
+ Scenario: "普通人员"登录录场景测试 
+    Given open ea site
+    When login by user name test 
+    Then result pagetile should be 企业架构   
+
+关于故事的标题
+----------
+ Feature: 登录模块-不同的角色登录后，看到的操作版面是有区别的。  
+这个故事的标题：描述了不同人的行为，开发完成后。这给我们一个清晰的描述“效果”的。
+ 如果标题写成“登录管理”或者"登录行为"，我们将不得不费尽的理解我们到底要做些什么，
+ 而且一些边缘部分也不清晰
+
+关于故事的说明
+----------
+EA有2中基本的角色定义，[管理员角色 和 普通人员角色]，他们[登录]后 
+[看到 的界面是不一样]的    符合 范本：
+"As a [角色] I want [功能] so that [利益]"
+有许多优点。通过指定这个说明的叙述者，你可以知道你在和谁讨论这个功能。通过指定利益，
+可以让故事的作者考虑为什么需要这个功能。有趣的是，如果你发现这个功能并不会带来相
+应的利益的话。这意味着你有还没有考虑到的故事.故事应该尽可能的小，从而适应迭代 ，
+便便演示，并没有关于这个的硬性规定。你只要能把整个演示分开。通常，如果一个故事
+里面有超过5到6个场景的话，最好将他细分到更小的子场景中。
+例如：
+我们可以更进一步的考虑银行现金卡的状态：它是不是超过有效期，这样的话我就不能用
+它取钱，ATM还会把它退还给我吗？如果ATM机交易过程中故障了怎么办？如果我的账
+户是透支账户怎么办？
+这样最好将这个故事分开成三个更小的故事：
+•	账户所有人取钱（假设：ATM工作正常并且银行卡有效）
+•	账户所有人用无效卡取钱（假设：ATM工作正常）
+•	账户所有人从故障ATM机取钱（假设：银行卡有效）
+虽然这看上去有些会多写几个文件，但是它让你可以在业务模式下演示，并且给你更清晰
+的需求跟踪。重要的是这样可以保证总是在业务层通过场景（使假设清晰）来分割故事，
+而不是在技术层（例如，数据库开发人员这样分，界面开发人员那样分）来分隔。这样
+就让业务可以在它们自己的模式下进行演示，而不是然你来考虑。
+
+关于场景的标题编写
+-----------
+应该可以将场景一一排列之后通过标题分辨出他们之间的区别。在我们的例子中，我们可
+以看到场景的标题只说明了各个场景之间的区别。简单地让用户，分析师，测试人员和开
+发人员采用“given/when/then”方式，就可以让世界的不确定性消失。不是所有
+的场景都这么简单。事件序列是一个最好的代表，它被描述成
+：given [一些环境] when [做什么事情] then [发生什么]
+ when [做另一件事情] then [发生另一件事情] 
+ 等等。一个项目开发主管告诉我他感觉到分析师和开发人员在两个层面上交谈而不能找到
+ 一个方法来演示。在介绍了几天“given/when/have”模式之后，他看到了交流质
+ 量戏剧性的提高。
+
+关于Given的编写
+-----------
+应该包含所有且不多余的所需环境 任何额外的Given的描述都会让初次阅读故事的人
+（无论是技术方面的人还是业务方面的人）难以理解他们到底需要知道什么。同样，任
+何遗漏的Given都是确定的假设。如果你能够从给定的Given得到另外的结果，那么
+你一定遗漏的什么。
+  ]]>
+				</literallayout>
+			</para>
+		</section>
+	</chapter>
+
+	<chapter>
+		<title>案例</title>
+		<xi:include href="book/cucumber/section-sample-bank.xml" /><!-- -->
+	</chapter>
+	<xi:include href="book/cucumber/chapter-bdd.xml" />
+	
+	<xi:include href="book/cucumber/chapter-gherkin.xml" />
+	<xi:include href="book/cucumber/chapter-ref.xml" />	
+</book>
