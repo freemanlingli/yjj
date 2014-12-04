@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>DOCKER的优缺点和使用场景</title>
+	<section>
+		<title>优点</title>
+
+		<orderedlist numeration="arabic">
+			<listitem>
+				<para>对硬件要求低，操作速度快</para>
+				<para>
+					启动VM是个大动作，需要占用大量内存；而启动Docker容器只耗费很少的CPU和内存，
+					一两秒中进入“虚拟机”感觉,同时运行十几个“虚拟机”,笔记本也可以搭一个小集群.
+					并且非常快。几乎和启动一个常规进程没什么区别。不仅运行容器快，构建镜像、捕获文件系统的快照也很快。
+					docker虚拟机操作启动，创建镜像备份只需几秒时间，传统虚拟机模式快照捕捉分别也要几分钟
+				</para>
+			</listitem>
+			<listitem>
+				<para>linux平台下的移植很方便</para>
+				<para>
+					Docker容器能移植到任何运行Docker的操作系统上。无论是Ubuntu还是CentOS，只要Docker运行着，你的容器就能运行。
+					原理跟JAVA的跨平台一样。
+				</para>
+			</listitem>
+			<listitem>
+				<para>适合做软件发布和部署</para>
+				<para>
+					部署一个一致的生产环境说起来容易做起来难。即使你使用了chef
+					和puppet之类的工具，像操作系统升级，还有一些其它的事情而造成的主机及环境之间的改变，往往是常有的事.
+					docker所做的事情就是赋予你一种能力，使你可以将OS快照存入一个通用的镜像，
+					并使得在往其它的docker主机上部署时变得容易。对于本地，开
+					发、质量管理、产品等等，都是用的同一个镜像。当然你也可以用其它的工具来做到这一点，但是可能没有这么容易或者这么快
+				</para>
+			</listitem>
+
+		</orderedlist>
+
+	</section>
+
+	<section>
+		<title>缺点</title>
+		<para>
+			<simplelist>
+				<member> Docker是基于Linux 64bit的，无法在windows/unix或32bit的linux环境下使用;
+				</member>
+				<member>LXC是基于cgroup等linux kernel功能的，因此container的guest系统只能是linux
+					base的隔离性相比KVM之类的虚拟化方案还是有些欠缺，所有container公用一部分的运行库;
+				</member>
+				<member>网络管理相对简单，主要是基于namespace隔离cgroup的cpu和cpuset提供的cpu功能相比KVM的等虚拟化方案相比难以度量(所以dotcloud主要是按内存收费)
+				</member>
+				<member> docker对disk的管理比较有限;</member>
+				<member> container随着用户进程的停止而销毁，container中的log等用户数据不便收集</member>
+			</simplelist>
+
+		</para>
+	</section>
+	<section>
+		<title>使用场景</title>
+		<para>
+			<simplelist>
+				<member>作为一名架构师，我 需要在自己笔记本演示多种环境下技术攻关 SOA服务，集群、面向服务的云计算
+				</member>
+				<member>作为一名测试人员，我需要为开发人员虚拟很多环境，自动化测试和持续集成的 各种服务器环境的安装配置
+				</member>
+				<member>我是一个程序员 我需要本地的各种软件的运行环境，比如tomcat、oracle。。。
+				</member>
+				<member> 我是一个运维人员或者实施人员 ，日常部署和升级程序非常繁琐，如果能给操作系统进行版本管理，每次升级更新降会非常方便
+				</member>
+				<member> 我是一个销售或者培训师， 我需要演示各种环境和工具的demo演示</member>
+			</simplelist>
+
+		</para>
+	</section>
+</chapter>

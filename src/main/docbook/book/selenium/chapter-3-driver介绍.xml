@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title> Driver 说明</title>
+	<sect1>
+		<title>HtmlUnit Driver </title>
+
+		<literallayout>
+   <![CDATA[
+HtmlUnit Driver： 
+速度最快；平台独立；支持JavaS次日平台； 
+不是图形化的，即你无法在浏览器中看到页面元素被点击的过程； 
+其JavaScript引擎是Rhino，与主流浏览器的均不同（Chrome V8, Safari Nitro, FF TraceMonkey...），因此JavaScript执行结果可能稍微不同； 
+而另外三种FireFox Driver、Internet Explorer Driver和Chrome Driver都可在真正的浏览器中运行，因此是可视化的；并且支持JavaScript；只是运行速度较慢； 
+HtmlUnit Driver：这是目前最快，最轻巧的实施的WebDriver。顾名思义，这是基于HtmlUnit。HtmlUnit是Java一个WebBrowser没有图形用户界面的实现。
+
+
+优点：
+WebDriver最快的实现方式
+纯java跨平台性好
+支持javascript
+缺点：
+模拟其他浏览器的JavaScript行为（见下文）
+现今流行的浏览器没有使用HtmlUnit所使用的JavaScript引擎。如果使用HtmlUnit测试JavaScript的结果可能会与实际使用浏览器不同。当我们说“JAVASCRIPT”其实我们的
+意思是“JavaScript和DOM”。虽然DOM是由W3C定义的，但是每个浏览器都有自己的方式使用JavaScript来实现DOM。HtmlUnit对JavaScript操作DOM具有良好的支持和完整实现，
+给人留下了深刻的印象，但它和任何其他浏览器一样：它有自己的方式和W3C标准的主流浏览器的DOM实现差异，尽管其有模仿其他浏览器的能力。
+支持javascript：
+HtmlUnitDriverdriver =newHtmlUnitDriver(true);
+注：HtmlUnitDriver默认是模拟firefox3.6来处理javascript。（具体作用还未研究）
+
+  ]]>
+		</literallayout>
+
+	</sect1>
+
+
+	<sect1>
+		<title>Firefox Driver</title>
+
+		<literallayout>
+   <![CDATA[
+  这是一个比较好的WebDriver，目前已经支持到了10.0版本。运行Firefox需要加载Selenium WebDriver.xpi插件。
+优点：
+在真正的浏览器上运行，且支持javascript
+运行速度快于IE
+缺点：
+运行速度低于HtmlUnit Driver
+修改Firefox的配置文件：FirefoxDriver可以通过自己设置Firefox的配置文件，如启动浏览器时，加载Firebug插件。
+
+  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>Internet Explorer Driver</title>
+
+		<literallayout>
+   <![CDATA[
+这是目前最快，最轻巧的实施的WebDriver。顾名思义，这是基于HtmlUnit。HtmlUnit是Java一个WebBrowser没有图形用户界面的实现。
+  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>Chrome Driver</title>
+
+		<literallayout>
+   <![CDATA[
+是一个独立的服务器，是由Chromium项目组协助开发的。ChromeDriver由三个部件组成：chrome浏览器本身，支持ChromeDriver的语言
+			和支持ChromeDriver和Chrome之间通信。使用ChromeDriver必须启动一个后台程序（即：支持ChromeDriver的语言和支持ChromeDriver和Chrome之间通信的工程）。
+			优点：
+			l运行在真正的浏览器上，且支持javascript；
+			l由于Chrome是Webkit内核的浏览器，所以Chrome
+			Driver可以一定程度上测试Safari。但是需要注意的是Chrome使用自己的V8
+			javascript引擎，而Safari是Nitro引擎，在javascript的执行上还是有区别的。
+			缺点：
+			l运行速度低于HtmlUnit Driver		
+
+  ]]>
+		</literallayout>
+	</sect1>
+</chapter>

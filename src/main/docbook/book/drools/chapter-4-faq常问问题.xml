@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>FAQ常问问题</title>
+
+	<sect1>
+		<title>如何封装spring api</title>
+			<literallayout>
+      <![CDATA[
+1.web。xml 配置一个自动启动的
+<listener-class>org.activiti.rest.common.servlet.ActivitiServletContextListener</listener-class>
+
+public class ActivitiServletContextListener implements ServletContextListener {
+    public void contextInitialized(ServletContextEvent event) {
+      ProcessEngine processEngine = null;
+      processEngine = ProcessEngines.getDefaultProcessEngine();
+    }
+}
+
+
+	  ]]>
+			</literallayout>
+		    
+	</sect1>
+	<sect1>
+		<title>如何封装rest api</title>
+		<para>
+			
+
+		</para>
+	</sect1>
+</chapter>

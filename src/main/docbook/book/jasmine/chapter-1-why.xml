@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>为什么使用Jasmine</title>
+	<sect1>
+		<title>新的</title>
+		<literallayout>
+<![CDATA[	  
+
+http://www.cnblogs.com/frostbelt/archive/2012/08/03/2622302.html
+Jasmine-javascript的BBD行为测试: AngularJS的开发者倾向于使用Jasmine行为驱动开发（BBD）框架
+作为前台的单元测试，无需持续集成进行调用，单元测试用来测试我们用js编写的控制器和其他组件都非常方便，但是不能方便的对DOM操作和应用集成进行测试
+ 对于这些来说，
+ 
+ 端到端测试是一个更好的选择。
+ 能很方便的和Ant、Maven等进行集成进行自动化测试，也可以方便和Jekins等持续集成工具进行集成，可以生成测试结果的XMl文档。
+ 参考：http://www.weakweb.com/articles/255.html
+       http://pivotal.github.com/jasmine/
+下载：https://github.com/pivotal/jasmine/downloads
+
+ 
+QUnit
+QUnit是jQuery团队开发的JavaScript单元测试工具，功能强大且使用简单。http://api.qunitjs.com/
+对自动化支持不好，很难和Ant、Maven或自动构建等工具集成，主要用在浏览器中进行测试。
+
+ 
+单元测试：http://code.google.com/p/js-test-driver/
+不能在浏览器中测试，只能通过自动化工具或控制台运行。生成的结果不够直观。 
+安装使用稍微有点麻烦，依赖于JAVA环境。
+
+ http://docs.angularjs.org/api/ng.$rootScope.Scope     
+•Karma . 用于运行单元测试 
+•Protractor . 用于运行端到端测试
+
+总结
+---------------------
+Jasmine功能强大，风格也简单明了，符合前端开发者的编程习惯，推荐
+QUnit框架简单方便，测试界面直观详细
+JsTestDriver可以和QUnit等框架结合，可以同时测多个浏览器。但安装复杂，只能在控制台显示，不友好，不够清晰
+FireUnit小巧灵活，加上Firebug的人气应该很受欢迎
+如果需要进行自动化测试， 多了解一下Jasmine和JsTestDriver，本文未深入
+
+
+
+例如对控制器做测试
+describe('PhoneCat controllers', function() {
+escribe('PhoneListCtrl', function(){
+    it('should create "phones" model with 3 phones', function() {
+      var scope = {},
+      ctrl = new PhoneListCtrl(scope);
+      expect(scope.phones.length).toBe(3);
+    });
+  });
+});      
+
+管这段测试代码的语法看起来和我们之前用Jasmine写的单元测试非常像，但是端到端测试使用的是AngularJS端到端测试器提供的接口。
+describe('PhoneCat App', function() {
+	escribe('Phone list view', function() {
+    beforeEach(function() {
+      browser().navigateTo('../../app/index.html');
+    });
+
+    it('should filter the phone list as user types into the search box', function() {
+      expect(repeater('.phones li').count()).toBe(3);
+      input('query').enter('nexus');
+      expect(repeater('.phones li').count()).toBe(1);
+      input('query').enter('motorola');
+      expect(repeater('.phones li').count()).toBe(2);
+    });
+  });
+});
+
+ ]]>
+		</literallayout>
+	</sect1>
+
+
+
+
+</chapter>

@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>重要概念的例子</title>
+	
+		<sect1>
+		<title>函数的参数可以随意个-实现函数重载</title>
+		<literallayout>
+   <![CDATA[	  
+ ECMAScript 不会验证传递给函数的参数个数是否等于函数定义的参数个数
+ 开发者定义的函数都可以接受任意个数的参数（根据 Netscape 的文档，最多可接受 255 个），
+ 而不会引发任何错误。任何遗漏的参数都会以 undefined 传递给函数，多余的函数将忽略。
+
+function doAdd() {
+  if(arguments.length == 1) {
+    alert(arguments[0] + 5);
+  } else if(arguments.length == 2) {
+    alert(arguments[0] + arguments[1]);
+  }
+}
+
+doAdd(10);	//输出 "15"
+doAdd(40, 20);	//输出 "60"
+
+	  ]]>
+			</literallayout>	
+	
+	</sect1>
+
+
+		<sect1>
+		<title>函数实际上是功能完整的对象</title>
+		<literallayout>
+   <![CDATA[	  
+var function_name = new function(arg1, arg2, ..., argN, function_body)}
+function sayHi(sName, sMessage) {
+  alert("Hello " + sName + sMessage);
+}
+
+也可以这样定义，下面的定义，也体现函数就是中对象
+var sayHi = new Function("sName", "sMessage", "alert(\"Hello \" + sName + sMessage);");
+
+--既然是对象，就是直接赋值
+var doAdd = new Function("iNum", "alert(iNum + 10)");
+var alsodoAdd = doAdd;
+doAdd(10);	//输出 "20"
+alsodoAdd(10);	//输出 "20"
+--既然是对象，就是直接作为参数传递
+function callAnotherFunc(fnFunction, vArgument) {
+  fnFunction(vArgument);
+}
+var doAdd = new Function("iNum", "alert(iNum + 10)");
+callAnotherFunc(doAdd, 10);	//输出 "20"
+
+
+
+	  ]]>
+			</literallayout>	
+	
+	</sect1>
+
+
+		<sect1>
+		<title>构造对象的方法</title>
+		<para>前使用最广泛的是混合的构造函数/原型方式。此外，动态原始方法也很流行，在功能上与构造函数/原型方式等价。可以采用这两种方式中的任何一种。不过不要单独使用经典的构造函数或原型方式，因为这样会给代码引入问题。</para>
+		<sect2>
+		<title>原型方式</title>
+		<literallayout>
+   <![CDATA[	  
+function Car() {
+}
+
+Car.prototype.color = "blue";
+Car.prototype.doors = 4;
+Car.prototype.mpg = 25;
+Car.prototype.showColor = function() {
+  alert(this.color);
+};
+
+var oCar1 = new Car();
+var oCar2 = new Car(); 
+
+	  ]]>
+			</literallayout>	
+	   </sect2>
+		<sect2>
+		<title>混合工厂方式</title>
+		<literallayout>
+   <![CDATA[	  
+function Car() {
+  var oTempCar = new Object;
+  oTempCar.color = "blue";
+  oTempCar.doors = 4;
+  oTempCar.mpg = 25;
+  oTempCar.showColor = function() {
+    alert(this.color);
+  };
+
+  return oTempCar;
+}
+	  ]]>
+			</literallayout>	
+	   </sect2>	   
+
+			<sect2>
+		<title>动态原型方法</title>
+		<literallayout>
+   <![CDATA[	  
+function Car(sColor,iDoors,iMpg) {
+  this.color = sColor;
+  this.doors = iDoors;
+  this.mpg = iMpg;
+  this.drivers = new Array("Mike","John");
+  
+  if (typeof Car._initialized == "undefined") {
+    Car.prototype.showColor = function() {
+      alert(this.color);
+    };
+	
+    Car._initialized = true;
+  }
+}
+
+	  ]]>
+			</literallayout>	
+	   </sect2>	   
+   
+	   
+	</sect1>
+
+
+	<sect1>
+		<title>call() 方法 和apply() 方法</title>
+		<literallayout>
+   <![CDATA[	  
+call() 方法是与经典的对象冒充方法最相似的方法。它的第一个参数用作 this 的对象。其他参数都直接传递给函数自身。例如：
+	  ]]>
+			</literallayout>	
+	
+	</sect1>
+
+
+
+</chapter>

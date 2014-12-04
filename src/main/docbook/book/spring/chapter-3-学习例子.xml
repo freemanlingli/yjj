@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>学习例子</title>
+	<sect1>
+		<title>srping的原理</title>
+			<literallayout>
+      <![CDATA[		
+1.spring的最大作用ioc/di,将类与类的依赖关系写在配置文件中，程序在运行时根据配置文件动态加载依赖的类，降低的类与类之间的藕合度。它的原理是
+在applicationContext.xml加入bean标记,在bean标记中通过class属性说明具体类名、通过property标签说明该类的属性名、
+通过constructor-args说明构造子的参数。其一切都是反射，当通过applicationContext.getBean(“id名称”)得到一个类实例时，就是以bean标签的类名、属性名、构造子的参数为准，通过反射实例对象，唤起对象的set方法设置属性值
+、通过构造子的newInstance实例化得到对象。
+
+2.spring第二大作用就是aop，其机理来自于代理模式，代理模式有三个角色分别是通用接口、代理、真实对象。代理、真实对象实现的是同一接口，将真实对象作为代理的一个属性
+，向客户端公开的是代理，当客户端调用代理的方法时，代理找到真实对象，调用真实对象方法，在调用之前之后提供相关的服务，如事务、安全、日志。其名词分别是代理、真实对象、装备、关切点、连接点
+	  ]]>
+			</literallayout>		
+	</sect1>		
+		
+	
+	<sect1>
+		<title>bean的定义方法</title>
+			<literallayout>
+      <![CDATA[		
+1.xml定义形式
+   <bean id="impEa"   class="com.app.ea.api.ImpEa">
+	<property name="infDemo"><ref bean="impTemplate" /></property>
+</bean>
+ 为什么要定义destroy-method （bean从容器里删除之前要调用的方法）
+ acitvity希望调用spring的bean 不用通过公共的，而用他们制定的processEngine统一调用，所以如此封装吧，，这样也不会有任何定义上的冲突
+<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean" destroy-method="destroy"></bean>
+为什么还可以通过bean的中的方法进行狗仔
+<bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />
+
+
+2注解的形式
+@Component("impTemplate")
+public class ImpTemplate extends ParentDemo implements InfDemo{}
+	  ]]>
+			</literallayout>		
+	</sect1>		
+
+	
+
+
+</chapter>

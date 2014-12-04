@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>FAQ常问问题</title>
+<sect1>
+		<title>原理</title>
+			<literallayout>
+      <![CDATA[
+1.测试主文件，将 源js文件和测试js 结合在一起
+
+D:\train\code\aaa\train\project\ea\ea-template\src\main\webapp\common\jasmine-2.0.3\SpecRunner.html
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Jasmine Spec Runner v2.0.3</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.0.3/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-2.0.3/jasmine.css">
+
+  <script type="text/javascript" src="lib/jasmine-2.0.3/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-2.0.3/jasmine-html.js"></script>
+  <script type="text/javascript" src="lib/jasmine-2.0.3/boot.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/Player.js"></script>
+  <script type="text/javascript" src="src/Song.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/SpecHelper.js"></script>
+  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
+</head>
+<body>
+</body>
+</html>
+      
+
+	  ]]>
+			</literallayout>
+		    
+	</sect1>
+	
+</chapter>

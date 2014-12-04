@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xl="http://www.w3.org/1999/xlink" xml:lang="en">
+	<info>
+		<title>大型文档编写项目工具模板 </title>
+		<para>学习多人协作编写文档</para>
+		<authorgroup>
+			<author>
+				<firstname>&author;</firstname>
+			</author>
+		</authorgroup>
+		<releaseinfo>&version;</releaseinfo>
+		<abstract>
+			<para>
+				<application>参考手册</application>
+				分工合作编写文档
+			</para>
+			<para>&notice;</para>
+		</abstract>
+		
+	
+	</info>
+
+	<preface>
+		<title>序言：Docbook的语法手册编写</title>
+			<para>docbook实现了文档的公共模块 和多版本发布</para>
+	</preface>
+
+	<chapter>
+		<title>图文结合的内容</title>
+		<section>
+	 
+		</section>
+	</chapter>
+  
+</book>

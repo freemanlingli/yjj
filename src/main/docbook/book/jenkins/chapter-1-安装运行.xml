@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook" > 
+
+		<title>安装运行</title>
+
+		<sect1>
+			<title>安装运行</title>
+			<para>
+				http://jenkins-ci.org/ 官网下载jenkins.war 文件。
+				将jenkins.war文件放入tomcat下的webapps目录下，
+				运行tomcat，访问下面网址
+				http://localhost:8080/jenkins。
+			</para>
+		</sect1>
+		<sect1>
+			<title>制定jenkin_home的工作目录</title>
+			<para>
+				jenkins的默认工作目录是用户目录下的文件夹，我们通过设置tomcat的启动文件，可以更换别的路径
+				set
+				JENKINS_HOME=D:\train\soft\jenkins-home-ea\
+			</para>
+		</sect1>			
+	</chapter>

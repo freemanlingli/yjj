@@ -1,0 +1,30 @@
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>My First Book</title>
+		<author>
+			<firstname>凌</firstname>
+			<surname>黎</surname>
+		</author>
+		<copyright>
+			<year>2014</year>
+			<holder>凌黎</holder>
+		</copyright>
+	</info>
+	<preface>
+		<title>序言</title>
+
+	</preface>
+	<chapter>
+		<title>标题</title>
+	</chapter>
+	<chapter>
+		<title>标题</title>
+	</chapter>
+	<appendix>
+	</appendix>
+	<appendix>
+	</appendix>
+	<index>
+	</index>
+</book>

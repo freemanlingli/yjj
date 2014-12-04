@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>为什么用规则引擎</title>
+	<sect1>
+		<title>案例-奖励积分设置</title>
+		<para>
+模拟一个应用场景：网站伴随业务产生而进行的积分发放操作。比如支付宝信用卡还款奖励积分等。
+发放积分可能伴随不同的运营策略和季节性调整，发放数目和规则完全不同，如果使用硬编码的方式去
+伴随业务调整而修改，代码的修改、管理、优化、测试、上线将是一件非常麻烦的事情，所以，将发放规
+则部分提取出来，交给Drools管理，可以极大程度的解决这个问题。
+（注意一点的是，并非所有的规则相关内容都建议使用Drools，这其中要考虑系统会运行多久，规则变更
+频率等一系列条件，如果你的系统只会在线上运行一周，那根本没必要选择Drools来加重你的开发成本，
+java硬编码的方式则将是首选）
+我们定义一下发放规则：
+积分的发放参考因素有：交易笔数、交易金额数目、信用卡还款次数、生日特别优惠等。
+定义规则：
+---------------------------------
+// 过生日，则加10分，并且将当月交易比数翻倍后再计算积分
+// 2011-01-08 - 2011-08-08每月信用卡还款3次以上，每满3笔赠送30分
+// 当月购物总金额100以上，每100元赠送10分
+// 当月购物次数5次以上，每五次赠送50分
+// 特别的，如果全部满足了要求，则额外奖励100分
+// 发生退货，扣减10分
+// 退货金额大于100，扣减100分
+
+ 积分计算对象   
+ ------------------------------
+public class PointDomain {  
+    private String userName;  
+    // 是否当日生日  
+    private boolean birthDay;  
+    // 增加积分数目  
+    private long point;  
+    // 当月购物次数  
+    private int buyNums;  
+    // 当月退货次数  
+    private int backNums;  
+    // 当月购物总金额  
+    private double buyMoney;  
+    // 当月退货总金额  
+    private double backMondy;  
+    // 当月信用卡还款次数  
+    private int billThisMonth;  
+    /** 
+     * 记录积分发送流水，防止重复发放 
+     * @param userName 用户名 
+     * @param type 积分发放类型 
+     */  
+    public void recordPointLog(String userName, String type){  
+        System.out.println("增加对"+userName+"的类型为"+type+"的积分操作记录.");  
+    }  
+  
+    public String getUserName() {  
+        return userName;  
+    }  
+// 其他getter setter方法省略  
+}  
+
+定义积分规则接口
+-------------------------------------
+public interface PointRuleEngine {  
+    public void initEngine();  
+    public void refreshEnginRule();  
+    public void executeRuleEngine(final PointDomain pointDomain);  
+}  
+
+
+规则接口实现类 
+--------------------- 
+public class PointRuleEngineImpl implements PointRuleEngine {  
+   private RuleBase ruleBase;  
+   public void initEngine() {  
+       // 设置时间格式  
+       System.setProperty("drools.dateformat", "yyyy-MM-dd HH:mm:ss");  
+       ruleBase = RuleBaseFacatory.getRuleBase();  
+           PackageBuilder backageBuilder = getPackageBuilderFromDrlFile();  
+           ruleBase.addPackages(backageBuilder.getPackages());  
+   }  
+     
+   public void refreshEnginRule() {  
+       ruleBase = RuleBaseFacatory.getRuleBase();  
+       org.drools.rule.Package[] packages = ruleBase.getPackages();  
+       for(org.drools.rule.Package pg : packages) {  
+           ruleBase.removePackage(pg.getName());  
+       }  
+       initEngine();  
+   }  
+   public void executeRuleEngine(final PointDomain pointDomain) {  
+       if(null == ruleBase.getPackages() || 0 == ruleBase.getPackages().length) {  
+           return;  
+       }  
+       StatefulSession statefulSession = ruleBase.newStatefulSession();  
+       statefulSession.insert(pointDomain);  
+       statefulSession.fireAllRules(new org.drools.spi.AgendaFilter() {  
+           public boolean accept(Activation activation) {  
+               return !activation.getRule().getName().contains("_test");  
+           }  
+       });  
+       statefulSession.dispose();  
+   }  
+ 
+   /** 
+    * 从Drl规则文件中读取规则 
+    */  
+   private PackageBuilder getPackageBuilderFromDrlFile() throws Exception {  
+       // 获取测试脚本文件  
+       List<String> drlFilePath = getTestDrlFile();  
+       // 装载测试脚本文件  
+       List<Reader> readers = readRuleFromDrlFile(drlFilePath);  
+       PackageBuilder backageBuilder = new PackageBuilder();  
+       for (Reader r : readers) {  
+           backageBuilder.addPackageFromDrl(r);  
+       }  
+       // 检查脚本是否有问题  
+       if(backageBuilder.hasErrors()) {  
+           throw new Exception(backageBuilder.getErrors().toString());  
+       }  
+       return backageBuilder;  
+   }  
+ 
+    private List<Reader> readRuleFromDrlFile(List<String> drlFilePath) throws FileNotFoundException {  
+        if (null == drlFilePath || 0 == drlFilePath.size()) {  
+            return null;  
+        }  
+        List<Reader> readers = new ArrayList<Reader>();  
+        for (String ruleFilePath : drlFilePath) {  
+            readers.add(new FileReader(new File(ruleFilePath)));  
+        }  
+        return readers;  
+    }  
+    private List<String> getTestDrlFile() {  
+        List<String> drlFilePath = new ArrayList<String>();  
+        drlFilePath  
+                .add("D:/workspace2/DroolsDemo/src/com/drools/demo/point/addpoint.drl");  
+        drlFilePath  
+                .add("D:/workspace2/DroolsDemo/src/com/drools/demo/point/subpoint.drl");  
+        return drlFilePath;  
+    }  
+}  
+
+获取单实例的RuleBase，我们定义一个工厂类
+-----------------------------------------
+public class RuleBaseFacatory {  
+    private static RuleBase ruleBase;  
+      
+    public static RuleBase getRuleBase(){  
+        return null != ruleBase ? ruleBase : RuleBaseFactory.newRuleBase();  
+    }  
+}  
+
+
+规则正文，分别用于积分发放和积分扣减
+--------------------------------------------
+《addpoint.drl》
+package com.drools.demo.point  
+import com.drools.demo.point.PointDomain;  
+
+rule birthdayPoint  
+    // 过生日，则加10分，并且将当月交易比数翻倍后再计算积分  
+    salience 100  
+    lock-on-active true  
+    when  
+        $pointDomain : PointDomain(birthDay == true)  
+    then  
+        $pointDomain.setPoint($pointDomain.getPoint()+10);  
+        $pointDomain.setBuyNums($pointDomain.getBuyNums()*2);  
+        $pointDomain.setBuyMoney($pointDomain.getBuyMoney()*2);  
+        $pointDomain.setBillThisMonth($pointDomain.getBillThisMonth()*2);  
+          
+        $pointDomain.recordPointLog($pointDomain.getUserName(),"birthdayPoint");  
+end  
+  
+rule billThisMonthPoint  
+    // 2011-01-08 - 2011-08-08每月信用卡还款3次以上，每满3笔赠送30分  
+    salience 99  
+    lock-on-active true  
+    date-effective "2011-01-08 23:59:59"  
+    date-expires "2011-08-08 23:59:59"  
+    when  
+        $pointDomain : PointDomain(billThisMonth >= 3)  
+    then  
+        $pointDomain.setPoint($pointDomain.getPoint()+$pointDomain.getBillThisMonth()/3*30);  
+        $pointDomain.recordPointLog($pointDomain.getUserName(),"billThisMonthPoint");  
+end  
+  
+rule buyMoneyPoint  
+    // 当月购物总金额100以上，每100元赠送10分  
+    salience 98  
+    lock-on-active true  
+    when  
+        $pointDomain : PointDomain(buyMoney >= 100)  
+    then  
+        $pointDomain.setPoint($pointDomain.getPoint()+ (int)$pointDomain.getBuyMoney()/100 * 10);  
+        $pointDomain.recordPointLog($pointDomain.getUserName(),"buyMoneyPoint");  
+end  
+  
+rule buyNumsPoint  
+    // 当月购物次数5次以上，每五次赠送50分  
+    salience 97  
+    lock-on-active true  
+    when  
+        $pointDomain : PointDomain(buyNums >= 5)  
+    then  
+        $pointDomain.setPoint($pointDomain.getPoint()+$pointDomain.getBuyNums()/5 * 50);  
+        $pointDomain.recordPointLog($pointDomain.getUserName(),"buyNumsPoint");  
+end  
+  
+rule allFitPoint  
+    // 特别的，如果全部满足了要求，则额外奖励100分  
+    salience 96  
+    lock-on-active true  
+    when  
+        $pointDomain:PointDomain(buyNums >= 5 && billThisMonth >= 3 && buyMoney >= 100)  
+    then  
+        $pointDomain.setPoint($pointDomain.getPoint()+ 100);  
+        $pointDomain.recordPointLog($pointDomain.getUserName(),"allFitPoint");  
+end  
+
+《subpoint.drl》
+package com.drools.demo.point  
+import com.drools.demo.point.PointDomain;  
+rule subBackNumsPoint  
+    // 发生退货，扣减10分  
+    salience 10  
+    lock-on-active true  
+    when  
+        $pointDomain : PointDomain(backNums >= 1)  
+    then  
+        $pointDomain.setPoint($pointDomain.getPoint()-10);  
+        $pointDomain.recordPointLog($pointDomain.getUserName(),"subBackNumsPoint");  
+end  
+  
+rule subBackMondyPoint  
+    // 退货金额大于100，扣减100分  
+    salience 9  
+    lock-on-active true  
+    when  
+        $pointDomain : PointDomain(backMondy >= 100)  
+    then  
+        $pointDomain.setPoint($pointDomain.getPoint()-10);  
+        $pointDomain.recordPointLog($pointDomain.getUserName(),"subBackMondyPoint");  
+end  
+
+
+
+运行效果
+----------------------------
+01.public static void main(String[] args) throws IOException {  
+02.        PointRuleEngine pointRuleEngine = new PointRuleEngineImpl();  
+03.        while(true){  
+04.            InputStream is = System.in;  
+05.            BufferedReader br = new BufferedReader(new InputStreamReader(is));  
+06.            String input = br.readLine();  
+07.              
+08.            if(null != input && "s".equals(input)){  
+09.                System.out.println("初始化规则引擎...");  
+10.                pointRuleEngine.initEngine();  
+11.                System.out.println("初始化规则引擎结束.");  
+12.            }else if("e".equals(input)){  
+13.                final PointDomain pointDomain = new PointDomain();  
+14.                pointDomain.setUserName("hello kity");  
+15.                pointDomain.setBackMondy(100d);  
+16.                pointDomain.setBuyMoney(500d);  
+17.                pointDomain.setBackNums(1);  
+18.                pointDomain.setBuyNums(5);  
+19.                pointDomain.setBillThisMonth(5);  
+20.                pointDomain.setBirthDay(true);  
+21.                pointDomain.setPoint(0l);  
+22.                  
+23.                pointRuleEngine.executeRuleEngine(pointDomain);  
+24.                  
+25.                System.out.println("执行完毕BillThisMonth："+pointDomain.getBillThisMonth());  
+26.                System.out.println("执行完毕BuyMoney："+pointDomain.getBuyMoney());  
+27.                System.out.println("执行完毕BuyNums："+pointDomain.getBuyNums());  
+28.                  
+29.                System.out.println("执行完毕规则引擎决定发送积分："+pointDomain.getPoint());  
+30.            } else if("r".equals(input)){  
+31.                System.out.println("刷新规则文件...");  
+32.                pointRuleEngine.refreshEnginRule();  
+33.                System.out.println("刷新规则文件结束.");  
+34.            }  
+35.        }  
+36.    }  
+执行结果：
+ 
+-----------------
+ 
+增加对hello kity的类型为birthdayPoint的积分操作记录.
+增加对hello kity的类型为billThisMonthPoint的积分操作记录.
+增加对hello kity的类型为buyMoneyPoint的积分操作记录.
+增加对hello kity的类型为buyNumsPoint的积分操作记录.
+增加对hello kity的类型为allFitPoint的积分操作记录.
+增加对hello kity的类型为subBackNumsPoint的积分操作记录.
+增加对hello kity的类型为subBackMondyPoint的积分操作记录.
+执行完毕BillThisMonth：10
+执行完毕BuyMoney：1000.0
+执行完毕BuyNums：10
+执行完毕规则引擎决定发送积分：380
+
+
+
+
+		    </para>
+	</sect1>		
+
+	
+
+</chapter>

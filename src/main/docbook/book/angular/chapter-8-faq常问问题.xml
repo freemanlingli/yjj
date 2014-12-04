@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>FAQ常问问题</title>
+	
+<sect1>
+<title>思维转换</title>
+			<literallayout>
+      <![CDATA[
+      http://damoqiongqiu.iteye.com/blog/1926475
+1.不要预先设计页面，然后再用DOM操作去修改它
+在jQuery里面，你会先设计好一个页面，然后再让它变成动态的。这是因为jQuery本身就是以混合使用的思路来设计的。基于这个简单的前提，jQuery目前已经变得臃肿不堪。
+但是在AngularJS的世界中，你心中首先必须有整体架构，然后从零开始构建应用。而不是一开始的时候就去想：“我已经有了这样一块DOM结构，我想让它做×××”，你必须首
+先思考你到底要完成什么功能，然后再开始动手，然后再设计你的应用，最后再去设计你的视图。
+2.不要混合使用jQuery和AngularJS
+类似地，不要一开始就抱有这样的想法：jQuery可以实现X、Y和Z，所以我只要在上面再覆盖一层AngularJS，把模型和控制器加上即可。当你刚开始使用AngularJS的时候，这种想法实在诱人，这也是为什么我总是建议AngularJS新手彻底抛弃jQuery的原因，直到他们习惯了以“Angular风格”去做事为止。
+在这里，以及在邮件列表里面，我看到过很多这种精心设计的解决方案，其中包含150或者200行代码的jQuery插件，然后他们再用一大堆回调函 数和$apply把这些插件粘到AngularJS上，这种做法非常复杂而且令人困惑不已；但是，他们最终居然能把这货弄跑起来了！这里的问题在于，在大 多数情况下，只需要很少的AngularJS代码就可以把这些jQuery插件重写一遍，然后所有事情都会突然变得简洁明了起来。
+底线是：在解决问题的过程中，首先“Think in AngularJS”（以AnguarJS的方式思考问题）；如果你想不到解决方案，请求助于社区；如果在尝试了所有这些方法之后还找不到简单的解决方案，然后再求助于jQuery。但是，不要让jQuery变成绊脚石，否则你永远无法真正掌握AngularJS。
+3.保持以架构的角度思考
+首先要明确一点，单页面应用是一种应用，它们不是web页面。所以，我们需要像服务端开发者那样去思考，而不是像客户端开发者那样思考。
+我们必须思考如何把我们的应用切分成独立的、可扩展的、可测试的组件。
+那么，你怎么才能做到这一点呢？你应该如何以AngularJS的方式思考问题呢？下面是一些基本的原则，与jQuery做个对比。
+
+	  ]]>
+			</literallayout>
+		    
+</sect1>	
+	
+<sect1>
+		<title>原理</title>
+			<literallayout>
+      <![CDATA[
+
+当应用引导时，AngularJS会创建一个注入器，我们应用后面所有
+依赖注入的服务都会需要它。这个注入器自己并不知道$http和$route是
+干什么的，实际上除非它在模块定义的时候被配置过，否则它根本都不
+知道这些服务的存在。注入器唯一的职责是载入指定的服务模块，在
+这些模块中注册所有定义的服务提供者，
+并且当需要时给一个指定的函数注入依赖（服务）。这些依赖通过它们
+的提供者“懒惰式”（需要时才加载）实例化
+      
+AngularJS应用引导过程有3个重要点：
+ 1.注入器(injector)将用于创建此应用程序的依赖注入(dependency injection)；
+ 2.注入器将会创建根作用域作为我们应用模型的范围；
+ 3.AngularJS将会链接根作用域中的DOM，从用ngApp标记的HTML标签开始，逐步处理DOM中指令和绑定。
+一旦AngularJS应用引导完毕，它将继续侦听浏览器的HTML触发事件，
+如鼠标点击事件、按键事件、HTTP传入响应等改变DOM模型的事件。  
+一旦AngularJS应用引导完毕，它将继续侦听浏览器的HTML触发事件，
+如鼠标点击事件、按键事件、HTTP传入响应等改变DOM模型的事件。    
+      
+      
+控制器      
+----------------------------
+主要用于
+-初始化$scope object.
+-增加行为 Add behavior to the $scope object.
+
+Controller 可以定义多个在，前台可以嵌套，等于继承测效果
+
+
+不要做下面操作
+操作DOM — 只做业务逻辑，不要有显示逻辑 ，否则印象测试， 可以通过大量的指令或者自己定制化指令来操作COM
+表单输入 （ Use angular form controls instead）
+过滤输出 （Use angular filters instead）.
+不要跨控制器去共享（ Use angular services instead.）
+管理生命周期 (for example, to create service instances).      
+      
+      
+指令directives
+-------------
+ng-app
+	 指令标记了AngularJS脚本的作用域，在<html>中添加ng-app属性即
+	 说明整个<html>都是AngularJS脚本作用域。开发者也可以在局部使
+	 用ng-app指令，如<div ng-app>，则AngularJS脚本仅在该<div>中运行。
+ng-controller
+ng-repeat
+{{}}
+   绑定-双大括号 ,制定数据的来源，我们看得出来，来源控制是在前台JS
+   不用定义在后台
+   这里的表达式实际上是我们应用的一个数据模型引用，
+   这些我们在PhoneListCtrl控制器里面都设置好了 
+$scope
+  http://docs.angularjs.org/api/ng.$rootScope.Scope
+  作用域,当应用启动之后，会有一个根作用域被创建出来，而控制器的作用域是根作用域的一个典型后继。
+这个控制器的作用域对所有<body ng-controller="PhoneListCtrl">标记内部的数据绑定有效。
+
+ng-model 
+     定义一个数据值绑定 传给filter行数 ，这样定义绑定是非常方便清晰的
+     以前的框架，只能通过ID去取值
+   <input ng-model="query">
+   <li ng-repeat="phone in phones | filter:query">  
+   
+   调用  AngularJS的$filter函数来处理ngRepeat指令的输入。
+   filter函数使用query的值来创建一个只包含匹配query记录的新数组。
+
+ng-show  验证Email控制显示
+     <input type="email" ng-model="user.email" name="uEmail" required/><br />
+      <div ng-show="form.uEmail.$dirty && form.uEmail.$invalid">Invalid:
+          <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+          <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+      </div>
+
+ng-bind-template 
+    面正加载的时候{{}}它们已经显示给用户看了。一个更好的解决方案是
+    使用ngBind或者ngBindTemplate指令，它们在页面加载时对用户是不可见的  
+    <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
+ 
+ngSrc
+		img ng-src="{{phone.imageUrl}}">
+		如果我们仅仅用一个正常src属性来进行绑定（<img class="diagram" src="{{phone.imageUrl}}">），
+		因为浏览器载入页面时，同时也会请求载入图片，AngularJS在页面载入完毕时才开始编译——浏览器请求载
+		入图片时{{phone.imageUrl}}还没得到编译！有了这个ngSrc指令会避免产生这种情况，
+		使用ngSrc指令防止浏览器产生一个指向非法地址的请求。
+
+ngView
+   指令的角色是为当前路由把对应的视图模板载入到布局模板中。
+
+    
+内置服务
+----------------------   
+$http
+    AngularJS众多内建服务中之一，这些服务可以处理一些Web应
+    用的通用操作。AngularJS能将这些服务注入到任何你需要它们的地方。
+    服务是通过AngularJS的依赖注入DI子系统来管理的。依赖注入服务可以使你的Web应
+     用良好构建（比如分离表现层、数据和控制三者的部件）并且松耦合
+     （一个部件自己不需要解决部件之间的依赖问题，它们都被DI子系统所处理）。
+   
+$route服务来说，$routeProvider对外提供了API接口，
+   通过API接口允许你为你的应用定义路由规则  
+   
+   angular.module('phonecat', []).
+		  config(['$routeProvider', function($routeProvider) {
+		  $routeProvider.
+		      when('/phones', {templateUrl: 'partials/phone-list.html',   controller: PhoneListCtrl}).
+		      when('/phones/:phoneId', {templateUrl: 'partials/phone-detail.html', controller: PhoneDetailCtrl}).
+		      //:phoneId参数的使用。$route服务使用路由声明/phones/:phoneId作为一个匹配当前URL的模板。
+		      所有      //以:符号声明的变量（此处变量为phones）都会被提取，然后存放在$routeParams对象中
+	
+	      otherwise({redirectTo: '/phones'});
+		}]);
+     
+特性
+--------------
+{{}}绑定-双大括号  
+    AngularJS需要运算其中的表达式并将结果插入DOM中
+    DOM可以随着表达式运算结果的改变而实时更新
+AngularJS表达式 与Javascript表达式
+  http://angularjs.cn/#!/A00s
+	AngularJS视图中的表达式就是Javascript表达式，这种认识不完全对，
+	因为AngularJS不会用Javascript的eval()函数去执行表达式。 
+	不过除了以下几个需要区别的地方以外，
+	你可以把AngularJS表达式看成是Javascript表达式：
+	 •属性表达式：属性表达式是对应于当前的作用域的，不像Javascript对应的是全局window对象。
+	 •允许未定义值：执行表达式时，AngularJS能够允许undefined或者null，不像Javascript会抛出一个异常。
+	 •没有控制结构： 你不能在AngularJS表达式中使用“条件判断”、“循环”、“抛出异常”等控制结构。
+	 •过滤器(类似unix中的管道操作符)： 你可以通过过滤器链来传递表达式的结果。例如将日期对象转变成指定的阅读友好的格式。
+
+
+
+
+	  ]]>
+			</literallayout>
+		    
+	</sect1>
+	<sect1>
+		<title>如何测试</title>
+			<literallayout>
+      <![CDATA[
+      
+      http://www.cnblogs.com/frostbelt/archive/2012/08/03/2622302.html
+Jasmine-javascript的BBD行为测试: AngularJS的开发者倾向于使用Jasmine行为驱动开发（BBD）框架
+作为前台的单元测试，无需持续集成进行调用，
+ 单元测试用来测试我们用js编写的控制器和其他组件都非常方便，但是不能方便的对DOM操作和应用集成进行测试
+ 对于这些来说，端到端测试是一个更好的选择。
+ 能很方便的和Ant、Maven等进行集成进行自动化测试，也可以方便和Jekins等持续集成工具进行集成，可以生成测试结果的XMl文档。
+ 参考：http://www.weakweb.com/articles/255.html
+       http://pivotal.github.com/jasmine/
+下载：https://github.com/pivotal/jasmine/downloads
+
+ 
+QUnit
+QUnit是jQuery团队开发的JavaScript单元测试工具，功能强大且使用简单。http://api.qunitjs.com/
+对自动化支持不好，很难和Ant、Maven或自动构建等工具集成，主要用在浏览器中进行测试。
+
+ 
+单元测试：http://code.google.com/p/js-test-driver/
+不能在浏览器中测试，只能通过自动化工具或控制台运行。生成的结果不够直观。 
+安装使用稍微有点麻烦，依赖于JAVA环境。
+
+
+ http://docs.angularjs.org/api/ng.$rootScope.Scope     
+•Karma . 用于运行单元测试 
+•Protractor . 用于运行端到端测试
+
+总结
+---------------------
+Jasmine功能强大，风格也简单明了，符合前端开发者的编程习惯，推荐
+QUnit框架简单方便，测试界面直观详细
+JsTestDriver可以和QUnit等框架结合，可以同时测多个浏览器。但安装复杂，只能在控制台显示，不友好，不够清晰
+FireUnit小巧灵活，加上Firebug的人气应该很受欢迎
+如果需要进行自动化测试， 多了解一下Jasmine和JsTestDriver，本文未深入
+
+
+
+例如对控制器做测试
+describe('PhoneCat controllers', function() {
+escribe('PhoneListCtrl', function(){
+    it('should create "phones" model with 3 phones', function() {
+      var scope = {},
+      ctrl = new PhoneListCtrl(scope);
+      expect(scope.phones.length).toBe(3);
+    });
+  });
+});      
+
+管这段测试代码的语法看起来和我们之前用Jasmine写的单元测试非常像，但是端到端测试使用的是AngularJS端到端测试器提供的接口。
+describe('PhoneCat App', function() {
+	escribe('Phone list view', function() {
+    beforeEach(function() {
+      browser().navigateTo('../../app/index.html');
+    });
+
+    it('should filter the phone list as user types into the search box', function() {
+      expect(repeater('.phones li').count()).toBe(3);
+      input('query').enter('nexus');
+      expect(repeater('.phones li').count()).toBe(1);
+      input('query').enter('motorola');
+      expect(repeater('.phones li').count()).toBe(2);
+    });
+  });
+});
+
+	  ]]>
+			</literallayout>
+		    
+	</sect1>
+	
+
+	<sect1>
+		<title>	理解AngularJS的作用域Scope </title>
+		<para>
+				http://www.angularjs.cn/#!/A09C
+
+		</para>
+	</sect1>	
+	
+	<sect1>
+		<title>如何封装rest api</title>
+		<para>
+			
+
+		</para>
+	</sect1>
+</chapter>

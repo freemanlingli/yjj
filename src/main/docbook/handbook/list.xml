@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" > 
+  <title>list</title>
+			<para>
+				 A simplelist 最简单的
+				<simplelist>
+					<member>Apples</member>
+					<member>Oranges</member>
+					<member>Bananas</member>
+					<member>Grapefruit</member>
+					<member>Black Beans</member>
+				</simplelist>
+
+			</para>
+          
+			<para>
+				itemizedlist有标号的 在 PDF中显示有 乱码 # 咱不使用
+				<itemizedlist>
+					<listitem>
+						<para>Apples - my favorite fruit.</para>
+					</listitem>
+					<listitem>
+						<para>Oranges - yummy, but sticky.</para>
+					</listitem>
+					<listitem>
+						<para>Bananas - they ripen too quickly!</para>
+					</listitem>
+					<listitem>
+						<para>Grapefruit - great when eaten in halves.</para>
+					</listitem>
+					<listitem>
+						<para>Black Beans - go well with rice.</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+
+			<para>
+				orderedlist 有数字标号
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>Wake up.</para>
+					</listitem>
+					<listitem>
+						<para>Eat Breakfast.</para>
+					</listitem>
+					<listitem>
+						<para>Take a shower.</para>
+					</listitem>
+					<listitem>
+						<para>Contemplate my navel.</para>
+					</listitem>
+					<listitem>
+						<para>Go to Sleep.</para>
+					</listitem>
+				</orderedlist>
+			</para>
+
+			<para>
+				variablelist 名词解释
+				<variablelist>
+					<varlistentry>
+						<term>Black Beans</term>
+						<listitem>
+							<para>My favorite black bean recipe is black bean
+								soup, but they
+								also go well with rice.
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry>
+						<term>Apples</term>
+						<term>Bananas</term>
+						<listitem>
+							<para>You can eat them straight, but they also go
+								well in salads
+								and in desserts.
+							</para>
+						</listitem>
+					</varlistentry>
+				</variablelist>
+			</para>
+
+
+			<para>
+				variablelist 地址薄效果
+				<segmentedlist>
+					<segtitle>Name</segtitle>
+					<segtitle>Occupation</segtitle>
+					<segtitle>Favorite Food</segtitle>
+					<seglistitem>
+						<seg>Tux</seg>
+						<seg>Linux mascot</seg>
+						<seg>Herring</seg>
+					</seglistitem>
+					<seglistitem>
+						<seg>Konqui</seg>
+						<seg>The KDE Dragon</seg>
+						<seg>Gnomes</seg>
+					</seglistitem>
+				</segmentedlist>
+			</para>
+
+
+			<para>
+				variablelist 问题列表
+				<qandaset>
+					<qandaentry>
+						<question>
+							<para>What are little boys made of?</para>
+						</question>
+						<answer>
+							<para>Snips and snails and puppy dog tails.</para>
+						</answer>
+					</qandaentry>
+					<qandaentry>
+						<question>
+							<para>What are little girls made of?</para>
+						</question>
+						<answer>
+							<para>Sugar and spice and everything nice.</para>
+						</answer>
+					</qandaentry>
+				</qandaset>
+			</para>
+			
+			<procedure>
+				<title>安装步骤</title>
+				<para>This is what you must do to awaken.</para>
+				<step performance="required">
+					<para>xxx</para>
+					<para>两子步骤.</para>
+					<substeps>
+						<step performance="optional">
+							<para>Roll over.</para>
+						</step>
+						<step performance="required">
+							<para>Squint out of one eye.</para>
+						</step>
+					</substeps>
+				</step>
+				<step performance="required">
+					<para>Yawn and rise from your bed.
+					</para>
+				</step>
+			</procedure>
+	
+			
+</section>
+
+
+
+
+
+
+

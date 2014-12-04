@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>常用定时任务的配置</title>
+	<sect1>
+		<title>基本语法</title>
+		<literallayout>
+   <![CDATA[
+定时任务的语法就是Linux的cron语法，一行5个字段分别代表不同意义
+MINUTE HOUR DOM MONTH DOWMINUTE
+====================================
+Minutes 分 (0–59)
+HOUR The 小时(0–23)
+DOM 天 (1–31)
+MONTH 月 (1–12)
+DOW 星期 几 (0–7) 0 和 7是星期天.
+
+#是注解.
+*代表所有值有效
+一个自动可以有多个值，比如：A,B,...,Z
+H(M-N) 指定一个范围
+别名@yearly, @annually,@monthly,@weekly, @daily, @midnight,例如：
+@hourly is the same as H * * * * 
+and could mean at any time during the hour.
+@midnight actually  means some
+time between 12:00 AM and 2:59 AM.
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>某几个小时之间</title>
+		<para>
+			H H(0-7) * * * 某个时间在 12:00 AM 和 7:59 AM. 之间
+			H代表一个范围，也可以不指定范围:
+		</para>
+	</sect1>
+
+	<sect1>
+		<title>小心这个错误</title>
+		<para>
+			0 0 * * * 会导致 在午夜执行12次，因为每个小时都有0分，
+		</para>
+	</sect1>
+	<sect1>
+		<title>1天执行1次</title>
+		<para>
+			H H * * *
+		</para>
+	</sect1>
+
+	<sect1>
+		<title>每隔15分钟</title>
+		<para>
+			H/15 * * * *
+		</para>
+	</sect1>
+
+	<sect1>
+		<title>每小时前30分钟，每隔10分钟运行一次</title>
+		<para>
+			H(0-29)/10 * * *
+		</para>
+	</sect1>
+
+	<sect1>
+		<title>工作日每隔2小时</title>
+		<para>
+			H 9-16/2 * * 1-5
+
+		</para>
+	</sect1>
+	<sect1>
+		<title>每个月除了12月份的1日到15日</title>
+		<para>
+			H H 1,15 1-11 *
+
+		</para>
+	</sect1>
+</chapter>

@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>Andriod
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>&name; </firstname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para>&lingli;
+			</para>
+			<para>&note;
+			</para>
+		</abstract>
+	</info>
+	
+
+	
+	<chapter>
+		<title>安装开发调试环境</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+ADT (Android Developer Tools)
+-直接下载 ADT Bundle for Windows
+ 这里包含了eclipse 工具和SDK。 开发者可以直接用，无需做任何的配置。URL: http://developer.android.com/sdk/index.html
+-插件升级		  
+https://dl-ssl.google.com/android/eclipse/	
+我的jdk是32位，所以下载32为的ADT。国内防火墙不能正常下载sdk，
+SDK manager 安装新的sdk时要注意X号，选择选择状态,不然不会安装
+
+
+
+
+配置环境变量
+配置ANDROID_HOME：ANDROID_HOME= D:\train\soft\adt-bundle-windows-x86-20131030\adt-bundle-windows-x86-20131030\sdk
+配置PATH：PATH=%PATH%;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;
+
+
+-真机运行
+手机设置城USB调试状态，右键运行一下，就会安全到机器，进行调试了
+
+-使用模拟器运行：
+C:\Users\eadeghy>android list targets
+Available Android targets:
+----------
+id: 1 or "android-14"
+     Name: Android 4.0
+     Type: Platform
+     API level: 14
+     Revision: 3
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432,
+XGA720, WXGA800
+ Tag/ABIs : no ABIs.
+----------
+id: 2 or "android-20"
+     Name: Android 4.4W
+     Type: Platform
+     API level: 20
+     Revision: 1
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432,
+XGA720, WXGA800, WXGA800-7in
+ Tag/ABIs : no ABIs.
+ 
+ 
+C:\Users\eadeghy>android create avd --name tom4 --target 1
+Auto-selecting single ABI armeabi-v7a
+Android 4.0 is a basic Android platform.
+Do you wish to create a custom hardware profile [no]
+Created AVD 'tom4' based on Android 4.0, ARM (armeabi-v7a) processor,
+with the following hardware config:
+hw.lcd.density=240
+hw.ramSize=512
+vm.heapSize=24
+
+然后eclipse的AVD界面刷新一下，可以看到模拟器了
+
+android-sdk-linux_x86/platforms/android-8/images/看看里面有木有images
+可以下载的在 sortby  repository  可以勾选 google apis 16
+
+
+如果遇到消息“Failed to fetchURL…”的错误提示，
+那么需要将HTTPS方式改为HTTP方式，在“Android SDK and AVD Manager”菜单“tool”，选中
+
+
+无法创建AVD
+为android SDK设置一个环境变量：变量名为：ANDROID_SDK_HOME
+变量值为一个路径，该路径不是SDK的安装目录路径，请注意！！！！该路径是代表AVD的保存位置。
+比如：可以把AVD的路径设置为：D:\某个文件夹名
+
+
+真机调试
+Android 4.0 设置 Settings > Developer options. 
+Android 4.2 and newer, 开发人员选项隐藏了
+ go to Settings > About phone and tap Build number seven times.
+  Return to the previous screen to find Developer options.
+
+http://developer.android.com/training/index.html
+	  
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+	<chapter>
+		<title>android入门项目</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	  src文件夹
+	  gen文件夹  
+	                             该文件夹下面有个R.java文件，R.java是在建立项目时自动生成的，这个文件是只读模式的，不能更改。
+	        R.java文件中定义了一个类——R，R类中包含很多静态类，且静态类的名字都与res中的一个名字对应，
+	                            即R类定义该项目所有资源的索引。看我们的HelloWorld项目是不是如此，R.java对应res通过
+	        R.java我们可以很快地查找我们需要的资源，
+	                             另外编绎器也会检查R.java列表中的资源是否被使用到，没有被使用到的资源不会编绎进软件中，这样可以减少应用在手机占用的空间
+	  Android××  
+	                           包含构建应用程序所需的所有的Android SDK 库（如Views、Controls）和APIs。通过android.jar
+	                            将自己的应用程序绑定到Android SDK和Android Emulator
+	  assets     
+	                          包含应用系统需要使用到的诸如mp3、视频类的文件
+	  res    
+	                        资源目录，包含你项目中的资源文件并将编译进应用程序。向此目录添加资源时，
+	                        会被R.java自动记录。新建一个项目，res目录下会有三个子目录：drawabel、layout、values。      
+	    layout 
+	                               界面布局文件(activity_main.xml 是界面文件 ，可以可视化设置各种空间)
+	    value 
+	                              软件上所需要显示的各种文字。可以存放多个*.xml文件，还可以存放不同类型的数据。比如arrays.xml、colors.xml、dimens.xml、styles.xml
+ 
+	  AndroidManifest.xml
+	                         总配置文件，记录应用中所使用的各种组件。这个文件列出了应用程序所提供的功能，
+	                        在这个文件中，你可以指定应用程序使用到的服务(如电话服务、互联网服务、短信服
+	                    务、GPS服务等等)。另外当你新添加一个Activity的时候，也需要在这个文件中进行相应
+	                      配置，只有配置好后，才能调用此Activity。AndroidManifest.xml将包含如下设置
+	                  ：application permissions、Activities、intent filters等。
+ 
+	  default.properties
+                  记录项目中所需要的环境信息，比如Android的版本等
+	  
+   学习点：
+*.怎么跟换图标
+*.怎么开发警告信息的程序，因为私人用 比较有用
+*.理解 acitvity
+它主要负责创建一个窗口，，然后放置组件setContentView(View)三种窗孔
+- full-screen windows,
+-  floating windows (via a theme with windowIsFloating set) or
+- embedded inside of another activity (using ActivityGroup). 
+*.理解 Intent切换窗口 ，启动别的应用都可以
+Intent绑定2个不同组件的对象    经常用于启动另外一个  activity, 还可以存储数据
+public void sendMessage(View view) {   
+   Intent intent = new Intent(this, DisplayMessageActivity.class);  
+   EditText editText = (EditText) findViewById(R.id.edit_message);    
+   String message = editText.getText().toString();   
+   intent.putExtra(EXTRA_MESSAGE, message);  
+   startActivity(intent);
+   }
+*.理解生命周期   
+ 切换应用时，程序会保存状态，如果你开发视频播放，应暂停，如果音乐，可以后台继续播放
+ 
+*.理解 Fragment ，实现公共模块化
+activit有的模块化部分
+*.理解数据共享，可以发送某些数据到 ，短信或者邮箱客户端
+ http://developer.android.com/training/sharing/send.html
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+	
+	<chapter>
+		<title>学习路径</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+Mobile App分为三大类：Native App,Hybrid App,Web App。其中Hybrid App介于Native App和Web App之间，
+它能兼顾Native App的良好用户体验及强大的功能并具有Web App跨平台快速开发的优势。缺点在于依赖于各
+平台的WebView，WebView的性能好坏直接决定了Hybrid App的性能。
+国内外的Hybrid App开发框架很多，比较有代表的是国外的Cordova(aka PhoneGap)、Sencha Touch、
+Titanium、Intel XDK、RhoMobile、Xamarin等和国内的AppCan、Rexsee、xFace，
+基于开源的Cordova，各大公司都推出了自己的产品，比如：Adobe PhoneGap、Oracle ADF Mobile、SAP Kapsel、
+IBM Worklight、Microsoft的Visual Studio也支持Cordova。 
+
+	  1.先搭配好环境，运行一个hello程序，打包
+	  http://developer.android.com/training/index.html
+	  2. Cordova 和WEBKIT, 用网页来开发手机应用，用js来调用摄像头之类的
+	  http://cordova.apache.org/
+	  http://cordova.apache.org/docs/en/3.5.0/guide_platforms_android_webview.md.html#Android%20WebViews
+	  
+	  https://github.com/rogerwang/node-webkit
+	  就可以支持各种平台的手机
+使用 Cordova 场景:
+ • 一次开发，运行多个平台
+ • web开发人员希望web被发布
+ • 希望网页调用手机端的应用	  
+ 
+
+
+	  3.学习maven打包
+	  4.学习测试案例
+	  
+	  1、src文件夹1.2、gen文件夹1.3、Android 2.1文件夹1.4、assets 1.5、res文件夹1.6、AndroidManifest.xml1.7、default.properties
+ 
+	  
+
+
+	   
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+	
+
+	<chapter>
+		<title>cordova学习入门</title>
+		<sect1>
+		<title>安装</title>
+		
+		<para>
+			<literallayout>
+	   <![CDATA[
+	    https://www.apache.org/dist/cordova/platforms/ 下载
+ANDROID_SDK_ROOT=d:\android\android-sdk-windows
+ANDROID_HOME=%ANDROID_SDK_ROOT%
+ASDKPT=%ANDROID_SDK_ROOT%\platform-tools
+ASDKTOOLS=%ANDROID_SDK_ROOT%\tools
+maven_home=d:\android\apache-ant-1.9.2
+NODE=d:\nodejs
+PATH=%NODE%;%maven_home%\bin;%ASDKPT%;%ASDKTOOLS%;%PATH%
+
+先装好nodes	    
+
+
+（如果安装速度很慢的话可以设置代理	    
+npm config set registry http://registry.cnpmjs.org 
+npm info cordova 
+npm --registry http://registry.cnpmjs.org info cordova	    
+	    
+
+
+D:\train\soft>node -v
+v0.10.30
+
+D:\train\soft>npm -v
+1.4.21
+
+D:\train\soft>git --version
+git version 1.7.10.msysgit.1
+
+
+npm install -g cordova	  //安装Cordova CLI 
+npm update cordova -g     将包安装到全局环境中
+C:\Documents and Settings\RenSanNing\Application Data\npm\node_modules\cordova 
+
+D:\tmp\t3\cordova create hello com.example.hello HelloWorld
+D:\tmp\t3\hello>cordova platform add android
+cordova build android
+cordova emulate android  模拟器
+cordova run android  真机
+用 eclipse导入后，发现不要用其进行打包和运行，因为cordova是认为会build多个平台的，
+所以Html文件放在最外层。
+
+Basic device information (Device API):
+$ cordova plugin add org.apache.cordova.device
+Network Connection and Battery Events:
+$ cordova plugin add org.apache.cordova.network-information
+$ cordova plugin add org.apache.cordova.battery-status
+Accelerometer, Compass, and Geolocation:
+$ cordova plugin add org.apache.cordova.device-motion
+$ cordova plugin add org.apache.cordova.device-orientation
+$ cordova plugin add org.apache.cordova.geolocation
+Camera, Media playback and Capture:
+$ cordova plugin add org.apache.cordova.camera
+$ cordova plugin add org.apache.cordova.media-capture
+$ cordova plugin add org.apache.cordova.media
+Access files on device or network (File API):
+$ cordova plugin add org.apache.cordova.file
+$ cordova plugin add org.apache.cordova.file-transfer
+Notification via dialog box or vibration:
+$ cordova plugin add org.apache.cordova.dialogs
+$ cordova plugin add org.apache.cordova.vibration
+Contacts:
+$ cordova plugin add org.apache.cordova.contacts
+Globalization:
+$ cordova plugin add org.apache.cordova.globalization
+Splashscreen:
+$ cordova plugin add org.apache.cordova.splashscreen
+Open new browser windows (InAppBrowser):
+$ cordova plugin add org.apache.cordova.inappbrowser
+Debug console:
+$ cordova plugin add org.apache.cordova.console
+Updating Cordova and Your Project
+After installing the cordova utility, you can always update it to the latest version by running the following command:
+$ sudo npm update -g cordova
+Run a command such as the following for each platform you're building:
+$ cordova platform update android
+$ cordova platform update ios
+
+	    
+	  ]]>
+			</literallayout>
+		</para>
+		</sect1>
+		<sect1>
+		<title>调用设想头</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	   
+		  ]]>
+			</literallayout>
+		</para>
+		</sect1>   
+	   		
+		<sect1>
+		<title>maven配置</title>
+		
+		<para>
+			<literallayout>
+	   <![CDATA[
+	 
+https://github.com/jayway/maven-android-plugin-samples/    
+
+首先看看对于已经存在的Android工程：安装好如上的插件，在Android的工程上点右键，
+弹出菜单Configure->Convert to Maven project配置好项目信息后会生成pom.xml以及工程
+上的图标已经多出一个小M字更改project的packaging类型为apk
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">     
+   <modelVersion>4.0.0</modelVersion>      
+     <groupId>org.cst.ming.android.sample</groupId>   
+        <artifactId>sample</artifactId>    
+          <version>0.0.1-SNAPSHOT</version>  
+              <packaging>apk</packaging>  ...... 
+ 在pom内声明一个build的插件，在maven构建项目的时候就会在target内生成一个apk的文件
+ 注意，这里指定了插件的版本，这个是maven官方提供的建议，需要在构建插件中指定插件版本；还有一点就是必须指
+ 定sdk.platform及sdk.path属性，不然会因为找不到sdk而无法build的
+ <plugin>     
+  <groupId>com.jayway.maven.plugins.android.generation2</groupId>     
+  <artifactId>android-maven-plugin</artifactId>      
+  <version>3.0.0</version>    
+    <inherited>true</inherited>     
+     <extensions>true</extensions>      
+     <configuration>         
+     <sdk>              
+     <platform>7</platform>              
+     <path>${env.ANDROID_SDK_HOME}</path>    
+     </sdk>          
+     <deleteConflictingFiles>true</deleteConflictingFiles>         
+     <undeployBeforeDeploy>true</undeployBeforeDeploy>     
+     </configuration> 
+   </plugin>  
+   这时候可以在pom.xml内添加各种的依赖，并且执行mvn clean package即可构建出一个apk文件
+   在target此时已经整合完毕，可以在IDE内通过ADT来启动项目，亦可以通过在pom.xml内配置
+   android-maven-plugin通过mvn android:deploy将项目部署到指定的设备（虚拟机）上，详情可
+   以查阅android-maven-plugin的官方文档对于新建项目的：在新建项目的时候可以采用archetype
+   （项目原型）的方式构建，在向导内选择项目原型，分别有de.akquinet.android.archetypes:android-quickstart:1.0.6—
+   —用于快速构建一个android-maven项目de.akquinet.android.archetypes:android-with-test:1.0.6——用
+   于构建一个带有测试的android-maven项目de.akquinet.android.archetypes:android-release:1.0.6——用于
+   构建一个可以发布的android-maven项目，其中包含了一个纯maven的父项目及两个子android-maven项目在项目创建之后，
+   还有点需要修改的，由于android-maven-plugin原名为maven-android-plugin，因为某种关系在某个版本之后更名为android-maven-plugin，
+   但在这个原型内还是使用旧的maven-android-plugin，所以需要使用新插件的必须手动修改plugin.artifactId及其plugin.version
+
+	    
+	  ]]>
+			</literallayout>
+		</para>
+		</sect1>		
+		
+	</chapter>
+	
+	
+		<chapter>
+		<title>webkeit</title>
+		<sect1>
+		<title>什么是WebKit</title>
+	WebKit是Safari背后的浏览器引擎，它现在还是Google Chrome的内核	
+		http://blog.sina.com.cn/s/blog_601b97ee0101azti.html
+标准Web浏览器组件
+让我们列举一些现代浏览器的组件：
+ •HTML、XML、CSS、JavsScript解析器
+•Layout
+•文字和图形渲染
+•图像解码
+•GPU交互
+•网络访问
+•硬件加速
+ 
+这里面哪些是WebKit浏览器共享的？差不多只有前两个。其他部分每个WebKit都有各自的实现
+
+
+node-webkit是通过Node.js和WebKit技术的融合，提供一个跨Windows、Linux、OS X平台下的
+客户端应用开发的底层框架，跟移动终端上的PhoneGap等项目的原理类似	
+通过Node.js和WebKit技术的融合，开发者可以用HTML5技术编写UI，同时又能利用Node.js平
+台上众多library访问本地OS的能力，最终达到用Web技术就可以编写桌面应用的目的。	
+	现在已经达到一定的成熟度。有不少公司和各种项目基于node-webkit开发。node-webkit适
+	合了解Web技术（JS/HTML/CSS）的开发者开发各种桌面应用，而且直接支持3种主流桌面平台。
+ 
+目前它还不支持移动平台
+
+	
+			<literallayout>
+	   <![CDATA[
+	
+	  ]]>
+			</literallayout>		
+		</sect1>	
+	</chapter>	
+	
+		<chapter>
+		<title>生成2维码方便下载APK</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	
+<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>core</artifactId>
+				<version>${zxing.version}</version>
+				</dependency>
+
+				<dependency>    
+					<groupId>com.google.zxing</groupId>  
+				  <artifactId>javase</artifactId>    
+				  <version>${zxing.version}</version>
+				</dependency>	  	
+http://code.google.com/p/zxing/downloads/list
+
+微信二维码采用的黑白或加彩色QR二维码
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>	
+		
+	
+		<chapter>
+		<title>常见问题</title>
+		<sect1>
+		<title>消息通知</title>
+			<literallayout>
+	   <![CDATA[
+	   如果用传统的http请求进行轮询，手机会非常耗电，所以android手机有自带的google
+	 消息通知服务。但是国内访问不了goolge 的api，需要用第三方，也可以自己做，不过很麻烦
+	 要考虑很多问题。比如在有网络是，去扫描把信息。
+	  ]]>
+			</literallayout>		
+		</sect1>	
+	</chapter>	
+	
+
+	
+		<chapter>
+		<title>参考文档</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	 1.运行一个最简单的例子   hello 大概知道可以开发什么
+	 2. 使用codorva 工程，来支持同时运行在andriod 和IPHONE手机上
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>
+
+	
+
+</book>

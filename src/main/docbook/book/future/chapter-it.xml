@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>IT界变化</title>
+	<para>
+		技术累计时代
+		1924年，IBM（国际商用机器）公司成立
+		1968年，英特尔公司成立，原来只是一个生产静态存储器的半导体厂商，于70年代初开始了计算机芯片的研制工作，
+
+		桌面机时代
+		1995 -2004 年 window
+
+		互联网时代
+		2002 -2010 年互联网
+
+		移动互联时代
+		2002 -2010 年互联网
+
+		移动4G时代和云计算时代
+		2013-？ 年 将会产生什么样的变革
+		
+	<figure>
+		<title>社交媒体网站</title>
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/future-it1.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/future-it1.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+	</figure>	
+	<figure>
+		<title>社交媒体广告</title>
+		<mediaobject>
+			<imageobject role="html">
+				<imagedata fileref="http://trainyjj.qiniudn.com/future-net1.jpg" align="left"
+					scalefit="0" width="100%" />
+			</imageobject>
+			<imageobject role="fo">
+				<imagedata fileref="http://trainyjj.qiniudn.com/future-net1.jpg" align="center"
+					scalefit="1" width="100%" />
+			</imageobject>
+		</mediaobject>
+	</figure>		    		
+	</para>
+</chapter>	

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>参考资料</title>
+		
+		<para>
+			<literallayout>
+      <![CDATA[
+			http://jenkins-ci.org/ 官网
+			http://kohsuke.org/about/ 作者私人网站
+			http://unethicalblogger.com jenkins的网站内容维护者的私人博客
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>

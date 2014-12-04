@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>配置运行环境</title>
+	<para>
+		<literallayout>
+   <![CDATA[
+elipse插件下载
+http://marketplace.eclipse.org/content/cucumber-jvm-eclipse-plugin	    
+maven运行
+-----------------------------------------------------------------
+是作为一种Ruby工具起家的，它已经逐步成长，开始拥抱其他许多平台了。这意味着，你可以使用同一种语言来编写产品
+代码和Cucumber步骤定义，领域模型Java及其他JVM语言cucumber-jvm  直接进入领域模型
+ https://github.com/cucumber/cucumber-jvm
+ hello
+ https://github.com/cucumber/cucumber-java-skeleton
+ 命令行：
+ mvn -Dcucumber.options="..." test
+   -Dcucumber.options="classpath:skeleton/belly.feature:4 --format pretty"
+ mvn -Dcucumber.options="src/test/resources/skeleton/belly.feature:4 --format pretty" test
+  ]]>
+		</literallayout>
+	</para>
+</setion>		
+		
+
+
+

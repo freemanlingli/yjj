@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>网页原型</title>
+	<para>
+	    
+		<table>
+			
+			<tgroup cols="2">
+				<thead>
+					<row>
+						<entry>“IT界”</entry>
+						<entry>  “国学中医界” </entry>
+					</row>
+				</thead>
+
+				<tbody>
+					<row>
+						<entry>
+							毕业生没有技能，多数人无法找到理想工作
+						</entry>
+						<entry>中医学校毕业的本科生7成以上无法从事医生门诊，多从事药材销售
+						</entry>
+
+					</row>
+					<row>
+						<entry>IT界工种很多，就算程序员，也分JAVA,.NET,C++,前台，后台，美工，测试。每个人只擅长某种</entry>
+						<entry>	中医科么繁多，名医通常只擅长某类病的医疗</entry>
+
+					</row>
+
+				</tbody>
+			</tgroup>
+		</table>	    
+	    
+		
+	</para>
+	<para>
+		<table>
+			<thead>
+				<tr>
+					
+					<th>国学界书籍和牛人</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					
+					<td valign="top" style="background:#FFFFFF;">
+
+						<para>
+
+							<variablelist>
+								<varlistentry>
+									<term>《皇帝内经》</term>
+									<listitem>
+										<para>是战国以前的许许多多的上古医学著作的总结。通过对生命现象的长期观察，长期与疾病做斗争的经验总结。
+											问答的形式阐述病机病理,里面讲了医学、天文学、地理学、心理学、还有哲学、历史等，是一部围绕生命问题而展开的百科全书
+						主张不治已病，而治未病，同时主张养生、摄生、益寿、延年
+										</para>
+									</listitem>
+								</varlistentry>
+							</variablelist>
+							
+						<table>
+							<tr>
+								<td>南怀瑾</td>
+								<td>1709</td>
+								<td>早年习武，寺庙方丈，黄埔军校，台湾佛学作家，荣誉教授，杭州开私塾讲堂</td>
+							</tr>
+							<tr>
+								<td>梁东</td>
+								<td>1709-</td>
+								<td>凤凰著名支持，百度市场总监，现在推广国学文化</td>
+							</tr>
+							<tr>
+								<td>哈辉</td>
+								<td>1980-</td>
+								<td>中音教授，推广风雅颂古典文化</td>
+							</tr>
+							<tr>
+								<td>哈辉</td>
+								<td>1980-</td>
+								<td>中音教授，推广风雅颂古典文化</td>
+							</tr>
+							<tr>
+								<td>哈辉</td>
+								<td>1980-</td>
+								<td>中音教授，推广风雅颂古典文化</td>
+							</tr>														
+						</table>							
+						</para>
+					</td>
+				</tr>
+		</tbody>
+		</table>
+	</para>
+	
+	<para>
+		<table>
+			<thead>
+				<tr>
+					
+					<th>IT界书籍和牛人</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					
+					<td valign="top" style="background:#FFFFFF;">
+
+						<para>
+
+							<variablelist>
+								<varlistentry>
+									<term>《程序员内经》</term>
+									<listitem>
+											对IT职场各种常见问题的经验总结。各种案例来源于网上IT界各种牛人的亲身体会。汇编成书，方便程序猿们查阅。
+												<!-- 
+												<para>主张IT行业工作者要抓住4个字“道法术器”，其中“道”即方向是最重要的。IT行业的各种职场角色都应该注重这个4个方面：（道）方向
+													，（法）方法，（术）经验，（器）工具
+												</para>
+												 -->
+									</listitem>
+								</varlistentry>
+							</variablelist>
+							
+						<table>
+							<tr>
+								<td>高茂松</td>
+								<td>1709</td>
+								<td>早年习武，寺庙方丈，黄埔军校，台湾佛学作家，荣誉教授，杭州开私塾讲堂</td>
+							</tr>
+							<tr>
+								<td>王晓明</td>
+								<td>1709-</td>
+								<td>凤凰著名支持，百度市场总监，现在推广国学文化</td>
+							</tr>
+																		
+						</table>							
+						</para>
+					</td>
+				</tr>
+		</tbody>
+		</table>
+	</para>
+
+	
+	
+
+	<para>
+		<table>
+			<title>Mouse Mileage</title>
+			<tgroup cols="3">
+				<thead>
+					<row>
+						<entry>Month</entry>
+						<entry>Week</entry>
+						<entry>中文Feet Traveled</entry>
+					</row>
+				</thead>
+				<tfoot>
+					<row>
+						<entry>Total</entry>
+						<entry></entry>
+						<entry>1753</entry>
+					</row>
+				</tfoot>
+				<tbody>
+					<row>
+						<entry>August</entry>
+						<entry>1</entry>
+						<entry>987</entry>
+					</row>
+					<row>
+						<entry>August</entry>
+						<entry>2</entry>
+						<entry>657</entry>
+					</row>
+					<row>
+						<entry>August</entry>
+						<entry>3</entry>
+						<entry>109</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</para>
+
+
+	<para>
+		嵌套
+		<table id="tbl.mpeg_xing_header_format" align="left">
+			<title>XING 头的格式及含义</title>
+			<tgroup cols="4">
+				<colspec colnum="1" colname="col1" colwidth="2*" />
+				<colspec colnum="2" colname="col2" colwidth="2*" />
+				<colspec colnum="3" colname="col3" colwidth="8*" />
+				<colspec colnum="4" colname="col4" colwidth="3*" />
+				<thead>
+					<row>
+						<entry>位置（字节）</entry>
+						<entry>长度（字节）</entry>
+						<entry>含义</entry>
+						<entry>示例</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>0</entry>
+						<entry>4</entry>
+						<entry>4个ASCII字符的VBR头
+							ID，要么是Xing，要么是Info，无NULL结尾（普通字符串都以NULL,即\0结尾）
+						</entry>
+						<entry>'Xing'</entry>
+					</row>
+					<row>
+						<entry>4</entry>
+						<entry>4</entry>
+						<entry>
+							<para>
+								存放一个标志，用于表示接下来存在哪些域/字段,各字段逻辑或的结果：
+								<informaltable>
+									<tgroup cols="2">
+										<colspec colnum="1" colwidth="1*" />
+										<colspec colnum="2" colwidth="2*" />
+										<tbody>
+											<row>
+												<entry>0x0001</entry>
+												<entry>存在总帧数（Frames）字段</entry>
+											</row>
+											<row>
+												<entry>0x0002</entry>
+												<entry>存在文件大小（Bytes）字段</entry>
+											</row>
+											<row>
+												<entry>0x0004</entry>
+												<entry>存在TOC字段</entry>
+											</row>
+											<row>
+												<entry>0x0008</entry>
+												<entry>存在音频质量指示字段</entry>
+											</row>
+										</tbody>
+									</tgroup>
+								</informaltable>
+							</para>
+						</entry>
+						<entry>
+							<para>
+								0x0007 就表示下面存在：
+								<simplelist type='vert' columns='1'>
+									<member>总帧数</member>
+									<member>文件大小总字节数</member>
+									<member>TOC表</member>
+								</simplelist>
+							</para>
+						</entry>
+					</row>
+					<row>
+						<entry>8</entry>
+						<entry>4</entry>
+						<entry>
+							<emphasis>总帧数(Frames)</emphasis>
+							，大端[可选]
+						</entry>
+						<entry>7344</entry>
+					</row>
+					<row>
+						<entry>8或12</entry>
+						<entry>4</entry>
+						<entry>文件总大小，单位字节，大端[可选]</entry>
+						<entry>45000</entry>
+					</row>
+					<row>
+						<entry>8，12，16</entry>
+						<entry>100</entry>
+						<entry>TOC表，大端[可选]</entry>
+						<entry>
+						</entry>
+					</row>
+					<row>
+						<entry>8或12, 16, 108, 112 ，116</entry>
+						<entry>4</entry>
+						<entry>音频质量指示，最差0，最好100，大端[可选]</entry>
+						<entry>0</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</para>
+
+
+
+</section>
+
+
+
+
+
+
+

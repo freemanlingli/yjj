@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>基本使用</title>
+	<sect1>
+		<title>理解“image”</title>
+		<literallayout>
+   <![CDATA[
+Docker 简单得理解就是一个运行image（操作系统镜像）的容器。我们可以看看下面几个简单的练习来理解一些概念
+1.首先查看本机有没有image镜像，
+docker images   你会发发现是空的
+2.在网上搜索自己需要的系统images
+docker search tomcat 搜搜网上含有tomcat的images，你会发现有很多现成的images文件可以使用
+3.下载一个镜像
+docker pull learn/tutorial
+4.运行一个镜像
+docker run learn/tutorial /bin/echo hello world
+docker run -i -t learn/tutorial /bin/bash
+4.查看运行的系统进程
+docker ps -a 查看运行过的进程
+docker ps -l 查看当前运行的虚拟机进程 可以看到名字
+现在 你对docker的image的概念应该有一个了解了，
+我们具体查看某个具体的image信息 ，就可以看到一个JESON的底层数据				
+docker inspect 
+
+如果发现下载下来  repostiory 和tag 都是none ，可以用 下面命令明明
+ docker tag 5db5f8471261 lingli/linux
+ docker run -i -t lingli/linux /bin/bash
+  	
+
+
+ 
+ ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>理解“容器”</title>
+		<para>实操-修改虚拟系统环境变量这个实操可以体会怎么在虚拟系统中进行工作的方式</para>
+		<literallayout>
+   <![CDATA[
+运行一个系统里面的进程 
+docker run -i -t centos /bin/bash 
+set 查看环境变量
+vi etc/profile
+加入 java_home=soft/jdk-1.6.0
+source profile
+再弹出一个新控制台
+docker ps -l  可以查看
+#docker ps -l
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+51774a81beb3 centos:latest /bin/bash 3 minutes ago Exit 0 thirsty_pasteur
+
+docker commit 51774a81beb3 centos:centos6-jdk6  提交容器id到另外一个新的IMAGE
+
+
+可以看到当前操作的容器ID为：51774a81beb3。注意了，一旦进行所有操作，都需要提交保存
+
+docker commit 51774a81beb3 centos:jdk6  提交容器id到另外一个新的IMAGE
+
+docker images 再查看有多少个IMAGE（多一个新的  centos:jdk6  ）
+
+docker run -i -t centos:jdk6 /bin/bash
+
+vi profile 发现已经变了，注意因为我们不是用root登录的，所以不会直接执行变量。需要 source/profile 
+一下，才能看到变量 保存退出，然后再启动，发现变量没有生效，因为我们没有将系统提交备份 。
+
+docker为我们每次启动IMAGE文件都有一个ID，我们可以将任何id容器的状态保存在IMAGE里，这样
+就可以轻松切换各个系统环境
+事实上我们刚刚根据干净的Ubuntu镜像启动了一个新的容器。要继续先前那个，我们必须把它提交到仓库中。
+我们退出这个容器，看看先前启动容器的ID是什么：
+$ docker ps -a
+ID                  IMAGE                   COMMAND                CREATED              STATUS              PORTS
+51774a81beb3        centos:jdk6            /bin/bash              About a minute ago   Exit 127
+
+docker ps命令能列出当前运行的容器，docker ps -a还会显示已经退出的容器。
+每个容器都有一个唯一的ID，类似于Git提交哈希值。命令也列出了容器基于的镜像、运
+行的命令、创建时间、当前状态，以及容器暴露的端口和与主机端口之间的映射。
+我用容器ID把容器提交到了仓库中。仓库类似于Git仓库，包含一或多个打了标签的镜像。如果像我一样没有指
+定标签名称，标签会被命名为“latest”。
+													
+ ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>实操-导入导出镜像</title>
+
+		<literallayout>
+   <![CDATA[
+
+镜像导入/导出构建的镜像，作为一种状态存在，支持很方便的导入导出。导出：
+save命令用于导出IMAGES(export-jdk5.tar)
+---------------------------------------
+docker save cnetos:jdk6 > /home/centos:jdk6.tar     
+docker load < /home/jdk6.tar
+
+重命名
+----------------------------------------
+docker tag 5db5f8471261 ouruser/sinatra:devel  
+
+export用户导出容器
+---------------------------------------
+docker export 78b96377e546 > /home/export-jdk5.tar  无法回滚，没有历史版本
+cat /home/export-jdk5.tar |  docker import - busybox-1-export:latest
+
+删除清理
+-------------------
+docker rmi cnetos:jdk6
+docker rm $(docker ps -q -a)   一次性删除所有的容器  先要运行这个， 不然删除IMAGE会让名字变成NONE
+docker rmi $(docker images -q) 一次性删除所有的镜像。
+
+
+另外一种压缩的用法算法：
+docker save IMAGENAME | bzip2 -9 -c>img.tar.bz2
+bzip2 -d -c <img.tar.bz2 | docker load
+													
+ ]]>
+		</literallayout>
+
+	</sect1>
+	<sect1>
+		<title>网上image资源的获取</title>
+		<literallayout>
+   <![CDATA[
+命令行搜索：docker search 关键字          
+或者 
+网页搜索：https://hub.docker.com/搜索
+可以使用GITHUB的帐号进行登录
+
+docker pull busybox:latest
+docker pull centos:latest
+
+index.dockboard.org 的程序还在开发和测试中，测试账户是只面向申请者开放的。
+为了方便大家下载官方镜像，大家可以按照以下步骤下载。
+username: csdndocker
+#passwrod: csdndocker
+#email: csdndocker@dockboard.org
+docker login index.dockboard.org
+Username: csdndocker
+Password:
+Email: csdndocker@dockboard.org
+
+docker的开发团队不只是要做一个软件，还想做一个社区。我们可以在github上分享我们的dockfile或image，
+寻找并pull我们需要的image（这一点跟git很像）。下面是相关的一些操作：
+ 1.docker search larrycai/postgresql，查询库中关于imageName的库
+ 2.docker pull larrycai/postgresql，从库中拉取iamgeName到本地
+ 3.docker push larrycai/postgresql，将imageName上传到库中
+													
+ ]]>
+		</literallayout>
+	</sect1>
+
+
+	<sect1>
+		<title>运行image并对外映射端口</title>
+		<literallayout>
+   <![CDATA[
+ •运行image并对外映射端口
+docker run -i -t -p 2022:22 redhat-base:6.4 /bin/bash
+由此，即可以在docker本机的2022端口访问container的22端口。
+docker主机和container之间可以进行端口映射。以container运行apache服务为例，执行命令
+docker run -i -t -p 9080:80 imageName /bin/bash
+我们便可以通过docker主机上的9080端口来访问container的apache服务
+ ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>后台方式运行</title>
+		<literallayout>
+   <![CDATA[
+以后台方式运行image
+docker run -d -p 41880:80 redhat-base:6.4 apache2ctl start FOREGROUND
+这时，container运行后，将不提供tty与用户交互。用户可以通过docker主机的41880端口访问container
+的apache2服务。
+													
+ ]]>
+		</literallayout>
+	</sect1>
+</section>

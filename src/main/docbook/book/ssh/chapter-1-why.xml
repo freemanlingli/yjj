@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>为什么使用AngularJS</title>
+	<sect1>
+		<title>新的</title>
+		<literallayout>
+<![CDATA[	  
+
+
+横纵对比
+------------------------------------------------------
+
+grunt + boilerplate + angularjs + bootstrap + D3 + requirejs 的架构来实现它。
+近日来我有幸主导了一个典型的web app开发。该项目从产品层次来说是个典型的CRUD应用，故而我毫不犹豫地采用了
+自动化工具grunt做一些端到端测试、代码压缩和合并之类的工作。
+boilerplate单独说一下是因为这东西我确实很喜欢，它是制作符合html5+CSS3规范的网页程序的快捷方式
+在模块划分上，一开始是模仿angular-seed的方式，就用一个myApp作为程序入口点，direcvtives、filters、service作为文件夹，存放对应的js文件。
+从myApp开始，myApp所有的依赖都必须先行加载。虽然angularjs可以使用路由按需加载模板，但是控制器却要先行加载（如下面的代码所示）。
+ ]]>
+		</literallayout>
+	</sect1>
+
+
+
+
+</chapter>

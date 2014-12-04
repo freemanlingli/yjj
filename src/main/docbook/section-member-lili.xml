@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sect1  xmlns="http://docbook.org/ns/docbook" version="5.0" > 
+	<title>李丽</title>
+		<sect2>
+			<title>日常工作手册</title>
+			<para>
+				
+					<orderedlist numeration="arabic">
+						<listitem>
+							<para>故障申报接口</para>
+						</listitem>
+						<listitem>
+							<para>运营报告接口人</para>
+						</listitem>
+						<listitem>
+							<para>财务报告接口人</para>
+						</listitem>
+					
+					</orderedlist>
+			</para>	
+	  </sect2>
+
+		<sect2>
+			<title>技能要求</title>
+			<para>
+					
+					<orderedlist numeration="arabic">
+						<listitem>
+							<para>熟练使用excel报表</para>
+						</listitem>
+						<listitem>
+							<para>熟悉事件管理流程</para>
+						</listitem>
+						<listitem>
+							<para>熟悉部门相关财务制度</para>
+						</listitem>
+					</orderedlist>
+			</para>	
+	  </sect2>	 
+	   
+</sect1>
+
+

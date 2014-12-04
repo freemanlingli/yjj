@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>参考资料</title>
+		
+		<para>
+			<literallayout>
+      <![CDATA[
+     
+		http://www.angularjs.org/ 官网
+		https://github.com/angular
+		http://www.angularjs.cn/
+		AngularJS的开发者倾向于使用Jasmine行为驱动开发（BBD）框架中的语法。
+		Karma测试框架。
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
+	xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>主要 技术框架</title>
+
+
+	<section>
+		<title>java代码的直接引入</title>
+		<para>
+			<programlisting>
+				<xi:include href="handbook/include-java.java" parse="text">
+					<xi:fallback>
+						<para>
+							<emphasis>FIXME: 丢失包含内容</emphasis>
+						</para>
+					</xi:fallback>
+				</xi:include>
+			</programlisting>
+		</para>
+	</section>
+
+
+	<section>
+		<title>tip</title>
+
+		<title>CDATA 中文存在问题</title>
+		<para>
+			<example>
+				<title>some markup</title>
+				<screen>
+						<![CDATA[
+						<para>团队的基本素质：
+						公共模块
+						复用
+						简单
+						精益求精
+						</Para>
+						<a #if> </dsfsdf>
+						java
+						]]>
+				</screen>
+			</example>
+		</para>
+		<para>
+			<programlisting language="java">
+			<![CDATA[
+			    中文
+				public static ChineseSpell getInstance() {
+					return chineseSpelling;
+				}
+			
+				public String getResource() {
+					return resource;
+				}
+
+			]]>
+
+			</programlisting>
+		</para>
+
+
+	</section>
+
+
+
+</chapter>

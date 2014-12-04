@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook" > 
+
+		<title>常用命令</title>
+		<sect1>
+			<title> mvn archetype:generate</title>
+			<para>
+				用于生成各种java框架的项目原型， 包括pom.xml依赖包的定义.非常适合初学一个框架时使用。
+				不用自己再为了组合一套框架手工配置pom。xml文件中的JAR包了。
+				<literallayout>
+   <![CDATA[
+// 1、列出所有的可以自动生成框架原型
+mvn archetype:generate
+
+// 2、提示选择，
+直接按回车默认选择：maven-archetype-quickstart
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 171:
+
+// 3、之后提示选择maven-archetype-quickstart的版本
+Choose org.apache.maven.archetypes:maven-archetype-quickstart version:
+1: 1.0-alpha-1
+2: 1.0-alpha-2
+3: 1.0-alpha-3
+4: 1.0-alpha-4
+5: 1.0
+6: 1.1
+Choose a number: 6: // 4、直接按回车默认选择第6项
+
+// 5、接着提示输入groupId、artifactId、 version、以及包名package，如下
+Define value for property 'groupId': : com.test
+Define value for property 'artifactId': : helloworld
+Define value for property 'version':  1.0-SNAPSHOT: :
+Define value for property 'package':  com.test: : helloworld
+Confirm properties configuration:
+groupId: com.test
+artifactId: helloworld
+version: 1.0-SNAPSHOT
+package: helloworld
+ Y: : Y 
+ 
+ // 6、最后确认  ，最后生成一个MAVEN标准的项目结构。
+
+  ]]>
+				</literallayout>
+				这个命令的作用就是创建项目原型。我们在第2步的提示直接选择了回车，就等于使用默认地171个项目原型样板（这个是maven默认最简单的JAVA工程样板），不同的电脑，该数字会变动：
+				实际JAVA应用开发中，我们经常需要搭建一个最简单的项目框架，那么使用这个命令可以方便的生成各种框架需要的资源文件。
+				那我们到底有多少中项目可以选择呢，大家敲下面这个命令，把所有的项目里列表存成一个文件，就可以看到了。原来MAVEN是如此神奇的。
+				你再也不用愁怎么运行JAVA里面各种款架构的例子了。这里有1000多个（见:附录-maven可以建立的项目原型）
+				各种开源项目还在不断扩充。
+			</para>
+
+			<figure>
+				<title>mvn archetype:generate >project-list.txt</title>
+				<mediaobject>
+					<imageobject role="html">
+						<imagedata fileref="http://trainyjj.qiniudn.com/tool-maven3.jpg"
+							align="center" scalefit="0" width="100%" />
+					</imageobject>
+					<imageobject role="fo">
+						<imagedata fileref="http://trainyjj.qiniudn.com/tool-maven3.jpg"
+							align="center" scalefit="1" width="100%" />
+					</imageobject>
+				</mediaobject>
+
+				<mediaobject>
+					<title>打开project-list.txt文件</title>
+					<imageobject role="html">
+						<imagedata fileref="http://trainyjj.qiniudn.com/tool-maven4.jpg"
+							align="center" scalefit="0" width="100%" />
+					</imageobject>
+					<imageobject role="fo">
+						<imagedata fileref="http://trainyjj.qiniudn.com/tool-maven4.jpg"
+							align="center" scalefit="1" width="100%" />
+					</imageobject>
+				</mediaobject>
+			</figure>
+			<para>下面是maven当前已经有的各种项目框架的原型样板列表。其它JAVA的命令就容易理解，按网站上的入门例子逐个熟悉下面的操作意义：，
+				mvn eclipse:eclipse,
+				mvn install等命令，
+				在POM。xml中增加引入一个新的JAR文件，然后看MAVEN如何自动下载该JAR的。
+				基本入门使用就算通过了。
+			</para>
+		</sect1>
+	</chapter>

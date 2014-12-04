@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>case-银行ATM机案例</title>
+	<para>
+		<literallayout>
+   <![CDATA[
+经典案例
+用Introducing BDD的例子，我们来看看从ATM取出现金的需求：
+cucumber代码  
+future: Account Holder withdraws cash   
+  As an Account Holder  ，I want to withdraw cash from an ATM  ，So that
+   I can get money when the bank is closed   
+	    Scenario 1: Account has sufficient funds   
+	        Given the account balance is $100  
+             And the card is valid   
+ 	         And the machine contains enough money   
+	        When the Account Holder requests $20  
+	        Then the ATM should dispense $20  
+	         And the account balance should be $80  
+	         And the card should be returned   
+	  
+	    Scenario 2: Account has insufficient funds   
+	        Given the account balance is $10  
+	         And the card is valid   
+	         And the machine contains enough money   
+	        When the Account Holder requests $20  
+	        Then the ATM should not dispense any money   
+	         And the ATM should say there are insufficient funds   
+	         And the account balance should be $10  
+	         And the card should be returned   
+	  
+	    Scenario 3: Card has been disabled   
+	        Given the card is disabled   
+	        When the Account Holder requests $20  
+	        Then the ATM should retain the card   
+	        And the ATM should say the card has been retained   
+	  
+	    Scenario 4: The ATM has insufficient funds   
+	        ...  
+可以看到，这里考虑到有很多场景，一些涉及到帐户，另一些是关于
+卡的，还有关于ATM机自己的。我们来分析一下这个故事看看它是不
+是一个不错的故事。标题应该说明一个行为 这个故事的标题：
+"Account Holder withdraws cash"，描述了一个帐
+户所有人想取钱的行为。在我们实现这个功能之前，这个帐户所
+有人还不能从ATM机上取出钱来。一旦我们发布，他们就可以了。这给
+我们一个清晰的描述“效果”的起点。 如果标题写成“Account management”
+或者"ATM behaviour"，我们将不得不费尽的理解我们到底要做
+些什么，而且一些边缘部分也不清晰。 例如：“Account management”
+可能要包含贷款申请的功能，"ATM behaviour" 可能要包含修改银行卡
+密码的功能。故事的标题总是应该要描述系统用户实际的行为。
+ 
+说明应该包含角色，功能和利益 
+ 范本："As a [角色] I want [功能] so that [利益]"
+ 有许多优点。通过指定这个说明的叙述者，你可以知道你在和谁讨论这个
+ 功能。通过指定利益，可以让故事的作者考虑为什么需要这个功能。有趣
+ 的是，如果你发现这个功能并不会带来相应的利益的话。这意味着你有还
+ 没有考虑到的故事。如果一个故事通过现在的功能可以得到另一个利益
+ （这个利益也是有用的），一个隐藏的故事需要另一个功能来处理这个利
+ 益所描述的内容。这个例子故事告诉我们有一个帐户所有人关心将要提供
+ 的功能，所以我们知道从哪里开始分析要做什么。
+ 
+场景标题应该表示出区别 
+你应该可以将场景一一排列之后通过标题分辨出他们之间的区别。在我们的
+例子中，我们可以看到场景的标题只说明了各个场景之间的区别。你不需要写成
+：“an account holder withdraws money from an account with
+ insufficient funds and is told they are unable to fulfull
+ the transaction”。
+从标题很明显的表示这个场景与其它场景相比你所关心的地方。
+场景应该被描述成Given, Event和Outcome的形式 
+这是所见过的采用BDD方式的最简练行为描述。简单地让用户，分析师，
+测试人员和开发人员采
+用“given/when/then”方式，就可以让世界的不确定性消失。
+ 不是所有的场景都这么简单。事件序列是一个最好的代表，它被描述成：
+ given [一些环境] when [做什么事情] then [发生什么] 
+ when [做另一件事情] then [发生另一件事情] 等等。
+一个例子是一个向导式的网页，你通过一系列的画面来建立一个复合的数据
+模型。只要你习惯用于这种思考方式，它非常适合事件和结果组成的混合序
+列。一个有趣的事情是交谈的质量提高了。你可以很快的发现你忘记了一个
+假设条件（“这个账户当然是透支账户”）或者忘记去验证一个结果（“很自
+然账户所有人取回了他们的卡”）。
+我记得有一个项目开发主管告诉我他感觉到分析师和开发人员在两个层面上
+交谈而不能找到一个方法来演示。在介绍了几天“given/when/have”
+模式之后，他看到了交流质量戏剧性的提高。
+ 
+Given应该包含所有且不多余的所需环境 
+任何额外的Given的描述都会让初次阅读故事的人（无论是技术方面的人还
+是业务方面的人）难以理解他们到底需要知道什么。同样，任何遗漏的Given
+都是确定的假设。如果你能够从给定的Given得
+到另外的结果，那么你一定遗漏的什么。
+ 在例子中，第一个场景说了一些关于账户，银行卡和ATM本身的事情。所有的
+ 这些完全定义了这个场景。在第三个场景中，我们没有说到任何关于账户或者
+ ATM机中是否有钱，以及ATM机状态的事情。
+ 
+事件应该描述功能
+事件本身应该非常简单，通常只是一个简单过程代码的调用。正如上面所说的，
+很多场景比这个要复杂，但是大多数故事的场景只是围绕一个单一事件。他们
+将只是通过不同环境（Given）来得到对应的期望结果。故事应该尽可能的小，
+从而适应迭代 并没有关于这个的硬性规定。你只要能把整个演示分开。通常，如果
+一个故事里面有超过5到6个场景的话，最好将他细分到更小的子场景中。我们
+不知道这个ATM例子中这个故事里还有多少场景。但是我估计应该还有很多。基
+本上在这个故事中我们有三个“运动部件(Moving Parts)”，它们是：账户，
+银行现金卡的状态和ATM的状态。我们可以更进一步的考虑银行现金卡的状态：
+它是不是超过有效期，这样的话我就不能用它取钱，ATM还会把它退还给我吗？
+如果ATM机交易过程中故障了怎么办？
+如果我的账户是透支账户怎么办？
+这样最好将这个故事分开成三个更小的故事：
+•	账户所有人取钱（假设：ATM工作正常并且银行卡有效）
+•	账户所有人用无效卡取钱（假设：ATM工作正常）
+•	账户所有人从故障ATM机取钱（假设：银行卡有效）
+虽然这看上去有些做作，但是它让你可以在业务模式下演示，并且给你更多的数据
+点来跟踪。重要的是这样可以保证总是在业务层通过场景（使假设清晰）来分割故
+事，而不是在技术层（例如，数据库开发人员这样分，
+界面开发人员那样分）来分隔。
+这样就让业务可以在它们自己的模式下进行演示，而不是然你来考虑。
+ 
+和需求用例（Use Case）的区别
+大家都是用例。我是Alistair Cockburn描述的用例（反对过度设计版，
+我在RUP-as-waterfall项目中用过）的忠实支持者。既然对于用例驱动测
+试方面我不是很有经验，我还是留给其他人来进行比较吧。当然，我同意他从低精度
+（对于结果或者目标）开始逐渐向高精度发展的处理过程，同时考虑更多的例外情况，
+就像你做的那样。在BDD中，这意味着开始于业务成果，然后通过高层次的功能区深
+入到具体的故事中。实际上，你的处理是确定和阐述需求也没什么关系，如果可以帮
+助你整理你的思路写需求文档也是件好事。但是，如果把这些文档当作包含了你所有
+思路的东西来用的话，就不好了。因为他们并不包含你所有的思路。相反，你应该将
+需求文档或者用例栈放在一边从业务成果方面完全定义故事（或者至少是一个你目前
+理解下的纲要）。												
+			]]>
+		</literallayout>
+	</para>
+</section>
+		

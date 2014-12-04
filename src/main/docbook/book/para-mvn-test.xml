@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<para version="5.0" xmlns="http://docbook.org/ns/docbook">
+未来一种理想的软件开发和发布方式：
+    docker hub (builds, stores images) 
+	Jenkins (workflow, testing, deployment) to build out some kind of a continuous
+	
+
+
+当前的大型项目开发模式有很多弊病，以电信项目的产品为例：
+一个电信项目的实施，通常包括开发阶段和实施阶段。
+开发阶段： 开发人员环境 和测试人员的不统一
+实施阶段： 测试环境 和 客户生产机环境的不统一。
+都会造成一些特殊的问题处理。特别是实施阶段，如果一个特殊情况是由实施工程师反馈的，从申请到一线，再转到三线处理，至少得花
+1周时间。 项目的成本和人员之间的精力都被这些问题所束缚。 如果用DOCKER+jenkins，一切都变得美好起来。
+
+https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md
+
+workflow 工作流插件的流程
+ •Check out source code from a Git repository and build it via Maven with unit testing
+ •Run two parallel integration tests that involve deploying the app to a PaaS-like 
+  ephemeral server instances, which get thrown away when tests are done 
+  (this is done by using auto-deployment of Jetty)
+ •Once integration tests are successful, the webapp gets to the staging server at http://localhost:8080/staging/
+ •Human will manually inspect the staging instance, and when ready, approves 
+ the deployment to the production server at http://localhost:8080/production/
+ 
+ •Workflow completes
+
+
+</para>
+
+		
+		 
+
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">	
+	<info>
+		<title>TEAM1部门介绍 </title>
+		<para>本书适合TEAM1部门成员阅读</para>
+		<authorgroup>
+			<author>
+				<firstname>ETOM咨询</firstname>
+			</author>
+		</authorgroup>
+		<date>11/16/2014</date>
+		<releaseinfo>1.01.00</releaseinfo>
+		<abstract>
+			<para>
+			  总结了部门相关制度，人员分工和职能要求
+			</para>
+		</abstract>
+	   
+		<pubdate>2015-01-01</pubdate>
+	
+	</info>
+
+
+	<chapter>
+		<title>部门业务说明</title>
+		<para>主要负责日常开发环境的正常运作</para>
+	</chapter>
+	<chapter>
+		<title>部门制度</title>
+		<para>.....</para>
+	</chapter>
+	<xi:include href="chapter-team1.xml" />
+	
+</book>
+
+

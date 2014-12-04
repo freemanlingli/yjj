@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装运行</title>
+		<literallayout>
+   <![CDATA[	    
+   
+   http://www.bootcss.com/p/font-awesome/#integration
+   
+   http://fontawesome.io/
+   
+   
+1.拷贝 Font Awesome 字体目录到你的项目中。 common/font-awesome-4-1
+2. font-awesome.min.css 文件到你的项目中。
+3. 打开你的项目中的 font-awesome.min.css 文件并编辑字体路径指向正确的位置。 
+ 字体路径是相对于你的 CSS 目录的。
+
+4. 在html文档中的 <head> 部分，引入 font-awesome.min.css 文件。 <link rel="stylesheet" href="../css/bootstrap.min.css"><link rel="stylesheet" href="../css/font-awesome.min.css">
+5.在浏览器中打开页面，检查是否正确启用了 Font Awesome!
+
+	  ]]>
+			</literallayout>
+</chapter>

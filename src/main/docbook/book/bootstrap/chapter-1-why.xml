@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>Bootstrap</title>
+	<sect1>
+		<title>新的</title>
+		<literallayout>
+<![CDATA[	  
+http://www.angularjs.cn/#!/A033
+对于采用哪个UI框架，我们对比了Bootstrap和Foundation，总体上，Foundation在Mobile Web上做的要比Bootstrap好，这是因为对于Foundation而言：Mobile First。
+
+ ]]>
+		</literallayout>
+	</sect1>
+
+
+
+	<sect1>
+		<title>优点</title>
+		<para>
+			使用回调：回调的使用会打乱你的代码的可读性，让你的代码变得支离破碎，很难看清本来的业务逻辑。移除一些常见的代码，
+			例如回调，是件好事。大幅度地减少你因为JavaScript这门语言的设计而不得不写的代码，能让你把自己应用的逻辑看得更清楚。
+		</para>
+		<para>
+			手动编写操作DOM元素的代码：操作DOM是AJAX应用很基础的一部分，但它也总是很“笨重”并且容易出错。用声
+			明的方式描述的UI界面可随着应用状态的改变而变化，能让你从编写低级的DOM操作代码中解脱出来。绝大部分用AngularJS写的应用里
+			，开发者都不用再自己去写操作DOM的代码，不过如果你想的话还是可以去写。
+		</para>
+		<para>
+			对UI界面读写数据：AJAX应用的很大一部是CRUD操作。一个经典的流程是把服务端的数据组建成内部对象，再把对象编成HTML表单，
+			用户修改表单后再验证表单，如果有错再显示错误，然后将数据重新组建成内部对象，再返回给服务器。这个流程里有太多太多要重复写的代码，
+			使得代码看起来总是在描述应用的全部执行流程，而不是具体的业务逻辑和业务细节。
+		</para>
+		<para>
+			对UI界面读写数据：AJAX应用的很大一部是CRUD操作。一个经典的流程是把服务端的数据组建成内部对象，再把对象编成HTML表单，
+			用户修改表单后再验证表单，如果有错再显示错误，然后将数据重新组建成内部对象，再返回给服务器。这个流程里有太多太多要重复写的代码
+			，使得代码看起来总是在描述应用的全部执行流程，而不是具体的业务逻辑和业务细节。
+		</para>
+	
+	</sect1>
+
+</chapter>

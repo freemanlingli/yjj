@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>参考资料</title>
+		
+		<para>
+			<literallayout>
+      <![CDATA[
+     http://jqueryui.com/download
+     jQuery UI 是 jQuery 的一部分, 是在jQuery之上的一套专门用于UI交互的类库.  使用jQuery UI可以实现底层交互, 各种高级特效, 动画, 并且可定制主题.
+
+     
+	  ]]>
+			</literallayout>
+		</para>
+	</chapter>

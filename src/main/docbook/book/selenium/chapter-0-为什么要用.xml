@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+		<title>为什么要用Selenium2.0</title>
+		<para>
+			我们已经有了Selenium1.0为什么还需要Selenium2.0呢？
+			<literallayout>
+   <![CDATA[ 
+Selenium1.0不能处理一下事件： 
+1)本机键盘和鼠标事件
+2)同源策略XSS/HTTP
+3)弹出框，对话框（基本身份认证，自签名的证书和文件上传/下载）
+
+Selenium2.0有简洁的API，WebDriver和WebElement对象，更好的抽象。且支持多中操作系统，多语言，多浏览器。
+Selenium2.0 = Selenium1.0 + WebDriver（也就是说Selenium2.0合并了这两个项目）
+ 
+Selenium1.0作为第一个基于javascript开源的web测试框架，迅速的得到了其他浏览器的支持。但是和任何其他大项目一样，
+Selenium1.0也不是完美的。正因为他完全是使用javascript写的，这也给他带来了致命的缺陷。为了防止恶意的javascript，
+所有浏览器都加强了对javascript的安全策略。这样势必导致了在一些特定场景无法使用Selenium1.0。作为一个大项目，随着时间的日
+积月累，Selenium1.0的API变得越来也大，也越来也复杂，导致了都不知道更好的使用它改善它。
+ 
+WebDriver项目是由Simon Stewart提出的，它是一个轻便简洁的自动化测试框架。
+WebDriver通过尝试不同的方法去解决Selenium1.0所面临的问题。不单单是使用javascript，
+WebDriver会使用任何一种更合适的机制来操作浏览器。IE通过使用C++，FF通过使用javascript in a XPCOM component。
+通过更灵活的机制去操控浏览器，那我们就能很好的绕过浏览器javascript的安全限制。
+当这些技术还不够用时，我们可以调用系统设备操作，尤其是当你需要一些键盘和鼠标操作时，通过这些技术，我们可以更好的模拟用户的真实浏览器操作。
+
+WebDriver对浏览器的支持需要对应框架开发工程师做对应的开发；同样Selenium必须操作真实浏览器，
+但是WebDriver可以HTML unit Driver来模拟浏览器，在内存中执行用例，更加的轻便。
+WebDriver不支持并行，但是Selenium Grid解决了这个问题
+    
+    
+    
+        </para>
+    </chapter>

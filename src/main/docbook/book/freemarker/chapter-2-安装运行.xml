@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装运行</title>
+		<literallayout>
+   <![CDATA[	  
+   安装插件  
+ In Eclipse, "Help" / "Eclipse Marketplace...", 
+ search for "JBoss Tools", "Install". A tree of checkboxes will appear, 
+ uncheck all (by unchecking the root) except "FreeMarker IDE". 
+ (On old Eclipse you may have to use the JBoss Tools download page instead.) 
+
+	  ]]>
+			</literallayout>
+</chapter>

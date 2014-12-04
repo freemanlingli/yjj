@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+<title>手册内容更新</title>	
+<para>
+	<table>
+	    <title>本手册内容不定期更新阔成，更多新信息请关注上面微信订阅号 | 关注新浪微博帐号:老凌老师  | 	邮箱3436070@qq.com</title>
+		<tgroup cols="2">
+			<tbody>
+				<row>
+					<entry>
+						<informalfigure>
+							<mediaobject>
+								<imageobject>
+									<imagedata fileref="http://trainyjj.qiniudn.com/weixin2.jpg" />
+								</imageobject>
+
+							</mediaobject>
+						</informalfigure>
+					</entry>
+					<entry>
+						<informalfigure>
+							<mediaobject>
+								<imageobject>
+									<imagedata fileref="http://trainyjj.qiniudn.com/weibo2.jpg" />
+								</imageobject>
+
+							</mediaobject>
+						</informalfigure>
+					</entry>
+
+				</row>
+
+
+			</tbody>
+		</tgroup>
+	</table>
+</para>
+</chapter>
+
+		
+		 
+
+

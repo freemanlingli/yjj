@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook" > 
+ 
+		<title>DOCKER重要事件</title>
+		<para>
+			2013年3月Docker启动，是由PaaS 提供商 dotCloud 开源的一个基于 LXC
+			的高级容器引擎，源代码托管在
+			Github 上，基于谷歌发布的开源编程语言 Go
+			DotCloud公司2013年10月改名为Docker
+			Inc,转型专注于Docker引擎和Docker生态系统;
+		</para>
+		<para>
+			2014年1月获得1500万美元高额B轮融资,著名的投资公司 Greylock Partners 领投，包括 Insight
+			Venture Partners 参与以及原有投资者 Benchmark
+			Capital 和 Trinity
+			Ventures跟投，参与此轮投资的还有 Yahoo 的联合创始人杨致远(Jerry Yang)。
+		</para>
+		<para>
+			2014年6月9号，Docker社区正式发布了Docker 1.0，商业公司Docker
+			Inc.同时宣布提供企业级服务支持Docker的大规模商用;同一天，第一届Docker技术大会在San
+			Francisco高调开幕，预定500人的会场有超过900多人报名，赞助商包括IBM、Redhat、Rackspace等IT巨头;
+		</para>
+		<para>
+			2014年6月10，谷歌宣布与Docker的全新整合方式，涉及的云服务包括Google App Engine和Google
+			Compute Engine，国内各大技术媒体大规模转载相关新闻。
+		</para>
+		<para>
+			Docker公司近期正式宣布了Docker引擎+Docker Hub的开放平台计划，迈入云(Docker
+			Hub云应用商店和分发平台)+端(将应用发布到数据中心、公有云等运行Docker引擎的服务器平台上)。这一里程碑意味着 Docker
+			自身已经转变为一个分发应用的开放平台，它由 Docker 引擎、容器运行时、打包工具，以及 Docker Hub 组成
+		</para>
+	</chapter>

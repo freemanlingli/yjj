@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xl="http://www.w3.org/1999/xlink" xml:lang="en">
+	<info>
+		<title>运维管理流程梳理 </title>
+		<para>专业书籍编辑的工具，学习多人协作编写文档</para>
+		<authorgroup>
+			<author>
+				<firstname>IT支持部</firstname>
+			</author>
+		</authorgroup>
+		<date>11/16/2014</date>
+		<releaseinfo>1.01.00</releaseinfo>
+		<abstract>
+			<para>
+				各部门分工合作编写的大型流程文档整理工程,采用DOCKBOOK技术编写。参考ETOM和ITIL总结形成
+			企业内部自己的业务模型.
+			</para>
+		</abstract>
+	   
+		<pubdate>2015-01-01</pubdate>
+	
+	</info>
+
+	<preface>
+		<title>序言</title>
+			<para>本概要设计旨在从整体上把握业务支撑网运维管理流程建设的基本思路和关键要素，总结形成
+			业务支撑网运维管理流程建设需要统一和规范的内容</para>
+		  <para>本概要设计主要包括对运维管理中事件管理、问题管理、配置管理和变更管理的概要设计。
+		  
+			</para>
+	</preface>
+
+	<chapter>
+		<title>概要设计</title>
+
+		<section>
+	  <title>图片显示</title>
+		<figure>
+			<title>概念图</title>
+			<mediaobject>
+				<imageobject role="html">
+					<imagedata fileref="media/itil.jpg" align="left"
+						scalefit="0" width="100%" />
+				</imageobject>
+				<imageobject role="fo">
+					<imagedata fileref="media/itil.jpg" align="center"
+						scalefit="1" width="100%" />
+				</imageobject>
+			</mediaobject>
+		</figure>
+		</section>
+	</chapter>
+  
+
+
+	<appendix>
+		<title>参考文档</title>
+		<bibliolist>
+			<biblioentry>
+				<title>ETOM</title>
+				<bibliosource>
+					http://www.tmform.org
+				</bibliosource>
+			</biblioentry>
+		</bibliolist>
+	</appendix>
+</book>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xl="http://www.w3.org/1999/xlink" xml:lang="en">
+	<info>
+		<title>docbook-编写语法 </title>
+		<para>可以插入2维图片吗</para>
+		<authorgroup>
+			<author>
+				<firstname>&name; </firstname>
+				<!-- 
+				<othername>tom.ling</othername>
+				<surname>li</surname>
+				<orgname>www.trainyjj.com</orgname>
+				 -->
+				<affiliation>&lingli;</affiliation>
+
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<releaseinfo>1.01.00</releaseinfo>
+		<abstract>
+			<para>
+				<application>语法参考手册</application>
+				方便组员编写文档时参考的XML语法,用于生成 的文档
+			</para>
+		</abstract>
+		<keywordset>
+			<keyword>关键词</keyword>
+			<keyword>程序化维护文档结构</keyword>
+			<keyword>docbook</keyword>
+		</keywordset>
+		<revhistory>
+			<revision>
+				<revnumber>1.0</revnumber>
+				<date>1994-04-20</date>
+				<revremark>Submitted.</revremark>
+			</revision>
+			<revision>
+				<revnumber>0.5</revnumber>
+				<date>1994-02-20</date>
+				<revremark>First draft for review.</revremark>
+			</revision>
+		</revhistory>
+		<pubdate>2006-03-01</pubdate>
+		<pubdate>2005-12-28</pubdate>
+		<pubdate>2005-10-27</pubdate>
+	</info>
+	<xi:include href="handbook/glossary.xml" />
+	<preface>
+		<title>序言：Docbook的语法手册编写</title>
+		<sect1 xml:id="what_is_docbook">
+			<para>docbook实现了文档的公共模块 和多版本发布，确实强</para>
+		</sect1>
+	</preface>
+
+	<chapter>
+		<title>特殊字符的处理</title>
+		<para>
+		    
+  <literallayout>
+   <![CDATA[
+		    特殊字符 	转义字符组
+		& 	&mp;
+		< 	&lt;
+		> 	&gt;
+		” 	&quot;
+		特殊字符存在主要是为了规避和XML文件中标签等定义的冲突，但是，如果想引用一段诸如html文件的内容，如果要一个个去用转义字符组去替换特殊字符，则太麻烦了，因此有一种消除特殊字符功能的标签可以做到。如下面的例子： 
+		  
+  ]]>
+  </literallayout>
+	
+		
+		</para>
+				
+		
+	</chapter>		
+	<chapter>
+		<title>link</title>
+		<section>
+
+			<para>
+
+				<warning>
+					<para>warning, Will Robinson!</para>
+				</warning>
+				<important>
+					<para>重要important, Will Robinson!</para>
+				</important>
+				<tip>
+					<para>tip, Will Robinson!</para>
+				</tip>	
+				<caution>
+					<para>caution, Will Robinson!</para>
+				</caution>													
+			</para>
+
+		</section>
+	</chapter>
+
+	<chapter>
+		<title>link</title>
+		<section>
+
+			<para>
+				<uri>http://docbook.org/ns/docbook</uri>
+				<para id="mylink">
+					<link linkend="http：//www。baidu.com">苗子</link>
+
+
+					<ulink url="http://www.kde.org" target="_blank"> 外部链接
+						site
+					</ulink>
+
+					苗子.
+					<anchor id="anotherlink" />
+				</para>
+				<para>
+					The above paragraph can be located
+					<link linkend="mylink">here</link>
+					.
+					My email address is
+					<email>konqui@kde.org</email>
+				</para>
+			</para>
+			<para>
+				<variablelist>
+					<varlistentry>
+						<term>RELAX NG schema</term>
+						<listitem>
+							<para>
+								<link xl:href="http://docbook.org/xml/rng/docbook.rng" />
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry>
+						<term>RELAX NG schema in compact syntax</term>
+						<listitem>
+							<para>
+								<link xl:href="http://docbook.org/xml/rng/docbook.rnc" />
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry>
+						<term>DTD</term>
+						<listitem>
+							<para>
+								<link xl:href="http://docbook.org/xml/dtd/docbook.dtd" />
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry>
+						<term>W3C XML Schema</term>
+						<listitem>
+							<para>
+								<link xl:href="http://docbook.org/xml/xsd/docbook.xsd" />
+							</para>
+						</listitem>
+					</varlistentry>
+				</variablelist>
+			</para>
+
+		</section>
+	</chapter>
+
+	<chapter>
+		<title>表格table</title>
+		<xi:include href="handbook/table.xml" />
+	</chapter>
+	<chapter>
+		<title>图片image</title>
+		<xi:include href="handbook/image.xml" />
+	</chapter>
+
+
+
+	<chapter>
+		<title>列表list</title>
+		<xi:include href="handbook/list.xml" />
+	</chapter>
+
+	<xi:include href="handbook/chapter-program.xml" />
+	<!-- <xi:include href="handbook/program.xml" /> -->
+
+
+
+	<chapter>
+		<title>section和para</title>
+		<xi:include href="handbook/para-section.xml" />
+	</chapter>
+
+	<chapter>
+		<title>特殊内容区：提示警告等</title>
+		<xi:include href="handbook/tip.xml" />
+	</chapter>
+
+
+
+	<appendix>
+		<title>参考文档</title>
+		<bibliolist>
+			<biblioentry>
+				<title></title>
+				<bibliosource>
+					http://spring21.javaeye.com
+				</bibliosource>
+				<author>
+					<personname></personname>
+				</author>
+			</biblioentry>
+		</bibliolist>
+	</appendix>
+</book>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>安装运行</title>
+	<sect1>
+		<title>nodejs下的例子运行</title>
+		<literallayout>
+   <![CDATA[	    
+	安装的目的是为了运行官方的一个手机购买网站的例子，是基于nodejs编写的，所以先安装环境
+	安装NODEJS
+	------------------------
+	1. 双击下载的 node-v0.10.26-x86.msi, 默认安装目录 C:\Program Files\nodejs
+	2. 准备测试文件  D:\nodejs_test_xx\test.js 
+	内容: 
+	var http = require("http"); 
+	http.createServer(function(request, response) { 
+	response.writeHead(200, {"Content-Type": "text/plain"}); 
+	response.write("test nodjs"); 
+	response.end(); 
+	}).listen(8899); 
+	console.log("nodejs start listen 8899 port!");
+	
+	3. 打开node.js命令窗口 (开始->程序->Node.js->Node.js command prompt)
+	4. cd C:\Program Files\nodejs\node_modules\npm\test
+	
+	5. node D:\nodejs_test_xx\test.js
+	6. 在浏览器输入 localhost:8899, 即显示 "test nodjs"
+	7. 设置nodejs全局目录, 因为默认的全局目录在 C:\Users\kaytiu\AppData\Roaming\npm, 像express 必需安装在全局目录里才起作用
+		npm config set prefix "C:\Program Files\nodejs"
+		npm config set cache "C:\Program Files\nodejs\cache"
+		
+			    
+	下载例子
+------------------------
+git clone git://github.com/angular/angular-phonecat.git
+PhoneCat项目的运行与测试依赖一些别的工具，可以在安装Node.js后通过npm命令来安装这些依赖包。以下命令需在angular-phonecat项目路径下运行：
+
+npm install
+运行该命令后，会在angular-phonecat项目路径下安装以下依赖包：
+•Bower . 包管理器 
+•Http-Server . 轻量级Web服务器 
+•Karma . 用于运行单元测试 
+•Protractor . 用于运行端到端测试
+
+D:\angular-phonecat-master>npm start
+npm start
+http://localhost:8000/app/index.html来访问该Web应用。
+
+或者启动ea，注意只有Google浏览器能正常看到
+http://localhost:5555/demo/app/angular-phonecat
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>我们如何在JAVA环境中运行</title>
+		<literallayout>
+   <![CDATA[	    
+
+git clone git://github.com/angular/angular-phonecat.git
+D:\train\code\aaa\project\angular-phonecat\angular-phonecat\
+git checkout -f step-7 进行不同例子的难度的跟新 ，1到11.
+我们可以把例子分别抽取到EA中，
+
+或者启动ea，注意只有Google浏览器能正常看到
+http://localhost:5555/demo/app/angular-phonecat
+http://localhost:5555/demo/app/angular-phonecat
+http://localhost:5555/demo/app/common/test/angular/7.ftl 是很多小例子
+
+	  ]]>
+		</literallayout>
+	</sect1>
+</chapter>

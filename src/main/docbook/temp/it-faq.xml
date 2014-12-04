@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>IT素问 
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>凌黎 </firstname>
+				<othername>tom.ling</othername>
+				<surname>li</surname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		
+		<abstract>
+			<para>回答IT行业新手们的各种关心问题
+			                                              
+			</para>
+			<para>&note;</para>
+		</abstract>
+
+	</info>
+	
+	
+	<chapter>
+	
+        <para>
+			在IT公司，人数最多的职位就是“程序员”了。 当前JAVA程序员在软件行业里需求是最大，人数也是最多了。就以JAVA程序员这一职位，做一个工作分析			    
+		</para>    
+		
+		<sect1>
+		    	<title>为什么你得不到晋升加薪？</title>
+			<para>难点-永不停止技术学习和晋升瓶颈</para>		
+		    <para>       
+			               晋升瓶颈 :下图是一个初级程序员如何在技术的道路上爬上职位最顶峰。很多多数人在程序员的岗位上工作好几年，还是中级或者高级程序员的层次徘徊
+			    <figure>
+					<title>[图片引用]JAVA程序员-你的位置在哪里</title>
+					<mediaobject>
+						<imageobject role="html">
+							<imagedata fileref="media/book/java-path.jpg" align="center"
+								scalefit="0" width="100%" />
+						</imageobject>
+						<imageobject role="fo">
+							<imagedata fileref="media/book/java-path.jpg" align="center"
+								scalefit="1" width="100%" />
+						</imageobject>
+					</mediaobject>
+				</figure>  
+			</para>
+		
+			<para>为什么身体会变差?</para>			
+		    <para>       
+			           程序员的工作看上去在办公室非常体面，过于投入，得小心各种职业病状。
+				<figure>
+					<title>[图片引用]程序员的职业病</title>
+					<mediaobject>
+						<imageobject role="html">
+							<imagedata fileref="media/book/it-body.jpg" align="center"
+								scalefit="0" width="100%" />
+						</imageobject>
+						<imageobject role="fo">
+							<imagedata fileref="media/book/it-body.jpg" align="center"
+								scalefit="1" width="100%" />
+						</imageobject>
+					</mediaobject>
+				</figure>    			
+         </para>
+		</sect1>          
+		<sect1>
+			<title>技术概念这么多，不可能样样精通，如何能快速学习？</title>			
+		    <para>
+			<tip>
+			    <para>一叶障目，不见泰山；两豆塞耳，不闻雷霆</para>
+				<para>一片树叶挡住了眼睛，连面前高大的泰山都看不见。比喻被局部现象所迷惑，看不到全局或整体</para>
+			</tip>							
+            </para>		
+            
+		    <para>
+		        如何花少时间得到最大的技术学习效果呢？
+		        拥有较好的问题解决能力和新技术的敏锐感，是一个优秀程序员基本素质，
+		        在工作中 一定要注意自我总结和技术归类，在自己的心理有一个清晰的技术地图。拿JAVA技术来说 ，各种技术框架和各种概念繁多，如果一一细读，花费的时间是巨大的。
+		       所以我们一定要注意归类聚焦。见下图：
+			<figure>
+				<title>JAVA的技术地图</title>
+				<mediaobject>
+					<imageobject role="html">
+						<imagedata fileref="media/book/tech-java.jpg" align="center"
+							scalefit="0" width="100%" />
+					</imageobject>
+					<imageobject role="fo">
+						<imagedata fileref="media/book/tech-java.jpg" align="center"
+							scalefit="1" width="100%" />
+					</imageobject>
+				</mediaobject>
+			</figure>    		   
+		     我们在工作中，通常没有多少机会决定使用什么技术，但我们在项目中使用一项技术时，一定要花时间 了解跟性质接近的技术概念，分别有什么有优缺点，
+		 能自己手写几个例子对比一下。经过一段时间的积累，在技术的学习上就变得很简单了，基本触类旁通。就拿前台开发来说，如果你对JQUERY的使用熟悉了，
+		 其它前台框架，基本没有学习难度，    
+		    </para> 
+		    <para>	
+		        如何晋升？
+		  在IT公司，如果能力突出，晋升还是相对公平的。技术学习能力上，大家水平不会有非常大的差距。口头和书面能力是基本功，这里不做讨论。      
+		  很多多数人在程序员的岗位上工作好几年，还是中级或者高级程序员的层次徘徊，这些人要反省自己哪里出问题了。
+		  通常属于属于 ：1.具有很好的编码能力，对业务分析和项目管理没有兴趣。2。什么都知道一些，但什么都不精通么     
+		  对于第1种情况建议就专心研究某一领域的技术，成为这一领域的专家。
+		  第2中情况的人比较多，这类型的人适应性比较强，可以承担各种类型的工作，如果在工作中注意结合一些“最佳实践”也是非常有价值复合型人才【国外把很多工作细分，然后总结出某些方法论】，
+		 比如在 企业业务分析方面的最佳实践有“TOGAF” ，在项目管理方面有“持续集成”，在运维管理方面有“ITIL”. 通过这些方法论的学习，是可以将一个普通工作人员的专业性提高几个层次的。   
+		    </para> 
+		</sect1>          		        	    
+	</chapter>
+	<chapter>
+		<title>“测试”人员，是不是地位比较低，如何翻身？</title>
+	</chapter>
+	<chapter>
+		<title>“产品经理”的工作主要是做什么的？</title>
+	</chapter>
+	<chapter>
+		<title>适合做“培训师咨询师”工作吗？</title>
+	</chapter>		
+	<chapter>
+		<title>“运维管理”的工作是否枯燥无味</title>
+		<para>
+				<tip >
+				    <para>变则通，通则久</para>
+				    <para>复杂的问题简单化，抓住主要矛盾</para>
+				</tip>		    
+		</para>
+		<para>
+		    《易经》的核心讲求“三易”，即“简易”、“不易”、“变易”。易经讲求的“简易”，即平易，就是把复杂的问题简单化，抓住主要矛盾。 
+                                   当代管理学推崇的“简单管理”就是管理发展的方向。管理的制度化、规范化、标准化、信息化、普及化，是“简易”的路径，也是ITIL服务管理理论遵从的核心原理之一。ITIL的服务台及故障管理，讲求效率，讲求快速响应，快速解决，出现故障先尽快恢复业务。ITIL的问题管理，强调透过现象看本质，抓住问题的根源和主要矛盾，消除根源，使同类事件不再重复发生，并把解决方法放到已知错误数据库中，以后出现类似问题，可快速解决
+		</para>		
+
+		<para>
+				<tip >
+				    <para>阴阳调和，此消彼长，生生不息，循环往复</para>
+				    
+				</tip>		    
+		</para>
+		<para>
+
+		    神似的生命循环 ，多数是圆形的理论体系，可以解决复杂的问题比如血循环理论，TOGAFT都是循环的《易传》乾第一，先有天；坤为二，后有地；屯为三，人物共生；蒙为四……直至既济六十三，未济六十四，周而复始，阴阳调和，此消彼长，生生不息，循环往复。 ITIL v3引入了IT服务全生命周期的概念：服务战略，服务设计，服务转换，服务运营，持续改进，反映了IT服务生命全周期的客观规律。服务的改进需要着眼全局，不能头痛医头，脚痛医脚。 
+		相同的和谐、平衡和可持续发展理念 
+月盈则亏，日午则偏，物极必反，阴阳调和，对立统一体现易经朴素唯物辩证法思想，它指导我们在与自然界和人类社会的关系上保持阴阳的动态平衡与和谐。 
+ITIL非常讲求平衡，追求成本和IT能力、需求和IT支持之间的动态平衡。在所有流程尤其是能力管理、财务管理、服务级别管理里充满了平衡的观点。比如：强调成本和容量要平衡，不要容量闲置或容量不足都不好。需求和供给之间要平衡，供大于需或需大于供都不好。 
+		
+			<figure>
+				<title>[图片引用]用圆形的思维看待理论指导</title>
+				<mediaobject>
+					<imageobject role="html">
+						<imagedata fileref="media/book/itil-vs-yj.jpg" align="center"
+							scalefit="0" width="100%" />
+					</imageobject>
+					<imageobject role="fo">
+						<imagedata fileref="media/book/itil-vs-yj.jpg" align="center"
+							scalefit="1" width="100%" />
+					</imageobject>
+				</mediaobject>
+				<tip xml:id="tip.how_set_win_env"><title>禅语</title>
+				    <para>关于如何添加相应路径到windows的环境变量中，不熟悉的可以参考：</para>
+				    <para>请查看</para>
+				</tip>				
+			</figure>             	
+ 	</para>		
+				
+		
+	</chapter>	
+	
+	<chapter>
+		<title>互连网公司都面试 “敏捷开发模式”，到底什么是“敏捷项目管理”</title>
+	</chapter>
+
+	
+	
+	<chapter>
+		<title>为什么软件工程师的薪水和生产力如此不成正比？</title>
+	
+		
+算起来软件工程师大概是全世界最特别的一种职业，因为一个最好的programmer 和一个最烂的programmer，生产力相差至少10 倍，有时候甚至可以高达100 倍。这在其他的职业几乎是没听过的— 像Jordan (麦可‧乔丹) 这样强的篮球员，平均一场比赛的生产力，顶多也只是菜鸟板凳的10 倍。即使是其他脑力、创意密集的行业，例如：IC 设计、建筑、商品设计等等，生产力的差别也都是在10 倍的这个级距，很少达到100 倍的。
+但又为什么，当Jordan 的薪水是NBA 菜鸟的100 倍，一流建筑师的费用是菜鸟的1,000 倍时，最好的软件工程师，他们所赚得的却往往连新人的5 倍都不到？这个问题我一直想不透。它也不是坏事，因为很久以前当我第一次发现了这个现象后，我就学会要花3 倍的价钱去雇佣一个10 倍强的工程师— 多么划算的一个买卖啊！只是这件事情发生的原因，让我非常的困扰。第一，它一点都不符合经济学上「边际效应递减」的原则，你看其他职业，例如上面提到的 NBA，当你要雇用一个生产力10 倍的球员，你必须付出100 倍的成本。更重要的是，它一点都不公平，生产力10 倍的人，就算没有拿100 倍的薪水，少说也应该要拿10 倍的薪水。
+直到昨天，读了John D. Cook (强‧库克) 的这篇文章：「Why programmers are not paid in proportion to their productivity」，才给我了一个天大的启发。
+原来，这件发生的原因主要有两个— John 其实也是引述Joel Spolsky (乔‧史波斯基，有名的Joel on Software 作者) 的说法：
+第一，虽然全世界的工程师优劣差很多，但是一间公司的工程师优劣却是差不多的，因为一流的工程师不可能长期忍受跟一群蠢蛋一起工作，所以迟早会离去，于是久而久之这间公司的工程师品质就会趋向一致— 这也就是为什么你必须要花很多力气在团队上面。
+而另一个更重要的原因，是一个好工程师的生产力，其实很难被察觉。如果你要判断一个业务好不好，那很简单，看看他的业绩就行了。你要看一个建筑工人的生产力，那也很简单，看看他多快把房子盖好就行了。以此类推，如果你要知道到一个软件工程师的生产力，就看看他写了几行程序…
+大错特错!!
+一个软件工程师生产力最高的时候，是当他可以少写几行程序的时候。当他可以用一些现成的东西，在很短的时间内拼凑出你需要的产品、解决方案的时候；当他可以跟你明确的沟通，不会浪费时间在开发错误的东西上的时候；当他可以正确的解读数据，然后快速的修正产品的时候。这些…
+通通不是用几程序代码去衡量的!!
+问题是当一个优秀的工程师，快速的把产品凑出来，或者是很有效率的沟通时，老板的反应是什么？ 99.9% 都没有办法联想到这就是极致生产力的表现，然后说：「嘿！我应该帮他加薪10 倍！」所以，难怪好的工程师往往没办法获得合理的报酬。
+因此，如果你是创业团队，该怎么做？当然是用力的利用这个市场不平衡，把优秀的、在大公司郁郁不得志的工程师，通通都吸收到你的团队来。而这也就刚好解释了为什么EZTABLE 会说：我们在找的是「人」，而不是技术。
+PS.</chapter>
+		
+</book>

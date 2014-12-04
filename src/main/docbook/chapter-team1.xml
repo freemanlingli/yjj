@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en">
+	  <title>Team1日常操作手册</title>
+		<xi:include href="section-member-xixi.xml" />
+	  <xi:include href="section-member-lili.xml" />
+</chapter>

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>学习例子</title>
+	<sect1>
+		<title>说明</title>
+		<para>例子都是可以直接在TOMCAT运行的，只是官方用了nodejs。不过11版本的rest没有能在TOMCAT运行起来 </para>
+	</sect1>
+
+	<sect1>
+		<title>git checkout -f step-2</title>
+
+		<literallayout>
+<![CDATA[
+我们在视图里面制定使用那个控制器，
+ <body ng-controller="PhoneListCtrl">
+  <ul>
+    <li ng-repeat="phone in phones"> 句是一个AngularJS迭代器
+      {{phone.name}}
+    <p>{{phone.snippet}}</p>
+    </li>
+  </ul>
+
+
+PhoneListCtrl控制器
+function PhoneListCtrl($scope) {
+  $scope.phones = [
+    {"name": "Nexus S",
+     "snippet": "Fast just got faster with Nexus S."},
+    {"name": "Motorola XOOM™ with Wi-Fi",
+     "snippet": "The Next, Next Generation tablet."},
+    {"name": "MOTOROLA XOOM™",
+     "snippet": "The Next, Next Generation tablet."}
+  ];
+}  
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>angular/3.ftl演示过滤</title>
+
+		<literallayout>
+<![CDATA[
+使用filter过滤器：filter函数使用query的值来创建一个只包含匹配query记录的新数组
+  
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>angular/4.ftl 演示排序</title>
+
+		<literallayout>
+<![CDATA[
+
+  
+	  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>angular/4.ftl 演示排序route和构建多视图</title>
+		<literallayout>
+<![CDATA[
+angular-route 需要自己添加
+你将学习如何创建一个布局模板并且通过路由功能来构建一个具有多个视图的应用。
+为了增加详细信息视图，我们可以拓展index.html来同时包含两个视图的模板代码，但是这样会很快给我们带来巨大的麻烦
+相反，我们要把index.html模板转变成“布局模板”。这是我们应用所有视图的通用模板。其他的“局部布局模板”随后根据当
+前的“路由”被充填入，从而形成一个完整视图展示给用户。 
+AngularJS中应用的路由通过$routeProvider来声明，它是$route服务的提供者。这项服务使得控制器、视图模板与
+当前浏览器的URL可以轻易集成。应用这个特性我们就可以实现深链接，它允许我们使用浏览器的历史(回退或者前进导航)和书签。
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>git checkout -f step-8 详细内容显示</title>
+		<literallayout>
+<![CDATA[
+注意IE有缓存，可能看不到详细，就是在7的基础上修改了 详细显示的内容
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>git checkout -f step-9 替换文字为图标</title>
+		<literallayout>
+<![CDATA[
+                    现在转到一个手机详细信息页面。在上一步，手机详细页面显示“true”或者“false”来说明某个手机是否具有特定的特性。
+               现在我们使用一个定制的过滤器来把那些文本串图形化：√作为“true”；以及×作为“false”。来让我们看看过滤器代码长什么样子。
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>git checkout -f step-10点小图，大图显示改图</title>
+		<literallayout>
+<![CDATA[
+                    现在转到一个手机详细信息页面。在上一步，手机详细页面显示“true”或者“false”来说明某个手机是否具有特定的特性。
+               现在我们使用一个定制的过滤器来把那些文本串图形化：√作为“true”；以及×作为“false”。来让我们看看过滤器代码长什么样子。
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>git checkout -f step-11RESTful客户端的定制服务</title>
+		<literallayout>
+<![CDATA[
+         对我们应用所做的最后一个改进就是定义一个代表RESTful客户端的定制服务。有了这个客户端我们可以用一种更简单的方式
+         来发送XHR请求，而不用去关心更底层的$http服务（API、HTTP方法和URL）。
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+	<sect1>
+		<title>模块注入</title>
+		<literallayout>
+<![CDATA[
+<!doctype html>
+<html ng-app="timeExampleModule">
+  <head>
+<script src="../../common/angularjs-1-0-1/angular.js"></script>
+ 
+<script type="text/javascript" language="javascript">
+	angular.module('timeExampleModule', []).
+    factory('time', function($timeout) {       //配置 the injector
+ 	    var time = {};
+	    (function tick() {
+	      time.now = new Date().toString();
+	      $timeout(tick, 1000);
+	    })();
+	    return time;
+  	});
+	function ClockCtrl($scope, time) {
+	  $scope.time = time;
+	}
+  </script>
+  </head>
+  <body>
+    <div ng-controller="ClockCtrl">
+      Current time is: {{ time.now }}
+    </div>
+  </body>
+</html>
+ 
+    <div ng-controller="ClockCtrl">
+      Current time is: {{ time.now }}
+    </div>
+  </body>
+</html>
+  
+	  ]]>
+		</literallayout>
+	</sect1>
+</chapter>

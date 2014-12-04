@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>学习例子</title>
+	<sect1>
+		<title>Jackson库</title>
+		<para>https://github.com/Activiti/Activiti/releases
+构建jackson对象
+		    
+Mail mail = new Mail();
+mail.setStatus("received");
+mail.setSubject("Message to self");
+mail.setContent("Doh!");
+mail.setAccountRef(new Reference(getReference(), "..").getTargetRef()
+.toString());
+return new JacksonRepresentation<Mail>(mail);
+
+解析对象
+JacksonRepresentation<Mail> mailRep = new JacksonRepresentation<Mail>(
+rep, Mail.class);
+Mail mail = mailRep.getObject();
+		    </para>
+	</sect1>		
+
+	
+
+
+</chapter>

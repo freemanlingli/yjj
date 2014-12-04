@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xml:id="stip" version="5.0" xmlns="http://docbook.org/ns/docbook">
+  <title>tip</title>
+	        <para>按<keycap>PrtScn</keycap>键可以截屏。</para>
+	        
+	        <para>段落内容，可以缩进吗
+	        
+	        </para>
+			<para>note
+				<note xml:id="note.install_java_first"><title>如果没有安装java，请先安装java</title>
+				    <para>fop的运行，依赖于java运行环境。</para>
+				    <para>如果你的windows中，还没有安装java，请先安装java运行环境（JRE=java runtime environment）。</para>
+				    <para>关于java的基本知识和如何安装，不了解的请参考：</para>
+				    <para>java已经安装好前提下，另外记得确保JAVA_HOME环境变量已经正确设置好了。</para>
+				    <para>比如，我的系统中的是：</para>
+				    <screen>JAVA_HOME=D:\Program Files\Java\jre7</screen>
+				</note>
+			</para>
+        
+			<para>caution
+				<caution xml:id="not_make_ldflags_lintl_lcurses"><title>此处不要通过make时加LDFLAGS参数去添加-lintl和-lcurses</title>
+				    <para>其实，上面贴出来的，修改makefile的办法，的确已经解决了此处的，缺少intl和缺少ncurses的库的两个问题了。</para>
+				    <para>只是，后来，在另外一个Cygwin环境下去折腾同样的make编译crosstool-ng的时候：</para>
+				    <para>不去修改makefile，而直接给make加上LDFLAGS参数加上-lintl：</para>
+				   
+				</caution>
+			</para>
+			
+		   <para>
+				<tip xml:id="tip.how_set_win_env"><title>如何设置windows环境变量</title>
+				    <para>关于如何添加相应路径到windows的环境变量中，不熟悉的可以参考：</para>
+				    <para>请查看</para>
+				</tip>
+			
+			</para>			
+			
+</section>
+
+
+
+
+
+
+

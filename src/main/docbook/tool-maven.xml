@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<!-- -->
+	<info>
+		<title>MAVEN-日常查询手册111 </title>
+		<authorgroup>
+			<author>
+				<firstname>&name;
+				</firstname>
+				<affiliation>&lingli;
+				</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para> 整理了日常常见场景的各种maven的配置方法，方便大家查阅</para>
+		</abstract>
+	</info>
+	<xi:include href="book/maven/chapter-1-安装配置.xml" />
+	<xi:include href="book/maven/chapter-2-常用命令.xml" />
+	<xi:include href="book/maven/chapter-3-faq常见问题.xml" />
+	<xi:include href="book/maven/chapter-4-常用插件.xml" />
+	<xi:include href="book/maven/chapter-9-参考资料.xml" />
+	<xi:include href="book/chapter-more.xml" />
+</book>

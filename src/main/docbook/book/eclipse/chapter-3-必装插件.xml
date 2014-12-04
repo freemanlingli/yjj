@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>常用插件选择</title>
+
+	<sect1>
+		<title>我们使用的版本</title>
+		<literallayout>
+   <![CDATA[	  
+Eclipse Standard/SDK
+Version: Luna Release (4.4.0)
+Build id: 20140612-0600
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+
+	<sect1>
+		<title>工作流activiti-designer图形编辑插件</title>
+		<literallayout>
+   <![CDATA[	  
+http://activiti.org/designer/update/
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>报表引擎的</title>
+		<literallayout>
+   <![CDATA[	  
+http://eclipse.org/birt/getting-started/
+http://download.eclipse.org/birt/update-site/4.3
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>svn插件</title>
+		<literallayout>
+   <![CDATA[
+   1.80版本以上的	  
+http://subclipse.tigris.org/update_1.10.x
+	  ]]>
+		</literallayout>
+	</sect1>
+	<sect1>
+		<title>手机android开发插件</title>
+		<literallayout>
+   <![CDATA[	  
+
+	  ]]>
+		</literallayout>
+	</sect1>
+
+
+</chapter>

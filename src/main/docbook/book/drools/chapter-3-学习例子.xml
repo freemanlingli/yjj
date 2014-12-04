@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+
+	<title>学习例子</title>
+	<sect1>
+		<title>EA中直接代码分析</title>
+		<para>https://github.com/Activiti/Activiti/releases
+		    下载相应版本的源码，解压
+		   在eclipse中设置关联源码路径，直接加入build中，
+		   导入后，发现有2个文件会重复定义，我们在links是可以设置 exlcue某些文件的，
+		   ActivitiRestServicesApplication
+		    </para>
+	</sect1>		
+
+	
+
+
+</chapter>

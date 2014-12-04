@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>互联网行业
+		</title>
+		<authorgroup>
+			<author>
+				<firstname>&name; </firstname>
+				<affiliation>&lingli;</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para>&lingli;
+			</para>
+			<para>
+			</para>
+		</abstract>
+	</info>
+	
+
+	
+	<chapter>
+		<title>关键名词</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+O2O	
+Online To Offline   
+O2O的概念非常广泛，只要产业链中既可涉及到线上，又可涉及到线下，就可通称为O2O。
+在网上寻找消费者，然后将他们带到现实的商店中。它是支付模式和为店主创造客流量的
+一种结合（对消费者来说，也是一种“发现”机制），实现了线下的购买。合生元，魅族，小米手机
+都是这样。O2O营销模式的核心是在线预付，
+团购而言，如果没有能力提供在线支付，仅凭网购后的自家统计结果去和商家要钱，结果双方无法就实际购买的人数达成精确的统一而陷入纠纷。
+O2O模式在一定程度上降低了商家对店铺地理位置的依赖，减少了租金方面的支出
+O2O更侧重服务性消费(包括餐饮、电影、旅游、健身、租房等);
+
+O2P
+Online to Partner
+O2P商业模式是针对移动互联网商业浪潮背景下，瞄准传统渠道将向“电商平台+客户体验店+社区门店+物流配送”转型机会而推出的新型互联网商业模式
+
+P2P
+person-to-person
+金融指个人与个人间的小额借贷交易。P2P金融指个人与个人间的小额借贷交易，
+一般需要借助电子商务专业网络平台帮助借贷双方确立借贷关系并完成相关交易手续。
+借款者可自行发布借款信息，包括金额、利息、还款方式和时间，实现自助式借款;借
+出者根据借款人发布的信息，自行决定借出金额，实现自助式借贷。
+
+
+ITM
+英文Interactive trading mode的缩写，意思是“互动交易”模式
+
+
+
+(B2C、B2B)
+传统的电商模式Business To Customers
+京东、淘宝、天猫
+B2C更侧重购物(实物商品、电器、服饰等);
+
+
+			</literallayout>
+		</para>
+	</chapter>
+
+	<chapter>
+		<title>关键名词</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	
+ITM战略认为，当前的商业竞争不再是同业的产品、服务、品牌等层面的竞争，而是信息化时代的变革推进之争，步入信息化时代
+的未来企业要面对“双线竞争”即“线上与线下”两大战略层面。
+
+			</literallayout>
+		</para>
+	</chapter>
+
+
+	<chapter>
+		<title>P2P金融雏形的故事</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	<chapter>
+		<title>关键名词</title>
+		<para>
+			<literallayout>
+	   <![CDATA[
+	2006年度诺贝尔和平奖得主尤努斯博士认为现代经济理论在解释和解决贫困方面存在缺陷，
+	为此他于1983年创建了格莱珉银行，通过开展无抵押的小额信贷业务和一系列的金融创新机制，
+	不仅创造了利润，而且还使成千上万的穷人尤其是妇女摆脱了贫困，使扶贫者与被扶贫者达、
+	到双赢。格莱珉银行已成为100多个国家的效仿对象和盈利兼顾公益的标杆。
+			</literallayout>
+		</para>
+	</chapter>
+			</literallayout>
+		</para>
+	</chapter>
+
+
+</book>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook" > 
+	
+		<title>jenkins历史</title>
+		<literallayout>
+   <![CDATA[
+		    从Jenkins的历史上看创建者应该是个之前sun公司的日本人。
+			2004年 Hudson软件项目(Jenkins的前身)始创于SunMicrosystems，
+			2005年2月首次发布于java.net。
+			2008年5月的JavaOne大会上，Hudson成为“Duke选择奖”开发人员解决方案分类的得主。
+			2010年11月该项目的主要贡献者和Oracle之间展开谈判。尽管在多个方面达成一致，争议集中在是否把Hudson注册为商标
+			后来Oracle声明对Hudson的名字拥有权利，并在2010年12月申请将其注册为商标。
+			2011年1月11日，社区号召投票将项目名称从“Hudson”变更为“Jenkins”。
+			2011年1月29日，社区投票以压倒多数批准通过该提案，创建Jenkins项目。
+			2011年2月1日，Oracle表示他们打算继续Hudson的开发，并认为Jenkins是Hudson的复刻，而非重命名。
+			Jenkins和Hudson之后继续作为两个独立的项目，均声称对方是自己的复刻。截至
+			2013年12月，在GitHub上的Jenkins组织有567项目成员及约1100公共库（public repository）
+			而Hudson组织有32个项目成员和17个公共库
+			2011年，创建者川口耕介收到了O'Reilly开源奖，奖励其在Hudson/Jenkins项目上的工作。
+			2014年，川口耕介成为CloudBees的首席技术官。
+	  ]]>
+		</literallayout>
+	</chapter>

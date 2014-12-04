@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE book [
+  <!ENTITY % aaa SYSTEM "book/book.ent">%aaa;  
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xml:lang="en">
+	<info>
+		<title>Jenkins</title>
+		<authorgroup>
+			<author>
+				<firstname>&name;
+				</firstname>
+				<affiliation>&lingli;
+				</affiliation>
+			</author>
+		</authorgroup>
+		<date>03/16/2014</date>
+		<abstract>
+			<para>
+				Jenkins，我们可以简单地理解为，就是一个 可以在浏览器中定义定时任务去调用脚本或者批处理的工具而实现自动化。
+				。使用Java开发的，最大的特色是有插件支持，开源社区目前拥有975多个插件，满足各种项目的需要。技术亮点：插件式，
+				热插拔更新,分布式主从配置，采用JAVA WEBSTART方式.
+			</para>
+
+		</abstract>
+	</info>
+
+	<xi:include href="book/jenkins/chapter-1-安装运行.xml" />
+	<xi:include href="book/jenkins/chapter-2-常用定时任务的配置.xml" />
+	<xi:include href="book/jenkins/chapter-3-faq常见问题.xml" />
+	<xi:include href="book/jenkins/chapter-4-常用插件.xml" />
+  <xi:include href="book/jenkins/chapter-9-参考资料.xml" />
+	<xi:include href="book/chapter-more.xml" />
+
+</book>

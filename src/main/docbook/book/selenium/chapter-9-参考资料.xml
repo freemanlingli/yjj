@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>参考资料</title>
+	<sect1>
+		<title>网页资料</title>
+
+		<literallayout>
+   <![CDATA[
+   
+   https://www.freelancer.com/work/selenium-angular/1/
+ java集成的好网站
+ 
+ http://seleniumsimplified.com/get-started/  
+	http://www.seleniumhq.org/
+    http://www.ibeifeng.com/videoshow-goods_id309-ct.html 卖课程的网站
+ 
+  ]]>
+		</literallayout>
+
+	</sect1>
+
+
+	<sect1>
+		<title>进入相册进行评论</title>
+		<literallayout>
+   <![CDATA[
+
+import java.util.concurrent.TimeUnit;
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class Photo163DomSelect {
+	private WebDriver driver;
+	private String baseUrl;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://photo.163.com/";
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void test() throws Exception {
+		// 打开一个网址
+		driver.get(baseUrl);
+		// 输入用户名
+		// by css
+		driver.findElement(By.cssSelector("input[name=\"username\"]")).clear();
+		driver.findElement(By.cssSelector("input[name=\"username\"]"))
+				.sendKeys("demophoto");
+		driver.findElement(By.cssSelector("div.js-cur")).click();
+		// 输入密码
+		// by name
+		driver.findElement(By.name("password")).clear();
+		driver.findElement(By.name("password")).sendKeys("qa1234");
+
+		// 点击登录
+		driver.findElement(By.id("photo_index_login")).click();
+
+		// 获取页面title
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		String title = (String) js.executeScript("return document.title");
+		System.out.println(title);
+
+		// 点击 创建相册
+		// by linkText
+		driver.findElement(By.linkText("创建相册")).click();
+
+		// 输入 相册名称
+		// by name
+		driver.findElement(By.name("name")).clear();
+		driver.findElement(By.name("name")).sendKeys("new album");
+
+		// 选择私人相册
+		driver.findElements(By.name("auth")).get(3).click();
+
+		// 选择aaa分类
+		// by css
+		Select select = new Select(driver.findElement(By
+				.cssSelector("select.fc5.bdwa")));
+		// 选择的三种不同实现
+		// select.selectByValue("aaa");
+		// select.selectByIndex(1);
+		select.selectByVisibleText("aaa");
+
+		// 点击 创建 两种方式
+		// by css
+		driver.findElement(By.cssSelector("button.ui-btn.ui-btn-sub0")).click();
+		// driver.findElement(By.cssSelector("button.ui-btn.ui-btn-sub0")).submit();
+		Thread.sleep(5000);
+
+		// 输入评论
+		// 因为评论框放在一个iframe中，所以要切换到iframe中，结束后将焦点切换回去
+		// by tagName
+		driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
+		driver.switchTo().activeElement().sendKeys("评论内容！");
+		driver.switchTo().defaultContent();
+
+		// 点击 发表
+		// by className
+		driver.findElement(By.className("ui-btn-main0")).click();
+		// 点击 返回
+		// by xpath
+		driver.findElement(By.xpath("//a[@class='back' and(text()='<< 返回')]"))
+				.click();
+		// 鼠标hover到相册上（目前firefoxDriver的鼠标事件还是有缺陷的，运行这代码的时候请确保光标在浏览器内）
+		// by partialLinkText
+		new Actions(driver)
+				.moveToElement(
+						driver.findElement(By.partialLinkText("new album")))
+				.build().perform();
+
+		// 点击 删除
+		// by linkText
+		driver.findElement(By.linkText("删除")).click();
+
+		// 点击确认
+		driver.findElement(By.cssSelector("button.ui-btn.ui-btn-sub0")).click();
+
+		// 退出登录
+		// by id
+		driver.findElement(By.id("headerLogout")).click();
+
+		// 浏览器后退
+		driver.navigate().back();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		driver.quit();
+
+	}
+
+}
+
+
+例子2：该主要是登录网易群相册上传修改个人头像。在这个例子中，可以找到如何通过上传空间进行上传操作：
+
+package selenium;
+
+import java.util.concurrent.TimeUnit;
+import org.junit.*;
+import static org.junit.Assert.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Photo163upload {
+	private WebDriver driver;
+	private String baseUrl;
+	private StringBuffer verificationErrors = new StringBuffer();
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://photo.163.com/";
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void test() throws Exception {
+		driver.get(baseUrl + "/");
+		driver.findElement(By.name("username")).clear();
+		driver.findElement(By.name("username")).sendKeys("demophoto");
+		driver.findElement(By.cssSelector("div.js-cur")).click();
+		driver.findElement(By.name("password")).clear();
+		driver.findElement(By.name("password")).sendKeys("qa1234");
+		driver.findElement(By.id("photo_index_login")).click();
+		driver.findElement(By.partialLinkText("排序相册")).click();
+		driver.findElement(By.cssSelector("#J-photoListSort >span.title"))
+				.click();
+		driver.findElement(By.linkText("自定义排序")).click();
+		// 拖动图片
+		(new Actions(driver)).dragAndDrop(
+				driver.findElement(By.id("7515773989")),
+				driver.findElement(By.id("7515803792"))).perform();
+		driver.findElement(By.linkText("确定排序")).click();
+		Thread.sleep(10000);
+		driver.findElement(By.cssSelector("#J-photoListSort >span.title"))
+				.click();
+		driver.findElement(By.linkText("新相片在前")).click();
+
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		driver.quit();
+		String verificationErrorString = verificationErrors.toString();
+		if (!"".equals(verificationErrorString)) {
+			fail(verificationErrorString);
+		}
+	}
+
+	private boolean isElementPresent(By by) {
+		try {
+			driver.findElement(by);
+			return true;
+
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+
+	}
+
+}
+
+  ]]>
+		</literallayout>
+
+	</sect1>
+</chapter>

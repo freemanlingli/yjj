@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>FAQ常问问题</title>
+	
+	<sect1>
+		<title>什么是http  BASIC认证？</title>
+		<para>
+		    http://blog.itpub.net/23071790/viewspace-709367/
+		在HTTP协议进行通信的过程中，HTTP协议定义了基本认证过程以允许HTTP服务器对WEB浏览器进行用户身份证的方法，当一
+		个客户端向HTTP服务 器进行数据请求时，如果客户端未被认证，则HTTP服务器将通过基本认证过程对客户端的用户名及密码进行验证，
+		以决定用户是否合法。客户端在接收到HTTP服务器的身份认证要求后，会提示用户输入用户名及密码，然后将用户名及密码以BASE64加密，
+		加密后的密文将附加于请求信息中， 如当用户名为anjuta，密码为：123456时，客户端将用户名和密码用“：”合并，并将合并后的字符串
+		用BASE64加密为密文，并于每次请求数据 时，将密文附加于请求头（Request Header）中。HTTP服务器在每次收到请求包后，根据
+		协议取得客户端附加的用户信息（BASE64加密的用户名和密码），解开请求包，对用户名
+		及密码进行验证，如果用 户名及密码正确，则根据客户端请求，返回客户端所需要的数据;否则，返回错误代码或重新要求客户端提供用户名及密码。 
+		
+		HTTP基本认证的目标是提供简单的用户验证功能，其认证过程简单明了，适合于对安全性要求不高的系统或设备中，如大家所用路由器的配置页面的认证，几乎 都采取了这种方式。
+		缺点是没有灵活可靠的认证策略，如无法提供域（domain或realm）认证功能，另外，
+		BASE64的加密强度非常低，可逆
+		HTTP基本认证系统也可以与SSL或者Kerberos结合，实现安全性能较高（相对）的认证系统
+
+		</para>
+	</sect1>	
+	<sect1>
+		<title>REST会取代MVC吗？</title>
+		<para>
+			就像AOP对于OOP。我们就需要混合使用REST和MVC。
+
+		</para>
+	</sect1>
+
+	<sect1>
+		<title>为什么要做一个框架，不就是URL的处理吗，用serlvet api 也可以做到啊</title>
+		<para>
+			难道Servlet API还不够好用吗？Servlet AIP在1998年发布，从那个时候起它
+			的核心设计一直没有很大的变化。它是Java EE的众多API中最成功的一个，但是它的几个设
+			计缺陷和一些限制损害了它。举个例子，URI模式和它的处理者（handler）之间的映射是受限制
+			的，而且其配置都集中在一个配置文件中。还有，它把socket流的控制直接交给了应用系统开发人员，
+			Servlet容器阻碍了我们充分使用NIO特性对IO操作进行优化。另一个主要问题就是Servlet A
+			PI鼓励应用开发者在应用或者用户会话级别直接将session状态保存于内存中，尽管这看上去不错，但它造成了
+			Servlet容器扩展性和高可用性的主要问题。为了克服这些问题，就必须实现复杂的负载均衡、session
+			复制、持久化机制。这导致了可扩展性必然成为灾难。
+		</para>
+	</sect1>
+
+	<sect1>
+		<title>为什么不用别的框架爱，比如Axis2，或者CXF/XFire，也有REST</title>
+		<para>
+			些支持非常有效，但是作用非常有限。我的主要观点是设计这些项目是为了符合WS-*/SOAP
+			Stack，它们与REST世界并不非常契合。在REST世界里，定义了一个全新的范例：面向资源的设计，
+			而非通过远程方法调用这样的范例。例如
+			Axis2仅仅支持GET和POST两种HTTP方法，它需要远程方法的传递需要一个URI参数。
+			这在REST中式不允许的，这种做法也不能被称之为REST化。XFire1.2不支持REST，但是它
+			发布了一个项目用于将POJO映射到REST化的Web服务。这有点类似最近发布的JSR-311，此JSR试图基于一套annotation和助手类标准化这种映射。
+
+		</para>
+	</sect1>
+	<sect1>
+		<title> http请求 put ，get post ，delete的区别 </title>
+   <literallayout>
+      <![CDATA[
+     Axis2仅仅支持GET和POST两种HTTP方法，它需要远程方法的传递需要一个URI参数。Axis2仅仅
+     支持GET和POST两种HTTP方法，它需要远程方法的传递需要一个URI参数。
+	  ]]>
+		</literallayout>
+	</sect1>	
+	<sect1>
+		<title>如何实现安全认证的</title>
+   <para>
+       
+  authenticator = new ChallengeAuthenticator(null, true, ChallengeScheme.HTTP_BASIC, "Activiti Realm") {      
+       
+       
+public abstract class ActivitiRestApplication extends Application {
+  protected ChallengeAuthenticator authenticator;
+  public InfEa infEa;
+
+  
+  public void setRestAuthenticator(RestAuthenticator restAuthenticator) {
+    this.restAuthenticator = restAuthenticator;
+  }
+  public void initializeAuthentication() {
+    Verifier verifier = new SecretVerifier() {
+      @Override
+      public boolean verify(String username, char[] password) throws IllegalArgumentException {
+        //boolean verified = ActivitiUtil.getIdentityService().checkPassword(username, new String(password));
+    	  infEa = ActivitiUtil.getIdentityService().getInfEa();
+    	  System.out.printf("username:%s password:%s%n" , username , new String(password) );  
+    	  String result = infEa.checkLogin(username, new String(password));
+    	  if("0000".equals(result)){
+    		  System.out.printf("login successfully");
+    		  return true;
+    	  }else{
+    		  System.out.printf("login failed");
+    		  return false;
+    	  }
+      }
+    };
+    
+    // Set authenticator as a NON-optional filter. If certain request require no authentication, a custom RestAuthenticator
+    // should be used to free the request from authentication.
+    authenticator = new ChallengeAuthenticator(null, true, ChallengeScheme.HTTP_BASIC,
+          "Activiti Realm") {
+      @Override
+      protected boolean authenticate(Request request, Response response) {
+        x// Check if authentication is required if a custom RestAuthenticator is set
+        if(restAuthenticator != null && !restAuthenticator.requestRequiresAuthentication(request)) {
+          return true;
+        }
+        if (request.getChallengeResponse() == null) {
+          return false;
+        } else {
+          boolean authenticated = super.authenticate(request, response);
+          if(authenticated && restAuthenticator != null) {
+            // Additional check to see if authenticated user is authorised. By default, when no RestAuthenticator
+            // is set, a valid user can perform any request.
+            authenticated = restAuthenticator.isRequestAuthorized(request);
+          }
+          return authenticated;
+        }
+      }
+    };
+    authenticator.setVerifier(verifier);
+  }
+    /*
+            这个方法一定要有
+    */
+	public String authenticate(Request request, Response response) {		
+		if (!request.getClientInfo().isAuthenticated()) {
+			HttpSession session = ServletCall.getRequest(request).getSession();
+			User loggedInUser = (User) session.getAttribute("userlogined");
+			if (loggedInUser != null) {
+				return loggedInUser.getAccount();
+			}else {
+				authenticator.challenge(response, false); //使用HTTP_BASIC基础认证
+				return null;
+			}
+		}
+		return request.getClientInfo().getUser().getIdentifier();
+		
+	}
+}
+
+       
+   </para>	  
+	</sect1>	
+
+</chapter>

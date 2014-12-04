@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook" > 
+
+		<title>FAQ常见问题</title>
+
+		<sect1>
+			<title>jar的整理方法</title>
+				<literallayout>
+   <![CDATA[
+mvn dependency:tree
+ 查看项目直接和传递依赖
+ mvn dependency:analyze
+  可以用 查看项目依赖
+mvn help:effective-pom ：
+  可以看到  最终的POM的真实内容，不如父子项目的POM，可以清晰看到子项目maven处理的pom.xml文件内容
+  
+
+  ]]>
+  </literallayout>
+		</sect1>
+
+
+		<sect1>
+			<title> maven里dependency的version没有定义？</title>
+			<para>
+				父项目的 dependencyManager 里面指定过了
+			</para>
+		</sect1>
+
+		<sect1>
+			<title>多项目模块的的配置方法</title>
+			<para>我们通常开发一个项目，是有多个工程的，我们如何进行多个工程的MAVEN配置呢
+				首先我们要理解为什么要专门提出多项目配置？因为有下面3部分信息是重复的可以共用的，1.jar配置文件 2.插件信息 3.环境参数配置
+				如果我们为每个子模块都编写一个单独的pom。xml文件，这些公共的信息就难以维护。
+			</para>
+			<para>所以我们的做法，一般是在根目录项目中，建一个parent 项目，该项目没有任何工程代码，就是一个公共的POM文件，
+				在这个文件中定义一些公共的POM.XML的配置信息
+			</para>
+
+			<para>我们通常开发一个项目，是有多个工程的，我们如何进行多个工程的MAVEN配置呢
+				首先我们要理解为什么要专门提出多项目配置？因为有下面3部分信息是重复的可以共用的，1.jar配置文件 2.插件信息 3.环境参数配置
+				如果我们为每个子模块都编写一个单独的pom。xml文件，这些公共的信息就难以维护。
+			</para>
+			<para>所以我们的做法，一般是在根目录项目中，建一个parent 项目，该项目没有任何工程代码，就是一个公共的POM文件，
+				在这个文件中定义一些公共的POM.XML的配置信息
+			</para>
+		</sect1>
+
+		<sect1>
+			<title>如何去掉maven运行信息中的警告信息？</title>
+			<para>
+
+			</para>
+		</sect1>
+
+		
+		<sect1>
+			<title>如何远程远程发布工件</title>
+			<para>我们思考下面问题：
+				1.我们通过POM.XML文件告诉maven自动上网去下载需要用到的JAR包，如果团队没有上网环境，怎么办呢？
+				2.我们本地编译好的工件，如何让别的同事拿到呢。总不至于需要手工拷贝的模式吧
+				所以MAVEN提供了一个工件库服务器的东东。我们可以很容易建立一个内部的工件库的服务
+			</para>
+		</sect1>
+
+	</chapter>

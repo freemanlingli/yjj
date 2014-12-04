@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook">
+	<title>什么是json</title>
+	<sect1>
+		<title>什么是json</title>
+
+		<literallayout>
+      <![CDATA[
+  www.json.org
+  
+  Jackson 是个开源库，被很多框架使用，因为速度快    
+      
+JavaScript Object Notation (JSON) is a lightweight data format that’s typically used for
+exchanges between AJAX clients and web services.
+把JSON理解成比XML简单就好， restlet直接支持
+
+extjs，  ajax  和WEBSERCIE都是用它来交换数据
+
+	  ]]>
+		</literallayout>
+	</sect1>
+		
+
+</chapter>
